@@ -22,6 +22,7 @@ else
 		[] call ExileClient_gui_hud_initialize;
 		[15, ExileClient_gui_hud_thread_survivalInfo, [], true] call ExileClient_system_thread_addtask;
 		[1, ExileClient_gui_hud_thread_update, [], true] call ExileClient_system_thread_addtask;
+		[] call ExileClient_system_map_initialize;
 		[] call ExileClient_object_fireFlies_initialize;
 		[] call ExileClient_object_anomaly_initialize;
 		[] call ExileClient_system_radiation_initialize;

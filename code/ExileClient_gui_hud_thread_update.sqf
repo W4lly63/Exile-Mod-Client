@@ -16,7 +16,7 @@ if( ExileClientPlayerAttributes select 0 != ExileClientPlayerAttributesASecondAg
 	{
 		if !(ExileClientPlayerIsInSecurityCamera) then 
 		{
-			ExileClientPostProcessingColorCorrections ppEffectAdjust [1, 1.1, -0.05, [0.4, 0.2, 0.3, -0.1], [0.79, 0.72, 0.62, 1 - (damage player)], [0.5,0.5,0.5,0], [0,0,0,0,0,0,4]];
+			ExileClientPostProcessingColorCorrections ppEffectAdjust [1, 1, 0, [0, 0, 0, 0], [0.39, 0.32, 0.25, 1 - (damage player)], [0.5,0.5,0.5,0], [0,0,0,0,0,0,4]]; 
 			ExileClientPostProcessingColorCorrections ppEffectCommit 1;
 			if (ExileClientPlayerIsBleeding) then
 			{

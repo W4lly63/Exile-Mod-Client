@@ -116,7 +116,6 @@ else
 		ExileGuiControlClick = false;
 		ExileClientActionDelayShown = false;
 		ExileClientActionDelayAbort = false;
-		[] call ExileClient_system_map_initialize;
 		[] call ExileClient_object_player_stats_reset;
 		[] call ExileClient_gui_postProcessing_initialize;
 		[] call ExileClient_gui_hud_event_hook;
