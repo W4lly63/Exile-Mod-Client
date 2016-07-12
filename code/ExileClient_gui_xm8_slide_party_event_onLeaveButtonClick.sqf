@@ -11,10 +11,10 @@
  
 ["Leave party?", "Leave", "Stay"] call ExileClient_gui_xm8_showConfirm;
 waitUntil { !(isNil "ExileClientXM8ConfirmResult") };
-if (ExileClientXM8ConfirmResult isEqualTo true) then
+if (ExileClientXM8ConfirmResult) then
 {
-	_group = createGroup independent;
-	[player] joinSilent _group;
+	["joinLoneWolfGroupRequest", []] call ExileClient_system_network_send;
 	ExileClientPartyID = -1;
+	3 enableChannel false;
 	['apps', 1] call ExileClient_gui_xm8_slide;
 };

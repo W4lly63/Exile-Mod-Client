@@ -9,19 +9,10 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_display","_territoryDropDown","_currencyDropDown","_flagNetID","_mode"];
+private["_display","_territoryDropDown","_flagNetID"];
 disableSerialization;
 _display = uiNameSpace getVariable ["RscExilePayTerritoryProtectionMoneyDialog", displayNull];
 _territoryDropDown = _display displayCtrl 4001;
-_currencyDropDown = _display displayCtrl 4000;
 _flagNetID = _territoryDropDown lbData (lbCurSel _territoryDropDown);
-if ((lbCurSel _currencyDropDown) isEqualTo 0) then
-{
-	_mode = 0;
-}
-else 
-{
-	_mode = 1;
-};
-["payTerritoryProtectionMoneyRequest", [_flagNetID, _mode]] call ExileClient_system_network_send;
+["payTerritoryProtectionMoneyRequest", [_flagNetID]] call ExileClient_system_network_send;
 closeDialog 0;

@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_listBox","_index","_dialog","_purchaseButton","_quantityDropdown","_inventoryLoadLabel","_inventoryLoadValue","_itemClassName","_inventoryDropdown","_selectedInventoryDropdownIndex","_currentContainerType","_canBuyItem","_tradingResult","_salesPrice","_itemInformation","_itemType","_containerNetID","_containerVehicle","_inventoryListBox"];
+private["_listBox","_index","_dialog","_purchaseButton","_quantityDropdown","_inventoryLoadLabel","_inventoryLoadValue","_itemClassName","_inventoryDropdown","_selectedInventoryDropdownIndex","_currentContainerType","_canBuyItem","_tradingResult","_salesPrice","_quality","_requiredRespect","_itemInformation","_itemType","_containerNetID","_containerVehicle","_inventoryListBox"];
 disableSerialization;
 if !(uiNameSpace getVariable ["RscExileTraderDialogIsInitialized", false]) exitWith {};
 _listBox = _this select 0;
@@ -33,9 +33,15 @@ if (_index > -1) then
 	try 
 	{
 		_salesPrice = getNumber(missionConfigFile >> "CfgExileArsenal" >> _itemClassName >> "price");
-		if (_salesPrice > ExileClientPlayerMoney) then 
+		if (_salesPrice > (player getVariable ["ExileMoney", 0])) then 
 		{
 			throw 5;
+		};
+		_quality = getNumber(missionConfigFile >> "CfgExileArsenal" >> _itemClassName >> "quality");
+		_requiredRespect = getNumber(missionConfigFile >> "CfgTrading" >> "requiredRespect" >> format["Level%1",_quality]);
+		if (_requiredRespect > ExileClientPlayerScore) then
+		{
+			throw 14;
 		};
 		switch (_currentContainerType) do
 		{

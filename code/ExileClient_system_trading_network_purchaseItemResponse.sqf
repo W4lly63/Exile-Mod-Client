@@ -9,9 +9,9 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_responseCode","_newPlayerMoneyString","_itemClassName","_quantity","_containerType","_containerNetID","_newPlayerMoney","_salesPrice","_containersBefore","_containersAfter","_vehicle","_dialog","_storeListBox"];
+private["_responseCode","_salesPrice","_itemClassName","_quantity","_containerType","_containerNetID","_containersBefore","_containersAfter","_vehicle","_dialog","_storeListBox"];
 _responseCode = _this select 0;
-_newPlayerMoneyString = _this select 1;
+_salesPrice = _this select 1;
 _itemClassName = _this select 2;
 _quantity  = _this select 3;
 _containerType = _this select 4;
@@ -19,9 +19,6 @@ _containerNetID = _this select 5;
 ExileClientIsWaitingForServerTradeResponse = false;
 if (_responseCode isEqualTo 0) then
 {
-	_newPlayerMoney = parseNumber _newPlayerMoneyString;
-	_salesPrice = ExileClientPlayerMoney - _newPlayerMoney;
-	ExileClientPlayerMoney = _newPlayerMoney;
 	switch (_containerType) do
 	{
 		case 1:
@@ -52,17 +49,18 @@ if (_responseCode isEqualTo 0) then
 			[_vehicle, _itemClassName] call ExileClient_util_containerCargo_add;
 		};
 	};
-	["ItemPurchasedInformation", [_salesPrice * -1]] call ExileClient_gui_notification_event_addNotification;
+	["SuccessTitleAndText", ["Item purchased!", format ["-%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _salesPrice]]] call ExileClient_gui_toaster_addTemplateToast;
 	_dialog = uiNameSpace getVariable ["RscExileTraderDialog", displayNull];
 	if !(_dialog isEqualTo displayNull) then
 	{
 		call ExileClient_gui_traderDialog_updateInventoryListBox;
 		call ExileClient_gui_traderDialog_updatePlayerControls;
+		call ExileClient_gui_traderDialog_updateStoreListBox;
 		_storeListBox = _dialog displayCtrl 4009;
 		[_storeListBox, lbCurSel _storeListBox] call ExileClient_gui_traderDialog_event_onStoreListBoxSelectionChanged;
 	};
 }
 else 
 {
-	["Whoops", [format["Failed to purchase item: %1", _responseCode]]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Whoops!", format ["Something went really wrong. Please tell a server admin that you have tried to purchase an item and tell them the code '%1'. Thank you!", _responseCode]]] call ExileClient_gui_toaster_addTemplateToast;
 };

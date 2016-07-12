@@ -9,15 +9,14 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_object","_playerGear"];
+private["_object"];
 _object = _this select 0;
-_playerGear = player call ExileClient_util_playerCargo_list;
-if("Exile_Item_FortificationUpgrade" in _playerGear)then
+if ("Exile_Item_FortificationUpgrade" in (magazines player)) then
 {
-	["upgradeConstructionRequest",[_object]] call ExileClient_system_network_send;
+	["upgradeConstructionRequest", [_object]] call ExileClient_system_network_send;
 }
 else
 {
-	["Whoops",["You dont have Fortification Upgrade"]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Failed to upgrade!", "You are missing the required upgrade kit."]] call ExileClient_gui_toaster_addTemplateToast;
 };
 true

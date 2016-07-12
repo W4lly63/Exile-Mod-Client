@@ -36,7 +36,7 @@ if((count _hasACan) isEqualTo 3)then
 	_fuelAmount = _fuelDetails select 0;
 	if(_fuelAmount isEqualTo 0)exitWith
 	{
-		["VehicleDrainingFailedFuel"] call ExileClient_gui_notification_event_addNotification;
+		["ErrorTitleAndText", ["Failed to drain fuel!", "There is no fuel left to drain."]] call ExileClient_gui_toaster_addTemplateToast;
 	};
 	if((_hasACan select 1) > _fuelAmount)then
 	{
@@ -64,10 +64,10 @@ if((count _hasACan) isEqualTo 3)then
 	{
 		["setFuelRequest",[netId _object,-_amount]] call ExileClient_system_network_send;
 	};
-	["VehicleDrained", [format ["Vehicle drained for: %1L",_amount]]] call ExileClient_gui_notification_event_addNotification;
+	["SuccessTitleAndText", ["Drained fuel!", format ["You have drained %1L.", _amount]]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else
 {
-	["VehicleDrainingFailed"] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Failed to drain fuel!", "You do not have a fuel canister."]] call ExileClient_gui_toaster_addTemplateToast;
 };
 true

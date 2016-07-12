@@ -18,25 +18,28 @@ _group = group player;
 _members = units _group;
 _groupLeader = leader _group;
 {
-	_index = _listBox lbAdd (name _x);
-	_listBox lbSetData [_index, getPlayerUID _x];
-	if (_x isEqualTo _groupLeader) then
+	if (isPlayer _x) then 
 	{
-		_listBox lbSetPicture [_index, "\a3\ui_f\data\gui\cfg\Ranks\corporal_gs.paa"];
-	}
-	else 
-	{
-		_listBox lbSetPicture [_index, "\a3\ui_f\data\gui\cfg\Ranks\private_gs.paa"];
-	};
-	if (_x isEqualTo player) then
-	{
-		_listBox lbSetColor [_index, [0/255, 178/255, 205/255, 1]];
-	}
-	else 
-	{
-		if !(alive _x) then
+		_index = _listBox lbAdd (name _x);
+		_listBox lbSetData [_index, netID _x];
+		if (_x isEqualTo _groupLeader) then
 		{
-			_listBox lbSetColor [_index, [225/255, 65/255, 65/255, 1]];
+			_listBox lbSetPicture [_index, "\a3\ui_f\data\gui\cfg\Ranks\corporal_gs.paa"];
+		}
+		else 
+		{
+			_listBox lbSetPicture [_index, "\a3\ui_f\data\gui\cfg\Ranks\private_gs.paa"];
+		};
+		if (_x isEqualTo player) then
+		{
+			_listBox lbSetColor [_index, [0/255, 178/255, 205/255, 1]];
+		}
+		else 
+		{
+			if !(alive _x) then
+			{
+				_listBox lbSetColor [_index, [225/255, 65/255, 65/255, 1]];
+			};
 		};
 	};
 } 

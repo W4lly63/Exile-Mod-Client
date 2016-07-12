@@ -12,7 +12,7 @@
 private["_previewObjectClassName"];
 if (ExileClientPlayerIsInCombat) then
 {
-	["ConstructionAbortedCombat"] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Construction aborted!", "You cannot build during a combat."]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else 
 {
@@ -22,16 +22,13 @@ else
 	_previewObjectClassName = getText(ExileClientConstructionConfig >> "previewObject");
 	ExileClientConstructionSnapToObjectClassNames = (ExileClientConstructionConfig >> "SnapObjects") call Bis_fnc_getCfgSubClasses;
 	ExileClientConstructionProcess = 2;
-	ExileClientConstructionOffset = [0, 5, 0]; 
-	ExileClientConstructionPosition = [0, 0, 0];
 	ExileClientConstructionRotation = 0; 
 	ExileClientConstructionObjectDisplayName = getText(configFile >> "CfgVehicles" >> _previewObjectClassName >> "displayName");
+	ExileClientConstructionOffset = [0,	5,0];
 	ExileClientConstructionMode = 1;
 	ExileClientConstructionIsInSelectSnapObjectMode = true;
 	ExileClientConstructionSupportSnapMode = count(ExileClientConstructionSnapToObjectClassNames) > 0;
 	ExileClientConstructionCurrentSnapToObject = objNull;
-	ExileClientConstructionPosition = [getPos player, ExileClientConstructionOffset select 1, getDir player] call ExileClient_util_math_getPositionInDirection;
-	ExileClientConstructionPosition set[2, ExileClientConstructionOffset select 2];
 	{
 		player reveal _x;
 	}

@@ -13,6 +13,7 @@ private["_object","_menus","_i","_menu","_targetType","_target","_showMenu","_me
 _object = _this;
 _menus = missionConfigFile >> "CfgInteractionMenus";
 ExileClientInteractionObject = _object;
+ExileClientInteractionLastHookTime = time;
 for "_i" from 0 to count(_menus) - 1 do 
 {
 	_menu = _menus select _i;

@@ -16,5 +16,5 @@ if !(isNull _object) then
 {
 	_object setVariable ["ExileAlreadyKnownCode",_this select 2];
 };
-(_this select 0) call ExileClient_gui_notification_event_addNotification;
+(_this select 0) call ExileClient_gui_toaster_addTemplateToast;
 true

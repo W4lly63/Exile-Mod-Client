@@ -9,13 +9,14 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_constructionConfigName","_position","_playerUID","_result","_requiresTerritory","_canBePlacedOnRoad","_minimumDistanceToTraderZones","_minimumDistanceToSpawnZones","_minimumDistanceToOtherTerritories","_maximumTerritoryRadius","_positionObject","_nearestFlags","_radius","_buildRights","_territoryLevelConfigs","_territoryLevelConfig","_numberOfConstructionsAllowed"];
+private["_constructionConfigName","_position","_playerUID","_result","_requiresTerritory","_canBePlacedOnRoad","_allowDuplicateSnap","_minimumDistanceToTraderZones","_minimumDistanceToSpawnZones","_minimumDistanceToOtherTerritories","_maximumTerritoryRadius","_positionObject","_nearestFlags","_radius","_buildRights","_territoryLevelConfigs","_territoryLevelConfig","_numberOfConstructionsAllowed"];
 _constructionConfigName = _this select 0;
 _position = _this select 1;
 _playerUID = _this select 2;
 _result = 0;
 _requiresTerritory = getNumber (configFile >> "CfgConstruction" >> _constructionConfigName >> "requiresTerritory") isEqualTo 1;
 _canBePlacedOnRoad = getNumber (configFile >> "CfgConstruction" >> _constructionConfigName >> "canBePlacedOnRoad") isEqualTo 1;
+_allowDuplicateSnap = getNumber (configFile >> "CfgConstruction" >> _constructionConfigName >> "allowDuplicateSnap") isEqualTo 1;
 _minimumDistanceToTraderZones = getNumber (missionConfigFile >> "CfgTerritories" >> "minimumDistanceToTraderZones");
 _minimumDistanceToSpawnZones = getNumber (missionConfigFile >> "CfgTerritories" >> "minimumDistanceToSpawnZones");
 _minimumDistanceToOtherTerritories = getNumber (missionConfigFile >> "CfgTerritories" >> "minimumDistanceToOtherTerritories");
@@ -30,6 +31,14 @@ try
 	{
 		throw 5;
 	};
+	if ((AGLtoASL _position) call ExileClient_util_world_isInConcreteMixerZone) then 
+	{
+		throw 11;
+	};
+	if ((AGLtoASL _position) call ExileClient_util_world_isInNonConstructionZone) then 
+	{
+		throw 10;
+	};
 	if ((AGLtoASL _position) call ExileClient_util_world_isInRadiatedZone) then
 	{
 		throw 8;
@@ -41,13 +50,17 @@ try
 			throw 3;
 		};
 	};
+	if !(_allowDuplicateSnap) then 
 	{
-		_positionObject = (ASLtoAGL (getPosASL _x));
-		if (_position isEqualTo _positionObject) then
 		{
-			throw 7;
-		};
-	} forEach (_position nearObjects ["Exile_Construction_Abstract_Static", 3]);
+			_positionObject = (ASLtoAGL (getPosASL _x));
+			if (_position isEqualTo _positionObject) then
+			{
+				throw 7;
+			};
+		} 
+		forEach (_position nearObjects ["Exile_Construction_Abstract_Static", 3]);
+	};
 	if (_constructionConfigName isEqualTo "Flag") then 
 	{
 		if ([_position, _minimumDistanceToOtherTerritories] call ExileClient_util_world_isTerritoryInRange) then
@@ -70,6 +83,10 @@ try
 						_territoryLevelConfigs = getArray (missionConfigFile >> "CfgTerritories" >> "prices");
 						_territoryLevelConfig = _territoryLevelConfigs select ((_x getVariable ["ExileTerritoryLevel", 0]) - 1);
 						_numberOfConstructionsAllowed = _territoryLevelConfig select 2;
+						if ((_x getVariable ["ExileFlagStolen", 0]) isEqualTo 1) then
+						{
+							throw 9;
+						};
 						if ((_x getVariable ["ExileTerritoryNumberOfConstructions", 0]) >= _numberOfConstructionsAllowed) then
 						{
 							throw 6; 

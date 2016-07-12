@@ -13,12 +13,12 @@ private["_registrationFee","_dialog","_nameInput","_configFeeLabel"];
 disableSerialization;
 try 
 {
-	if !(ExileClientClanName isEqualTo "") then 
+	if !(ExileClientClanInfo isEqualTo []) then 
 	{
-		throw "You are already in a clan";
+		throw "You are already in a family.";
 	};
 	_registrationFee = getNumber (missionConfigFile >> "CfgClans" >> "registrationFee");
-	if (ExileClientPlayerMoney < _registrationFee) then 
+	if ((player getVariable ["ExileMoney", 0]) < _registrationFee) then 
 	{
 		throw format ["You need %1 pop tabs first.", _registrationFee];
 	};
@@ -33,6 +33,6 @@ try
 }
 catch 
 {
-	["Whoops", [_exception]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Failed to register family!", _exception]] call ExileClient_gui_toaster_addTemplateToast;
 };
 true

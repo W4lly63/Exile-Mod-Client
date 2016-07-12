@@ -54,7 +54,7 @@ if !(ExilePlayerRadiation isEqualTo ExilePlayerRadiationLastCheck) then
 	ExilePostProcessing_RadiationColor ppEffectAdjust 
 	[
 		1,
-		linearConversion [0, 1, ExilePlayerRadiation, 1, 1.3],
+		linearConversion [0, 1, ExilePlayerRadiation, 1, 0.45],
 		linearConversion [0, 1, ExilePlayerRadiation, 0, -0.05],
 		[0,0,0,0],
 		[1.5,1.3,1,1 - ExilePlayerRadiation],

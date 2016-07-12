@@ -9,6 +9,19 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
+if (hasInterFace) then 
+{
+	if (uiNameSpace getVariable ["ExileNeedsPreloading", true]) then 
+	{
+		[] spawn 
+		{
+			"Preloading materials..." call ExileClient_util_log;
+			waitUntil {10 preloadObject "Exile_Preloader"};
+			"Preloading completed!" call ExileClient_util_log;
+			uiNameSpace setVariable ["ExileNeedsPreloading", false];
+		};
+	};
+};
 if (missionName isEqualTo "ExileIntro") then
 {
 	"Intro PreInit..." call ExileClient_util_log;
@@ -19,6 +32,7 @@ else
 	{
 		"Client PreInit..." call ExileClient_util_log;
 		ExileClientSessionId = "";
+		ExileClientIsWaitingForInventoryMoneyTransaction = false;
 		ExileClientLastDiedPlayerObject = objNull;
 		ExileClientSafeZoneVehicle = objNull;
 		ExileClientIsWaitingForServerTradeResponse = false;
@@ -32,9 +46,18 @@ else
 		ExileClientBreakFreeActionHandle = -1;
 		ExileClientHostageTaker = objNull;
 		ExileClientAllowPartyMarkers = (getNumber (missionConfigFile >> "CfgExileParty" >> "showESP")) isEqualTo 1;
+		ExileIsPlayingRussianRoulette = false;
+		ExileRussianRouletteHudVisible = false;
+		ExileRussianRouletteChair = objNull;
+		ExileRussianRouletteCountDownThread = -1;
+		ExileRussianRouletteCanEscape = false;
+		ExileRussianRouletteNextShotIsFatal = false;
 		ExileClientEnvironmentTemperature = 20;
 		ExileClientLastTemperatureUpdateAt = diag_tickTime;
 		ExileClientGasMaskVisible = false;
+		ExileClientToasts = [];
+		ExileClientToastAreaVisible = false;
+		ExileClientLastToastTickAt = diag_tickTime;
 		ExileClientXM8IsVisible = false;
 		ExileClientXM8IsPowerOn = false;
 		ExileClientXM8NextPossiblePowerToggleTime = diag_tickTime;
@@ -48,9 +71,11 @@ else
 		ExileClientBleedOutThread = -1;
 		ExileClientLastLocation = "";
 		ExileClientIsAutoRunning = false;
-		ExileClientClanName = "";
 		ExileClientPartyID = -1;
 		ExileClientPendingPartyInvitionGroup = objNull;
+		ExileClientPendingClanInvite = [];
+		ExileClientClanInfo = [];
+		ExileClinetInClan = 0;
 		ExileClientCurrentInventoryContainer = objNull;
 		ExilePlayerInSafezone = false;
 		ExileClientLastVehicle = objNull;
@@ -67,6 +92,7 @@ else
 		ExileClientEarplugsInserted = false;
 		ExileClientInteractionObject = objNull;
 		ExileClientInteractionHandles = [];
+		ExileClientInteractionLastHookTime = 0;
 		ExileClientConstructionMode = 1;
 		ExileClientConstructionConfig = objNull;
 		ExileClientConstructionShowHint = true;
@@ -109,16 +135,19 @@ else
 		ExileClientCameraObject = objNull;
 		ExileClientCameraParrentObject = objNull;
 		ExileClientCameraNVG = false;
-		ExileBaseManagementFocusNeeded = false;
-		ExileBaseManagementObject = objNull;
-		ExileBaseManagementBase = objNull;
-		ExileBaseManagementMouseZFoV = 0.7;
 		ExileGuiControlClick = false;
 		ExileClientActionDelayShown = false;
 		ExileClientActionDelayAbort = false;
+		ExileClientClanInfo = [];
+		ExileClientMapKeyUpEH = -1;
+		ExileClientMapPositionClick = [0,0];
+		ExileClientBreachingChargePlanted = false;
+		ExileCurrentBreachingObject = objNull;
+		ExileClientLastBreach = 0;
 		[] call ExileClient_object_player_stats_reset;
 		[] call ExileClient_gui_postProcessing_initialize;
 		[] call ExileClient_gui_hud_event_hook;
+		[] call ExileClient_object_player_von_initialize;
 		[] call ExileClient_system_thread_initialize;
 		if (isMultiplayer) then
 		{

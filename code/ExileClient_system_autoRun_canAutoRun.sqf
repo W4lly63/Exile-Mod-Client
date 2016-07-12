@@ -17,7 +17,11 @@ try
 	{
 		throw false;
 	};
-	if (surfaceIsWater (getPos player)) then 
+	if (underwater player) then
+	{
+		throw false;
+	};
+	if (((getPosASL player) select 2) < 0.1) then 
 	{
 		throw false;
 	};

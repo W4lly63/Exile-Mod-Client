@@ -22,6 +22,7 @@ player setVariable ["ExileXM8IsOnline", (profileNamespace getVariable ["ExileEna
 enableSentences false;
 enableRadio false;
 player setVariable ["BIS_noCoreConversations", true];
+player disableConversation true;
 [] call ExileClient_object_player_event_hook;
 ExileGasMaskNextSoundAt = diag_tickTime;
 if (ExileClientGasMaskVisible) then 
@@ -33,4 +34,5 @@ if (ExileClientGasMaskVisible) then
 [] call ExileClient_system_breathing_event_onPlayerSpawned;
 [] call ExileClient_system_snow_event_onPlayerSpawned;
 [] call ExileClient_system_radiation_event_onPlayerSpawned;
+ExileClientIsWaitingForInventoryMoneyTransaction = false;
 true

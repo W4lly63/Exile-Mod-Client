@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_vehicleClass","_dialog","_traderObject","_vehicleConfig","_salesPrice","_pin","_purchaseButton","_armor","_fuelCapacity","_maximumLoad","_maximumSpeed","_stats","_controlID"];
+private["_vehicleClass","_dialog","_traderObject","_vehicleConfig","_salesPrice","_pin","_quality","_requiredRespect","_purchaseButton","_armor","_fuelCapacity","_maximumLoad","_maximumSpeed","_stats","_controlID"];
 disableSerialization;
 _vehicleClass = _this;
 _dialog = uiNameSpace getVariable ["RscExileVehicleTraderDialog", displayNull];
@@ -19,8 +19,13 @@ _salesPrice = getNumber(missionConfigFile >> "CfgExileArsenal" >> _vehicleClass 
 _pin = ctrlText (_dialog displayCtrl 4008);
 if(count _pin isEqualTo 4)then
 {
-	_purchaseButton = _dialog displayCtrl 4002;
-	_purchaseButton ctrlEnable (_salesPrice <= ExileClientPlayerMoney);
+	_quality = getNumber(missionConfigFile >> "CfgExileArsenal" >> _vehicleClass >> "quality");
+	_requiredRespect = getNumber(missionConfigFile >> "CfgTrading" >> "requiredRespect" >> format["Level%1",_quality]);
+	if(_requiredRespect <= ExileClientPlayerScore)then
+	{
+		_purchaseButton = _dialog displayCtrl 4002;
+		_purchaseButton ctrlEnable (_salesPrice <= (player getVariable ["ExileMoney", 0]));
+	};
 };
 _armor = getNumber(_vehicleConfig >> "armor");
 _fuelCapacity = getNumber(_vehicleConfig >> "fuelCapacity"); 

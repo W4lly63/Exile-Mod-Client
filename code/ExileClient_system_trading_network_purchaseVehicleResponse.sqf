@@ -9,20 +9,17 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_responseCode","_vehicleNetID","_newPlayerMoneyString","_vehicleObject","_newPlayerMoney","_salesPrice"];
+private["_responseCode","_vehicleNetID","_salesPrice","_vehicleObject"];
 _responseCode = _this select 0;
 _vehicleNetID = _this select 1;
-_newPlayerMoneyString = _this select 2;
+_salesPrice = _this select 2;
 if (_responseCode isEqualTo 0) then
 {
 	_vehicleObject = objectFromNetId _vehicleNetID;
-	_newPlayerMoney = parseNumber _newPlayerMoneyString;
-	_salesPrice = ExileClientPlayerMoney - _newPlayerMoney;
-	ExileClientPlayerMoney = _newPlayerMoney;
 	player moveInDriver _vehicleObject;
-	["VehiclePurchasedInformation", [_salesPrice * -1]] call ExileClient_gui_notification_event_addNotification;
+	["SuccessTitleAndText", ["Vehicle purchased!", format ["-%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _salesPrice]]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else 
 {
-	["Whoops", [format["Failed to purchase vehicle: %1", _responseCode]]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Whoops!", format ["Something went really wrong. Please tell a server admin that you have tried to purchase a vehicle and tell them the code '%1'. Thank you!", _responseCode]]] call ExileClient_gui_toaster_addTemplateToast;
 };

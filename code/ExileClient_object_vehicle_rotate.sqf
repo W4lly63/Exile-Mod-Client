@@ -12,6 +12,8 @@
 private["_vehicle","_roatation"];
 _vehicle = _this select 0;
 _roatation= _this select 1;
+if (isEngineOn _vehicle) exitWith {false};
+if ((locked _vehicle) isEqualTo 2) exitWith {false};
 if(local _vehicle)then
 {
 	_vehicle setDir ((getDir _vehicle) + (_roatation));

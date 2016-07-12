@@ -44,7 +44,7 @@ try
 	};
 	if !(player call ExileClient_object_handcuffs_hasFreeItems) then
 	{
-		hint "Missing tools!";
+		["ErrorTitleOnly", ["Missing tools!"]] call ExileClient_gui_toaster_addTemplateToast;
 		throw false; 
 	};
 	["freeRequest", [netId _otherPlayer]] call ExileClient_system_network_send;

@@ -10,4 +10,4 @@
  */
  
 player removeItem "Exile_Item_Knife";
-["Whoops", ["Your knife broke!"]] call ExileClient_gui_notification_event_addNotification;
+["ErrorTitleOnly", ["Your knife broke!"]] call ExileClient_gui_toaster_addTemplateToast;

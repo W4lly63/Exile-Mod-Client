@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_boundingBox","_boundingBoxMinimum","_boundingBoxMaximum","_boundingBoxPointsTop","_boundingBoxPointsBottom","_objectColor","_materialColor","_simulatePhysics","_position","_rotation","_vectorDirection","_vectorUp","_potentionalSnapObject","_snapToClassName","_possibleSnapNamedSelections","_possibleSnapPosition","_contactThreshold","_isBelowTerrain","_worldPosition","_isInAir","_numberOfContactsBottom","_startPosition","_endPosition"];
+private["_boundingBox","_boundingBoxMinimum","_boundingBoxMaximum","_boundingBoxPointsTop","_boundingBoxPointsBottom","_objectColor","_materialColor","_simulatePhysics","_position","_rotation","_vectorDirection","_isFlag","_vectorUp","_potentionalSnapObject","_snapToClassName","_snapToConfig","_snapPosition","_possibleSnapPosition","_contactThreshold","_isBelowTerrain","_worldPosition","_isInAir","_numberOfContactsBottom","_startPosition","_endPosition"];
 scriptName 'Exile Construction Thread';
 ("ExileClientConstructionModeLayer" call BIS_fnc_rscLayer) cutRsc ["RscExileConstructionMode", "PLAIN", 1, false]; 
 ExileClientIsInConstructionMode = true;
@@ -41,9 +41,21 @@ _simulatePhysics = false;
 _position = [0, 0, 0];
 _rotation = 0;
 _vectorDirection = [0, 0, 0];
+_isFlag = ExileClientConstructionKitClassName isEqualTo "Exile_Item_Flag";
+if (_isFlag) then 
+{
+	ExileClientConstructionModePhysx = false;
+};
 [] call ExileClient_gui_constructionMode_update;
 while {ExileClientConstructionResult isEqualTo 0} do
 {
+	if (ExileClientConstructionProcess isEqualTo 1) then 
+	{
+		if !(ExileClientConstructionKitClassName in (magazines player)) then 
+		{
+			ExileClientConstructionResult = 2;
+		};
+	};
 	if !(ExileClientConstructionLock) then
 	{
 		_vectorUp = [0, 0, 1];
@@ -87,13 +99,14 @@ while {ExileClientConstructionResult isEqualTo 0} do
 							_snapToClassName = typeOf _potentionalSnapObject;
 							if (_snapToClassName in ExileClientConstructionSnapToObjectClassNames) then
 							{
-								_possibleSnapNamedSelections = getArray(ExileClientConstructionConfig >> "SnapObjects" >> _snapToClassName >> "selections");
 								ExileClientConstructionCurrentSnapToObject = _potentionalSnapObject;
+								_snapToConfig = ("getText(_x >> 'staticObject') == _snapToClassName" configClasses(configFile >> "CfgConstruction")) select 0;
 								{
-									_possibleSnapPosition = ASLtoATL ((AGLtoASL (_potentionalSnapObject modelToWorld (_potentionalSnapObject selectionPosition _x))));
+									_snapPosition = getArray (_snapToConfig >> "SnapPositions" >> _x);
+									_possibleSnapPosition = ASLtoATL (AGLtoASL (_potentionalSnapObject modelToWorld _snapPosition));
 									ExileClientConstructionPossibleSnapPositions pushBack _possibleSnapPosition;
 								}
-								forEach _possibleSnapNamedSelections;
+								forEach getArray (ExileClientConstructionConfig >> "SnapObjects" >> _snapToClassName >> "positions");
 							};
 						};
 					};	
@@ -188,11 +201,20 @@ while {ExileClientConstructionResult isEqualTo 0} do
 			_objectColor = "#(argb,2,2,1)color(0.91,0,0,0.6,ca)";
 		};
 	};
-	if !(([configName ExileClientConstructionConfig, ASLToAGL (getPosASL ExileClientConstructionObject), getPlayerUID player] call ExileClient_util_world_canBuildHere) isEqualTo 0) then
+	if !(([configName ExileClientConstructionConfig, ASLtoAGL (getPosASL ExileClientConstructionObject), getPlayerUID player] call ExileClient_util_world_canBuildHere) isEqualTo 0) then
 	{
 		ExileClientConstructionCanPlaceObject = false;
 		_simulatePhysics = false;
 		_objectColor = "#(argb,2,2,1)color(0.91,0,0,0.6,ca)";
+	};
+	if (_isFlag) then 
+	{
+		if (((getPos ExileClientConstructionObject) select 2) > 0.2) then 
+		{
+			ExileClientConstructionCanPlaceObject = false;
+			_simulatePhysics = false;
+			_objectColor = "#(argb,2,2,1)color(0.91,0,0,0.6,ca)";
+		};
 	};
 	if (_objectColor != _materialColor) then
 	{

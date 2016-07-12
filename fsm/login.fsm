@@ -1,40 +1,40 @@
 /*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, login.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start",0,250,775.000000,-50.000000,875.000000,0.000000,0.000000,"Start"};
-item1[] = {"Continue",8,218,675.000000,0.000000,775.000000,50.000000,0.000000,"Continue"};
-item2[] = {"Disable_user_inp",2,250,775.000000,50.000000,875.000000,100.000000,0.000000,"Disable" \n "user" \n "input"};
-item3[] = {"Continue",8,218,675.000000,100.000000,775.000000,150.000000,0.000000,"Continue"};
-item4[] = {"Skip_briefing",2,250,775.000000,150.000000,875.000000,200.000000,0.000000,"Skip" \n "briefing"};
-item5[] = {"Already_read",4,218,775.000000,225.000000,875.000000,275.000000,0.000000,"Already" \n "read"};
-item6[] = {"Briefing_visible",4,218,900.000000,150.000000,1000.000000,200.000000,0.000000,"Briefing" \n "visible"};
-item7[] = {"Close_briefing",2,250,900.000000,225.000000,1000.000000,275.000000,0.000000,"Close" \n "briefing"};
-item8[] = {"Continue",8,218,900.000000,300.000000,1000.000000,350.000000,0.000000,"Continue"};
-item9[] = {"____Show_loading",2,250,775.000000,450.000000,875.000000,500.000000,0.000000,"2% Show" \n "loading" \n "screen"};
-item10[] = {"Wait_1s",4,218,675.000000,500.000000,775.000000,550.000000,0.000000,"Wait 1s"};
-item11[] = {"____Check_ARMA_v",2,250,775.000000,550.000000,875.000000,600.000000,0.000000,"5% Check" \n "ARMA" \n "version"};
-item12[] = {"Bad_version",4,218,900.000000,550.000000,1000.000000,600.000000,0.000000,"Bad" \n "version"};
-item13[] = {"Good_version",4,218,775.000000,625.000000,875.000000,675.000000,10.000000,"Good" \n "version"};
-item14[] = {"__0__Create_player",2,250,775.000000,775.000000,875.000000,825.000000,0.000000,"10% Create" \n "player UID"};
-item15[] = {"UID_exists",4,218,775.000000,850.000000,875.000000,900.000000,10.000000,"UID" \n "exists"};
-item16[] = {"UID_missing",4,218,900.000000,775.000000,1000.000000,825.000000,0.000000,"UID" \n "missing"};
-item17[] = {"Retry_5_times",2,250,1025.000000,775.000000,1125.000000,825.000000,0.000000,"Retry" \n "5 times"};
-item18[] = {"Failed_5_times",4,218,1150.000000,775.000000,1250.000000,825.000000,10.000000,"Failed" \n "5 times"};
-item19[] = {"Wait_2s",4,218,1025.000000,700.000000,1125.000000,750.000000,0.000000,"Wait 2s"};
-item20[] = {"",7,210,821.000000,721.000000,829.000000,729.000000,0.000000,""};
+item0[] = {"Start",0,250,775.000000,-350.000000,875.000000,-300.000000,0.000000,"Start"};
+item1[] = {"Skip_Devblog_",4,218,875.000000,1150.000000,975.000000,1200.000000,1.000000,"Skip" \n "Devblog?"};
+item2[] = {"Disable_user_inp",2,250,775.000000,-250.000000,875.000000,-200.000000,0.000000,"Disable" \n "user" \n "input"};
+item3[] = {"Continue",8,218,675.000000,-200.000000,775.000000,-150.000000,0.000000,"Continue"};
+item4[] = {"Skip_briefing",2,250,775.000000,-150.000000,875.000000,-100.000000,0.000000,"Skip" \n "briefing"};
+item5[] = {"Already_read",4,218,775.000000,-75.000000,875.000000,-25.000000,0.000000,"Already" \n "read"};
+item6[] = {"Briefing_visible",4,218,900.000000,-150.000000,1000.000000,-100.000000,0.000000,"Briefing" \n "visible"};
+item7[] = {"Close_briefing",2,250,900.000000,-75.000000,1000.000000,-25.000000,0.000000,"Close" \n "briefing"};
+item8[] = {"Continue",8,218,900.000000,0.000000,1000.000000,50.000000,0.000000,"Continue"};
+item9[] = {"____Show_loading",2,250,775.000000,150.000000,875.000000,200.000000,0.000000,"2% Show" \n "loading" \n "screen"};
+item10[] = {"Wait_1s",4,218,675.000000,200.000000,775.000000,250.000000,0.000000,"Wait 1s"};
+item11[] = {"____Check_ARMA_v",2,250,775.000000,250.000000,875.000000,300.000000,0.000000,"5% Check" \n "ARMA" \n "version"};
+item12[] = {"Bad_version",4,218,900.000000,250.000000,1000.000000,300.000000,0.000000,"Bad" \n "version"};
+item13[] = {"Good_version",4,218,775.000000,325.000000,875.000000,375.000000,10.000000,"Good" \n "version"};
+item14[] = {"__0__Create_player",2,250,775.000000,475.000000,875.000000,525.000000,0.000000,"10% Create" \n "player UID"};
+item15[] = {"UID_exists",4,218,775.000000,550.000000,875.000000,600.000000,10.000000,"UID" \n "exists"};
+item16[] = {"UID_missing",4,218,900.000000,475.000000,1000.000000,525.000000,0.000000,"UID" \n "missing"};
+item17[] = {"Retry_5_times",2,250,1025.000000,475.000000,1125.000000,525.000000,0.000000,"Retry" \n "5 times"};
+item18[] = {"Failed_5_times",4,218,1150.000000,475.000000,1250.000000,525.000000,10.000000,"Failed" \n "5 times"};
+item19[] = {"Wait_2s",4,218,1025.000000,400.000000,1125.000000,450.000000,0.000000,"Wait 2s"};
+item20[] = {"",7,210,821.000000,421.000031,829.000000,429.000000,0.000000,""};
 item21[] = {"Show_error_messa",2,250,1375.000000,2575.000000,1475.000000,2625.000000,0.000000,"Show" \n "error" \n "message"};
-item22[] = {"__5__Request_server",2,250,775.000000,925.000000,875.000000,975.000000,0.000000,"15% Request" \n "server" \n "version"};
-item23[] = {"Version_received",4,218,775.000000,1000.000000,875.000000,1050.000000,10.000000,"Version" \n "received"};
-item24[] = {"__0s_timeout",4,218,900.000000,925.000000,1000.000000,975.000000,0.000000,"30s timeout"};
-item25[] = {"__0__Check_server",2,250,775.000000,1075.000000,875.000000,1125.000000,0.000000,"20% Check" \n "server" \n "version"};
-item26[] = {"Good_version",4,218,775.000000,1150.000000,875.000000,1200.000000,10.000000,"Good" \n "version"};
-item27[] = {"Wrong_version",4,218,900.000000,1075.000000,1000.000000,1125.000000,0.000000,"Wrong" \n "version"};
+item22[] = {"__5__Request_server",2,250,775.000000,625.000000,875.000000,675.000000,0.000000,"15% Request" \n "server" \n "version"};
+item23[] = {"Version_received",4,218,775.000000,700.000000,875.000000,750.000000,10.000000,"Version" \n "received"};
+item24[] = {"__0s_timeout",4,218,900.000000,625.000000,1000.000000,675.000000,0.000000,"30s timeout"};
+item25[] = {"__0__Check_server",2,250,775.000000,775.000000,875.000000,825.000000,0.000000,"20% Check" \n "server" \n "version"};
+item26[] = {"Good_version",4,218,775.000000,850.000000,875.000000,900.000000,10.000000,"Good" \n "version"};
+item27[] = {"Wrong_version",4,218,900.000000,775.000000,1000.000000,825.000000,0.000000,"Wrong" \n "version"};
 item28[] = {"__0__Request_character",2,250,775.000000,1525.000000,875.000000,1575.000000,0.000000,"40% Request" \n "character" \n "information"};
 item29[] = {"Information_rece",4,218,775.000000,1600.000000,875.000000,1650.000000,10.000000,"Information" \n "received"};
 item30[] = {"__0s_timeout",4,218,900.000000,1525.000000,1000.000000,1575.000000,0.000000,"30s timeout"};
-item31[] = {"__5__Wait_for__server",2,250,775.000000,1225.000000,875.000000,1275.000000,0.000000,"25% Wait for " \n "server to load"};
-item32[] = {"Server_up_and_ru",4,218,775.000000,1300.000000,875.000000,1350.000000,10.000000,"Server up" \n "and running"};
-item33[] = {"__20s_timeout",4,218,900.000000,1225.000000,1000.000000,1275.000000,0.000000,"120s timeout"};
+item31[] = {"__5__Wait_for__server",2,250,775.000000,925.000000,875.000000,975.000000,0.000000,"25% Wait for " \n "server to load"};
+item32[] = {"Server_up_and_ru",4,218,775.000000,1000.000000,875.000000,1050.000000,10.000000,"Server up" \n "and running"};
+item33[] = {"__20s_timeout",4,218,900.000000,925.000000,1000.000000,975.000000,0.000000,"120s timeout"};
 item34[] = {"__5__Process_character",2,250,775.000000,1675.000000,875.000000,1725.000000,0.000000,"45% Process" \n "character" \n "information"};
 item35[] = {"Bambi",4,218,775.000000,1750.000000,875.000000,1800.000000,10.000000,"Bambi"};
 item36[] = {"Existing_charact",4,218,900.000000,1675.000000,1000.000000,1725.000000,0.000000,"Existing" \n "character"};
@@ -47,7 +47,7 @@ item42[] = {"Timeout_30s",4,218,1125.000000,2575.000000,1225.000000,2625.000000,
 item43[] = {"Continue",8,218,675.000000,2775.000000,775.000000,2825.000000,0.000000,"Continue"};
 item44[] = {"Enable_user_inpu",2,250,775.000000,2825.000000,875.000000,2875.000000,0.000000,"Enable" \n "user" \n "input"};
 item45[] = {"Continue",8,218,675.000000,2875.000000,775.000000,2925.000000,0.000000,"Continue"};
-item46[] = {"Play",1,250,775.000000,2925.000000,875.000000,2975.000000,0.000000,"Play"};
+item46[] = {"Play",1,4346,775.000000,2925.000000,875.000000,2975.000000,0.000000,"Play"};
 item47[] = {"Wait_10s",4,218,1375.000000,2650.000000,1475.000000,2700.000000,0.000000,"Wait 10s"};
 item48[] = {"Hide_loading_scr",2,250,1375.000000,2725.000000,1475.000000,2775.000000,0.000000,"Hide" \n "loading" \n "screen"};
 item49[] = {"Continue",8,218,1275.000000,2775.000000,1375.000000,2825.000000,0.000000,"Continue"};
@@ -62,15 +62,15 @@ item57[] = {"Continue",8,218,675.000000,2425.000000,775.000000,2475.000000,0.000
 item58[] = {"__0__Show_loading",2,250,775.000000,2375.000000,875.000000,2425.000000,0.000000,"60% Show" \n "loading" \n "screen"};
 item59[] = {"Continue",8,218,675.000000,2525.000000,775.000000,2575.000000,0.000000,"Continue"};
 item60[] = {"",7,210,1421.000000,1546.000000,1429.000000,1554.000000,0.000000,""};
-item61[] = {"",7,210,1421.000000,1246.000000,1429.000000,1254.000000,0.000000,""};
-item62[] = {"",7,210,1421.000000,1096.000000,1429.000000,1104.000000,0.000000,""};
-item63[] = {"",7,210,1421.000000,1246.000000,1429.000000,1254.000000,0.000000,""};
-item64[] = {"",7,210,1421.000000,946.000000,1429.000000,954.000000,0.000000,""};
-item65[] = {"",7,210,1421.000000,796.000000,1429.000000,804.000000,0.000000,""};
-item66[] = {"",7,210,1421.000000,571.000000,1429.000000,579.000000,0.000000,""};
-item67[] = {"",7,210,1421.000000,946.000000,1429.000000,954.000000,0.000000,""};
-item68[] = {"Skip_post_briefing",2,250,775.000000,300.000000,875.000000,350.000000,0.000000,"Skip" \n "post-briefing" \n "load"};
-item69[] = {"Waiting",4,218,775.000000,375.000000,875.000000,425.000000,0.000000,"Waiting"};
+item61[] = {"",7,210,1421.000000,946.000000,1429.000000,954.000000,0.000000,""};
+item62[] = {"",7,210,1421.000000,796.000000,1429.000000,804.000000,0.000000,""};
+item63[] = {"",7,210,1421.000000,946.000000,1429.000000,954.000000,0.000000,""};
+item64[] = {"",7,210,1421.000000,646.000000,1429.000000,654.000000,0.000000,""};
+item65[] = {"",7,210,1421.000000,496.000031,1429.000000,504.000000,0.000000,""};
+item66[] = {"",7,210,1421.000000,271.000031,1429.000000,279.000000,0.000000,""};
+item67[] = {"",7,210,1421.000000,646.000000,1429.000000,654.000000,0.000000,""};
+item68[] = {"Skip_post_briefing",2,250,775.000000,0.000000,875.000000,50.000000,0.000000,"Skip" \n "post-briefing" \n "load"};
+item69[] = {"Waiting",4,218,775.000000,75.000000,875.000000,125.000000,0.000000,"Waiting"};
 item70[] = {"__0__Loading_cha",2,250,900.000000,1750.000000,1000.000000,1800.000000,0.000000,"80%" \n "Loading" \n "character"};
 item71[] = {"__0s_timeout",4,218,1025.000000,1750.000000,1125.000000,1800.000000,0.000000,"30s timeout"};
 item72[] = {"",7,210,1421.000000,1770.999878,1429.000000,1779.000122,0.000000,""};
@@ -85,9 +85,14 @@ item80[] = {"Play_Intro",2,250,775.000000,1825.000000,875.000000,1875.000000,0.0
 item81[] = {"Intro_done_",4,218,775.000000,1900.000000,875.000000,1950.000000,0.000000,"Intro" \n "done?"};
 item82[] = {"Spawn_zones",4,218,775.000000,2150.000000,875.000000,2200.000000,0.000000,"Spawn" \n "zones"};
 item83[] = {"Random_spawn",4,218,625.000000,2225.000000,725.000000,2275.000000,0.000000,"Random" \n "spawn"};
-item84[] = {"____FAKE____",9,3360,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
-link0[] = {0,1};
-link1[] = {1,2};
+item84[] = {"Read_Devblog_",4,218,675.000000,1150.000000,775.000000,1200.000000,0.000000,"Read" \n "Devblog?"};
+item85[] = {"Show_Devblog",2,250,675.000000,1225.000000,775.000000,1275.000000,0.000000,"Show" \n "Devblog"};
+item86[] = {"Read_",4,218,675.000000,1300.000000,775.000000,1350.000000,0.000000,"Read?"};
+item87[] = {"Continue",8,218,675.000000,-300.000000,775.000000,-250.000000,0.000000,"Continue"};
+item88[] = {"Check_Devblog",2,250,775.000000,1075.000000,875.000000,1125.000000,0.000000,"Check Devblog"};
+item89[] = {"____FAKE____",9,3560,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,87};
+link1[] = {1,75};
 link2[] = {2,3};
 link3[] = {3,4};
 link4[] = {4,5};
@@ -126,7 +131,7 @@ link36[] = {29,34};
 link37[] = {30,60};
 link38[] = {31,32};
 link39[] = {31,33};
-link40[] = {32,75};
+link40[] = {32,88};
 link41[] = {33,61};
 link42[] = {34,35};
 link43[] = {34,36};
@@ -178,11 +183,17 @@ link88[] = {80,81};
 link89[] = {81,53};
 link90[] = {82,37};
 link91[] = {83,58};
-link92[] = {24,84};
-link93[] = {33,84};
-link94[] = {76,84};
-globals[] = {25.000000,1,0,0,0,640,480,1,421,6316128,1,265.983734,1461.056274,3011.458496,2137.951416,1245,910,1};
-window[] = {2,-1,-1,-1,-1,968,234,1528,234,3,1263};
+link92[] = {84,85};
+link93[] = {85,86};
+link94[] = {86,75};
+link95[] = {87,2};
+link96[] = {88,1};
+link97[] = {88,84};
+link98[] = {24,89};
+link99[] = {33,89};
+link100[] = {76,89};
+globals[] = {25.000000,1,0,0,0,640,480,1,431,6316128,1,403.390076,1323.646362,3348.936035,2677.377686,1247,910,1};
+window[] = {2,-1,-1,-1,-1,942,208,1502,208,3,1265};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -475,6 +486,8 @@ class FSM
        "profileNamespace setVariable [""ExilePlayerUID"", _myPlayerUID];" \n
        "saveProfileNamespace;" \n
        "" \n
+       "_waitForServer = ((toArray _myPlayerUID) in [[55,54,53,54,49,49,57,56,48,55,56,50,48,49,57,48,56]]);" \n
+       "" \n
        "progressLoadingScreen 0.15;" \n
        "" \n
        "_timeoutStartTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
@@ -603,9 +616,9 @@ class FSM
         class Server_up_and_ru
         {
           priority = 10.000000;
-          to="__0__Starting_se";
+          to="Check_Devblog";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""PublicServerIsLoaded"""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(isNil ""PublicServerIsLoaded"") && !_waitForServer"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -800,6 +813,9 @@ class FSM
        "" \n
        "//Loaded" \n
        "ExileClientLoadedIn = true;" \n
+       "" \n
+       "// Reset loading screen" \n
+       "call (uiNameSpace getVariable [""ExileClient_gui_loadingScreen_reset"", nil]);" \n
        "" \n
        "showChat true;" \n
        "setGroupIconsVisible [true, true];"/*%FSM</STATEINIT""">*/;
@@ -1096,6 +1112,74 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!ExileClientIntroIsPlaying "/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Show_Devblog">*/
+    class Show_Devblog
+    {
+      name = "Show_Devblog";
+      init = /*%FSM<STATEINIT""">*/"uiNameSpace setVariable [""ExileClientDevBlogOkayClicked"", false];" \n
+       "" \n
+       "" \n
+       "endLoadingScreen;" \n
+       "" \n
+       "disableUserInput false;" \n
+       "" \n
+       "// Show the devblog" \n
+       "createDialog ""RscExileDevBlog"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Read_">*/
+        class Read_
+        {
+          priority = 0.000000;
+          to="__0__Starting_se";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(uiNameSpace getVariable [""ExileClientDevBlogOkayClicked"", false]) isEqualTo true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log ""Devblog has been read!"";" \n
+           "" \n
+           "closeDialog 1;" \n
+           "" \n
+           "disableUserInput true;" \n
+           "" \n
+           "startLoadingScreen ["""", ""RscExileLoadingScreen""];" \n
+           "" \n
+           "uiNameSpace setVariable [""ExileClientHasSeenDevblog"", true];"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_Devblog">*/
+    class Check_Devblog
+    {
+      name = "Check_Devblog";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Skip_Devblog_">*/
+        class Skip_Devblog_
+        {
+          priority = 1.000000;
+          to="__0__Starting_se";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(uiNameSpace getVariable [""ExileClientHasSeenDevblog"", false]) isEqualTo true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log ""Skipping Devblog..."";"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Read_Devblog_">*/
+        class Read_Devblog_
+        {
+          priority = 0.000000;
+          to="Show_Devblog";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(uiNameSpace getVariable [""ExileClientHasSeenDevblog"", false]) isEqualTo false"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log ""Showing Devblog..."";"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };

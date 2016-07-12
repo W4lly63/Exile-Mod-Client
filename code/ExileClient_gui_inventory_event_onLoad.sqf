@@ -16,9 +16,9 @@ _groundTab = _display displayCtrl 6321;
 _soldierTab = _display displayCtrl 6401; 
 _groundContainer = _display displayCtrl 632; 
 _soldierContainer = _display displayCtrl 640; 
+_bypassDetected = false;
 if (ctrlShown _soldierTab) then 
 {
-	_bypassDetected = false;
 	if ((ExileClientCurrentInventoryContainer isKindOf "GroundWeaponHolder") || (ExileClientCurrentInventoryContainer isKindOf "WeaponHolderSimulated")) then 
 	{
 		_safes = player nearObjects ["Exile_Container_Safe", 3];
@@ -56,3 +56,4 @@ if (ctrlShown _soldierTab) then
 		ctrlActivate _groundTab;
 	};
 };
+call ExileClient_gui_inventory_updatePopTabControls;

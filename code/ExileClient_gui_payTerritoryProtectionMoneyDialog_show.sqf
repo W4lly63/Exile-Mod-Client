@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_display","_playerUID","_territoryDropDown","_flag","_buildRights","_index","_currencyDropDown","_payButton"];
+private["_display","_playerUID","_territoryDropDown","_flag","_buildRights","_index","_payButton"];
 disableSerialization;
 createDialog "RscExilePayTerritoryProtectionMoneyDialog";
 _display = uiNameSpace getVariable ["RscExilePayTerritoryProtectionMoneyDialog", displayNull];
@@ -27,8 +27,5 @@ lbClear _territoryDropDown;
 	};
 }
 forEach (allMissionObjects "Exile_Construction_Flag_Static");
-_currencyDropDown = _display displayCtrl 4000;
-_currencyDropDown ctrlEnable false;
-lbClear _currencyDropDown;
 _payButton = _display displayCtrl 4002;
 _payButton ctrlEnable false;

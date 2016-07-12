@@ -9,27 +9,62 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_marker"];
+private["_marker","_partyUnits","_clanMembers"];
 {
 	deleteMarkerLocal _x;
 }
 forEach ExileClientPartyMapMarkers;
 ExileClientPartyMapMarkers = [];
+if (ExileClientPartyID isEqualTo -1) then
 {
-	_marker = createMarkerLocal [format ["ExilePartyMarker%1", _forEachIndex], getPosVisual _x];
+	_marker = createMarkerLocal ["ExilePartyMarker0", getPosVisual player];
 	_marker setMarkerShapeLocal "ICON";
 	_marker setMarkerTypeLocal "ExilePlayer";
-	_marker setMarkerDirLocal (getDirVisual _x);
+	_marker setMarkerDirLocal (getDirVisual player);
 	_marker setMarkerAlphaLocal 0.75;
-	if (_x isEqualTo player) then 
-	{
-		_marker setMarkerColorLocal "ColorBlue";
-	}
-	else 
-	{
-		_marker setMarkerColorLocal "ColorGreen";
-		_marker setMarkerTextLocal (name _x);
-	};
+	_marker setMarkerColorLocal "ColorBlue";
 	ExileClientPartyMapMarkers pushBack _marker;
 }
-forEach units (group player);
+else
+{
+	_partyUnits = units (group player);
+	{
+		if (isPlayer _x) then 
+		{
+			_marker = createMarkerLocal [format ["ExilePartyMarker%1", _forEachIndex], getPosVisual _x];
+			_marker setMarkerShapeLocal "ICON";
+			_marker setMarkerTypeLocal "ExilePlayer";
+			_marker setMarkerDirLocal (getDirVisual _x);
+			_marker setMarkerAlphaLocal 0.75;
+			if (_x isEqualTo player) then 
+			{
+				_marker setMarkerColorLocal "ColorBlue";
+			}
+			else 
+			{
+				_marker setMarkerColorLocal "ColorGreen";
+				_marker setMarkerTextLocal (name _x);
+			};
+			ExileClientPartyMapMarkers pushBack _marker;
+		};
+	}
+	forEach _partyUnits;
+};
+if!(ExileClientClanInfo isEqualTo [])then
+{
+	_clanMembers = ExileClientClanInfo call ExileClient_util_clan_getClanMembers;
+	{
+		if!(_x in _partyUnits)then
+		{
+			_marker = createMarkerLocal [format ["ExileClanMarker%1", _forEachIndex], getPosVisual _x];
+			_marker setMarkerShapeLocal "ICON";
+			_marker setMarkerTypeLocal "ExilePlayer";
+			_marker setMarkerDirLocal (getDirVisual _x);
+			_marker setMarkerAlphaLocal 0.75;
+			_marker setMarkerColorLocal "ColorRed";
+			_marker setMarkerTextLocal (name _x);
+			ExileClientPartyMapMarkers pushBack _marker
+		};
+	}
+	forEach _clanMembers;
+};

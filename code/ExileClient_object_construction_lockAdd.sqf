@@ -13,27 +13,27 @@ private["_door","_pincode"];
 _door = _this select 0;
 try
 {
-	if !("Exile_Item_Codelock" in (player call ExileClient_util_playerCargo_list)) then
+	if !("Exile_Item_Codelock" in (magazines player)) then
 	{
-		throw "No Can do!";
+		throw "No can do.";
 	};
-	if !(isNumber(configFile >> "CfgVehicles" >> (typeOf _door) >> "ExileIsDoor")) then
+	if !(isNumber(configFile >> "CfgVehicles" >> (typeOf _door) >> "exileIsDoor")) then
 	{
-		throw "Really no can do!";
+		throw "Really no can do.";
 	};
 	if !((_door getVariable ["ExileIsLocked",""]) isEqualTo "") then
 	{
-		throw "Really really no can do";
+		throw "Really, really no can do.";
 	};
 	_pincode = 4 call ExileClient_gui_keypadDialog_show;
 	if (_pincode isEqualTo "") then
 	{
-		throw "Aborted";
+		throw "Please enter a four-digit PIN code.";
 	};
 	["addLockRequest",[_door,_pincode]] call ExileClient_system_network_send;
 	call ExileClient_gui_interactionMenu_unhook;
 }
 catch
 {
-	["Whoops",[_exception]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Failed to add a lock!", _exception]] call ExileClient_gui_toaster_addTemplateToast;
 };

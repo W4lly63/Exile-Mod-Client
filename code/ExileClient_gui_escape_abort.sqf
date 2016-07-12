@@ -14,7 +14,7 @@ disableSerialization;
 waitUntil {!isNull (findDisplay 49)};
 _display = findDisplay 49;
 _controlAbort = _display displayCtrl 104;
-_controlSuicide = _display displayCtrl 1337;
+_controlSuicide = _display displayCtrl 1010;
 _controlTitle = _display displayCtrl 523;
 _controlFiledShit = _display displayCtrl 122;
 _abortTime = diag_tickTime + 10;
@@ -25,7 +25,7 @@ _controlTitle ctrlCommit 0;
 if !(alive player) then
 {
 	_controlAbort ctrlEnable true;
-	_controlAbort ctrlSetText "Abort to Lobby";
+	_controlAbort ctrlSetText "Disconnect";
 	_controlAbort ctrlCommit 0;
 	_controlSuicide ctrlEnable true;
 	_controlSuicide ctrlSetText "Respawn";
@@ -34,10 +34,10 @@ if !(alive player) then
 }
 else 
 {
-	if ( ExileClientPlayerIsInCombat || (vehicle player != player) || ExileClientIsHandcuffed) then
+	if ( ExileClientPlayerIsInCombat || (vehicle player != player) || ExileClientIsHandcuffed || ExileIsPlayingRussianRoulette) then
 	{
 		_controlAbort ctrlEnable false;
-		_controlAbort ctrlSetText "Abort to Lobby";
+		_controlAbort ctrlSetText "Disconnect";
 		_controlAbort ctrlCommit 0;
 		_controlSuicide ctrlEnable false;
 		_controlSuicide ctrlSetText "Respawn";
@@ -45,8 +45,6 @@ else
 	}
 	else 
 	{
-		ExileClientConnection = false; 
-		["connectionTest", [false]] call ExileClient_system_network_send;
 		_controlSuicide ctrlEnable true;
 		_controlSuicide ctrlSetText "Commit Suicide";
 		_controlSuicide ctrlSetEventHandler ["ButtonClick", "[] spawn ExileClient_gui_escape_suicide"];
@@ -59,7 +57,7 @@ else
 			if (diag_tickTime > _abortTime) exitWith
 			{
 					_controlAbort ctrlEnable true;
-					_controlAbort ctrlSetText "Abort to Lobby";
+					_controlAbort ctrlSetText "Disconnect";
 					_controlAbort ctrlCommit 0;
 			};
 		};

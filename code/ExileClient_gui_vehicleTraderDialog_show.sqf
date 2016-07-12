@@ -9,18 +9,17 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_traderObject","_dialog","_purchaseButton","_traderType","_traderCategories","_categoryComboBox","_allIndex","_categoryClass","_categoryConfig","_categoryIndex"];
+private["_traderObject","_dialog","_purchaseButton","_traderCategories","_categoryComboBox","_allIndex","_categoryClass","_categoryConfig","_categoryIndex"];
 disableSerialization;
 _traderObject = _this;
+ExileClientCurrentTrader = _this getVariable "ExileTraderType";
 ExileClientPinCode = "";
 ExileClientMoonLight setLightBrightness 5;
 createDialog "RscExileVehicleTraderDialog";
 _dialog = uiNameSpace getVariable ["RscExileVehicleTraderDialog", displayNull];
-uiNamespace setVariable["ExileCurrentTrader", _traderObject];
 _purchaseButton = _dialog displayCtrl 4002;
 _purchaseButton ctrlEnable false;
-_traderType = _traderObject getVariable "ExileTraderType";
-_traderCategories = getArray(missionConfigFile >> "CfgTraders" >> _traderType >> "categories");
+_traderCategories = getArray(missionConfigFile >> "CfgTraders" >> ExileClientCurrentTrader >> "categories");
 _categoryComboBox = _dialog displayCtrl 4000;
 _allIndex = _categoryComboBox lbAdd "";
 _categoryComboBox lbSetCurSel _allIndex;

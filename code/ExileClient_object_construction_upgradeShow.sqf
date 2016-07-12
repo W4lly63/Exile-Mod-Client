@@ -17,5 +17,6 @@ if !(_constructionConfigs isEqualTo []) then
 	_constructionConfig = _constructionConfigs select 0;
 	_upgradeObject = getText (_constructionConfig >> "upgradeObject");
 	_showUpgradeMenu = !(_upgradeObject isEqualTo "");
+	_showUpgradeMenu = _showUpgradeMenu && (call ExileClient_util_world_isInOwnTerritory);
 };
  _showUpgradeMenu

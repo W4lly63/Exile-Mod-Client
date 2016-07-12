@@ -16,6 +16,6 @@ _group = group _invitor;
 _groupName = groupID _group;
 if (ExileClientPartyID isEqualTo -1) then
 {
-	["PartyInviteMessage", [_groupName]] call ExileClient_gui_notification_event_addNotification;
+	["InfoTitleAndText", ["Incoming party invite!", format ["You have been invited to join the party '%1'. Use your XM8 party app to respond.", _groupName]]] call ExileClient_gui_toaster_addTemplateToast;
 	ExileClientPendingPartyInvitionGroup = _group;
 };

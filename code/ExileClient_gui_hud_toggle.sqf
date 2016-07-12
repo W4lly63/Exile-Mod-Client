@@ -11,13 +11,26 @@
  
 if (_this) then
 {
-	ExileLayerHUD cutRsc ["RscExileHUD", "PLAIN", 1, false];
-	ExileHudEventHandle = addMissionEventHandler ["Draw3D", { _this call ExileClient_gui_hud_event_onDraw3d; }];
-	ExileHudIsVisible = true;
+	if !(ExileHudIsVisible) then 
+	{
+		ExileLayerHUD cutRsc ["RscExileHUD", "PLAIN", 1, false];
+		ExileHudIsVisible = true;
+	};
+	if (ExileHudEventHandle isEqualTo -1) then 
+	{
+		ExileHudEventHandle = addMissionEventHandler ["Draw3D", { _this call ExileClient_gui_hud_event_onDraw3d; }];
+	};
 }
 else 
 {
-	ExileLayerHUD cutText ["", "PLAIN"]; 
-	ExileHudIsVisible = false;
-	removeMissionEventHandler ["Draw3D", ExileHudEventHandle];
+	if (ExileHudIsVisible) then 
+	{
+		ExileLayerHUD cutText ["", "PLAIN"]; 
+		ExileHudIsVisible = false;
+	};
+	if !(ExileHudEventHandle isEqualTo -1) then 
+	{
+		removeMissionEventHandler ["Draw3D", ExileHudEventHandle];
+		ExileHudEventHandle = -1;
+	};
 };

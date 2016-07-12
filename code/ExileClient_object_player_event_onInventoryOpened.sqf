@@ -12,41 +12,37 @@
 private["_cancelEvent","_container"];
 _cancelEvent = false;
 _container = _this select 1;
-if (ExileClientIsHandcuffed) then 
+try 
 {
-	_cancelEvent = true;
-}
-else 
-{
+	if (ExileIsPlayingRussianRoulette) then 
+	{
+		throw true;
+	};
+	if (ExileClientIsHandcuffed) then 
+	{
+		throw true;
+	};
 	if (ExileClientActionDelayShown) then 
 	{
-		_cancelEvent = true;
-	}
-	else 
-	{
-		if (ExileClientIsInConstructionMode) then
-		{
-			_cancelEvent = true;	
-		}
-		else 
-		{	
-			if ((locked _container) isEqualTo 2) then
-			{
-				_cancelEvent = true;
-			}
-			else
-			{
-				if (_container getVariable ["ExileIsLocked", 1] isEqualTo -1) then 
-				{
-					_cancelEvent = true;
-				}
-				else 
-				{
-					ExileClientInventoryOpened = true;
-					ExileClientCurrentInventoryContainer = _container;
-				};
-			};
-		};
+		throw true;
 	};
+	if (ExileClientIsInConstructionMode) then 
+	{
+		throw true;
+	};
+	if ((locked _container) isEqualTo 2) then
+	{
+		throw true;
+	};
+	if (_container getVariable ["ExileIsLocked", 1] isEqualTo -1) then 
+	{
+		throw true;
+	};
+	ExileClientInventoryOpened = true;
+	ExileClientCurrentInventoryContainer = _container;
+}
+catch 
+{
+	_cancelEvent = _exception;
 };
-_cancelEvent // OKAY!
+_cancelEvent

@@ -18,8 +18,8 @@ _controlState = _this select 3;
 _altState = _this select 4; 
 if ((_keyCode in (actionKeys "nightVision")) && ExileClientGasMaskVisible) exitWith {true};
 if (_keyCode in (actionKeys "TacticalView")) exitWith {true};
-if (_keyCode in (actionKeys "Throw")) exitWith
-{
+if (!(_controlState) && (_keyCode in (actionKeys "Throw"))) exitWith
+{	
 	_stopPropagation = false;
 	_grenadeName = (currentThrowable player) select 0;
 	if (_grenadeName isEqualTo "Exile_Item_ZipTie") then 
@@ -113,6 +113,15 @@ switch (_keyCode) do
 		if (ExileClientIsInConstructionMode) then
 		{
 			ExileClientConstructionResult = 2;
+			_stopPropagation = true;
+		};
+		if (ExileIsPlayingRussianRoulette) then 
+		{
+			if (ExileRussianRouletteCanEscape) then 
+			{
+				["leaveRussianRouletteRequest", []] call ExileClient_system_network_send;
+				ExileRussianRouletteCanEscape = false;
+			};
 			_stopPropagation = true;
 		};
 	};

@@ -16,6 +16,6 @@ if !(alive _target) then
 	_name = _target getVariable ["ExileName", -1];
 	if !(_name isEqualTo -1) then 
 	{
-		hint format ["Body identified as: %1", _name];
+		["InfoTitleOnly", [format ["Body identified as: %1", _name]]] call ExileClient_gui_toaster_addTemplateToast;
 	};
 };

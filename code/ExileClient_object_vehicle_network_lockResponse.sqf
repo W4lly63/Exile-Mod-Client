@@ -23,11 +23,12 @@ if !(_lockedState isEqualTo -1) then
 };
 if (_mode isEqualTo true) then 
 {
-	["Success", [_message]] call ExileClient_gui_notification_event_addNotification;
+	["SuccessTitleOnly", [_message]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else 
 {
-	["Whoops", [_message]] call ExileClient_gui_notification_event_addNotification;
+	_vehicle setVariable ["ExileAlreadyKnownCode", ""];
+	["ErrorTitleOnly", [_message]] call ExileClient_gui_toaster_addTemplateToast;
 };
 call ExileClient_gui_interactionMenu_unhook;
 true

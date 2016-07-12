@@ -9,18 +9,4 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-!(isEngineOn ExileClientInteractionObject)
-&&
-(
-	(
-		((locked ExileClientInteractionObject) isEqualTo -1)
-		||
-		((locked ExileClientInteractionObject) isEqualTo 0)
-	)
-	||
-	(
-		((locked ExileClientInteractionObject) isEqualTo -1)
-		||
-		((locked ExileClientInteractionObject) isEqualTo 1)
-	)
-)
+!(isEngineOn ExileClientInteractionObject) && !(locked ExileClientInteractionObject isEqualTo 2)

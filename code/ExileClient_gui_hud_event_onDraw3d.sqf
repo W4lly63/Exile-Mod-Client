@@ -18,8 +18,7 @@ if (ExileHudIsVisible) then
 	call ExileClient_gui_hud_renderGroupPanel;
 	call ExileClient_gui_hud_renderVehiclePanel;
 	call ExileClient_gui_hud_renderGrenadePanel;
-	call ExileClient_gui_notification_thread_notificationProcessor;
-	call ExileClient_gui_baseManagement_event_boundingRender;
+	call ExileClient_gui_toaster_thread;
 	if (ExileClientIsInConstructionMode) then
 	{
 		if (ExileClientConstructionMode == 3) then

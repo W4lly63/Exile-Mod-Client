@@ -25,7 +25,7 @@ _localVehicles = [];
 forEach _nearVehicles;
 if (_localVehicles isEqualTo []) exitWith
 {
-	["VehicleCustomsWarningNoVehiclesNearby"] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Whoops!", "Park within 50m and get in as driver first."]] call ExileClient_gui_toaster_addTemplateToast;
 };
 ExileClientCurrentTrader = _this;
 createDialog "RscExileWasteDumpDialog";

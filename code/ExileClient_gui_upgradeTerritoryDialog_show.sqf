@@ -9,34 +9,24 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_currentLevel","_territoryPrice","_territoryRange","_territoryLevels","_display","_respectControl","_radiusControl","_levelControl","_upgradeButton"];
+private["_display","_playerUID","_territoryDropDown","_flag","_buildRights","_index","_upgradeButton"];
 disableSerialization;
 createDialog "RscExileUpgradeTerritoryDialog";
-_currentLevel = _this select 0;
-_territoryPrice = _this select 1;
-_territoryRange = _this select 2;
-_territoryLevels = _this select 3;
 _display = uiNameSpace getVariable ["RscExileUpgradeTerritoryDialog", displayNull];
-_respectControl = _display displayCtrl 4000;
-_radiusControl = _display displayCtrl 4002;
-_levelControl = _display displayCtrl 4003;
-_upgradeButton = _display displayCtrl 4001;
-if(_currentLevel isEqualTo _territoryLevels)then
+_playerUID = getPlayerUID player;
+_territoryDropDown = _display displayCtrl 4000;
+lbClear _territoryDropDown;
 {
-	_respectControl ctrlSetStructuredText parseText format ["<t size='1.4'>%1 MAX LEVEL</t>",_territoryPrice];
-	_radiusControl ctrlSetStructuredText parseText format ["<t size='1.4'>%1m MAX LEVEL</t>",_territoryRange];
-	_levelControl ctrlSetStructuredText parseText format ["<t size='1.4'>%1/%2 MAX LEVEL</t>",_currentLevel,_territoryLevels];
-	_upgradeButton ctrlEnable false;
-}
-else
-{
-	_respectControl ctrlSetStructuredText parseText format ["<t size='1.4'>%1</t>",_territoryPrice];
-	_radiusControl ctrlSetStructuredText parseText format ["<t size='1.4'>%1m</t>",_territoryRange];
-	_levelControl ctrlSetStructuredText parseText format ["<t size='1.4'>%1/%2</t>",_currentLevel + 1,_territoryLevels];
-	if(ExileClientPlayerScore < _territoryPrice)then
+	_flag = _x;
+	_buildRights = _flag getVariable ["ExileTerritoryBuildRights", []];
+	if (_playerUID in _buildRights) then
 	{
-		_upgradeButton ctrlEnable false;
+		_name = _flag getVariable ["ExileTerritoryName", ""];
+		_index = _territoryDropDown lbAdd _name;
+		_territoryDropDown lbSetData [_index, netId _flag]; 
 	};
-};
+}
+forEach (allMissionObjects "Exile_Construction_Flag_Static");
 true call ExileClient_gui_postProcessing_toggleDialogBackgroundBlur;
-true
+_upgradeButton = _display displayCtrl 4001;
+_upgradeButton ctrlEnable false;

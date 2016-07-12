@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_display","_weaponPanelControl","_weaponPanelType","_currentTurretPath","_vehicle","_vehicleRole","_currentZeroing","_currentWeaponState","_currentWeaponClassName","_currentMuzzle","_currentFireMode","_currentMagazineClassName","_currentAmmoCount","_currentMagazineCount","_needReload","_compatibleMagazines","_ammoColor","_ammoControl","_magazineControl","_zeroingControl","_fireModeControl","_muzzleDisplayName","_muzzleControl"];
+private["_display","_weaponPanelControl","_weaponPanelType","_currentTurretPath","_vehicle","_vehicleRole","_currentZeroing","_currentWeaponState","_currentWeaponClassName","_currentMuzzle","_currentFireMode","_currentMagazineClassName","_currentAmmoCount","_currentMagazineCount","_needReload","_compatibleMagazines","_ammoColor","_ammoControl","_formattedAmmoCount","_magazineControl","_zeroingControl","_fireModeControl","_muzzleDisplayName","_muzzleControl"];
 disableSerialization;
 _display = uiNamespace getVariable "RscExileHUD";
 _weaponPanelControl = _display displayCtrl 1100;
@@ -54,7 +54,7 @@ else
 		{
 			_weaponPanelType = 0;
 		};
-		if ((currentWeapon player) isEqualTo "Exile_Melee_Axe") then
+		if ((currentWeapon player) isKindOf ["Exile_Melee_Abstract", configFile >> "CfgWeapons"]) then
 		{
 			_weaponPanelType = 0;
 		};
@@ -118,7 +118,16 @@ else
 	_ammoColor = if ((_needReload >= 0.7) || (_currentAmmoCount isEqualTo 0)) then { [221/255, 38/255, 38/255, 1] } else { [1, 1, 1, 1] };
 	_ammoControl = _display displayCtrl 1102;
 	_ammoControl ctrlSetTextColor _ammoColor;
-	_ammoControl ctrlSetText (str _currentAmmoCount);
+	if (_currentAmmoCount > 999) then
+	{
+		_formattedAmmoCount = [_currentAmmoCount/1000, 1] call ExileClient_util_math_floor;
+		_currentAmmoCount = format ["%1k", _formattedAmmoCount];
+		_ammoControl ctrlSetText _currentAmmoCount;
+	}
+	else
+	{
+		_ammoControl ctrlSetText (str _currentAmmoCount);
+	};
 	_magazineControl = _display displayCtrl 1104;
 	_magazineControl ctrlSetText (str _currentMagazineCount);
 	_zeroingControl = _display displayCtrl 1105;

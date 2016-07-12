@@ -13,6 +13,6 @@ private["_resource"];
 _resource = uiNameSpace getVariable ["RscExileLoadingScreen", displayNull];
 if (!isNull _resource) then 
 {
-	(_resource displayCtrl 20002) ctrlSetText _this;
+	(_resource displayCtrl 66002) ctrlSetStructuredText (parseText format ["<t>%1</t>", _this]);
 };
 true

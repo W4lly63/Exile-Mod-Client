@@ -9,13 +9,12 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_responseCode","_added"];
+private["_responseCode"];
 _responseCode = _this select 0;
 if(_responseCode isEqualTo 0)then
 {
-	ExileClientPlayerMoney = ExileClientPlayerMoney - (((getArray(missionConfigFile >> "CfgTerritories" >> "prices")) select 0) select 0);
-	_added = [player,"Exile_Item_Flag",1] call ExileClient_util_playerCargo_add;
-	["TerritoryPurchased"] call ExileClient_gui_notification_event_addNotification;
+	[player, "Exile_Item_Flag", 1] call ExileClient_util_playerCargo_add;
+	["SuccessTitleAndText", ["Purchased flag!", "A new territory flag has been added to your inventory."]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else
 {

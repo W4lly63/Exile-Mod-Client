@@ -15,7 +15,7 @@ _maximumNumberOfTerritoriesPerPlayer = getNumber (missionConfigFile >> "CfgTerri
 _numberOfTerritories = player call ExileClient_util_territory_getNumberOfTerritories;
 if (_numberOfTerritories >= _maximumNumberOfTerritoriesPerPlayer) exitWith
 {
-	["MaximumNumberOfTerritoriesReached"] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Limit reached!", format["You can only own %1 territories at a time!", _maximumNumberOfTerritoriesPerPlayer]]] call ExileClient_gui_toaster_addTemplateToast;
 };
 createDialog "RscExilePurchaseTerritoryDialog";
 _display = uiNameSpace getVariable ["RscExilePurchaseTerritoryDialog", displayNull];
@@ -26,7 +26,7 @@ _priceText ctrlSetStructuredText parsetext format ["<t size='1.4'>%1<img image='
 _range = _config select 1;
 _rangeText = _display displayCtrl 4002;
 _rangeText ctrlSetStructuredText parsetext format ["<t size='1.4'>%1m</t>", _range];
-if(_price > ExileClientPlayerMoney)then
+if(_price > (player getVariable ["ExileMoney", 0]))then
 {
 	_purchaseButton = _display displayCtrl 4001;
 	_purchaseButton ctrlEnable false;

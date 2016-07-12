@@ -9,6 +9,11 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-["territoryUpgradeRequest",[ExileClientInteractionObject]] call ExileClient_system_network_send;
+private["_display","_territoryDropDown","_flagObject"];
+disableSerialization;
+_display = uiNameSpace getVariable ["RscExileUpgradeTerritoryDialog", displayNull];
+_territoryDropDown = _display displayCtrl 4000;
+_flagObject = objectFromNetId (_territoryDropDown lbData (lbCurSel _territoryDropDown));
+["territoryUpgradeRequest",[_flagObject]] call ExileClient_system_network_send;
 closeDialog 0;
 true

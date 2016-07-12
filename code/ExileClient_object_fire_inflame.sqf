@@ -18,6 +18,6 @@ if ("Exile_Item_Matches" in (magazines player)) then
 }
 else 
 {
-	["NoMatchesWarning"] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["No fire for you!", "You need matches to light a fire. Or a dragon."]] call ExileClient_gui_toaster_addTemplateToast;
 };
 true

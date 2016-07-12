@@ -11,6 +11,8 @@
  
 private["_object","_pos","_direction"];
 _object = _this select 0;
+if (isEngineOn _object) exitWith {false};
+if ((locked _object) isEqualTo 2) exitWith {false};
 _pos = getPosASL player;
 _direction = getDir player;
 if(local _object)then

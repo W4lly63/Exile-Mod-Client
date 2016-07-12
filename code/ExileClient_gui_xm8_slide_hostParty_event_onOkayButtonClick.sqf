@@ -31,10 +31,18 @@ try
 	{
 		throw "Name is longer than 20 letters";
 	};
+	{
+		if ((toLower (groupId _x)) isEqualTo (toLower _partyName)) exitWith 
+		{
+			throw "This name is already in use!";
+		};
+	}
+	forEach allGroups;
 	_group = createGroup independent;
-	[player] joinSilent _group;
 	_group setGroupIdGlobal [_partyName];
+	[player] joinSilent _group;
 	ExileClientPartyID = netId _group;
+	3 enableChannel true;
 	["party", 0] call ExileClient_gui_xm8_slide;
 }
 catch

@@ -17,7 +17,7 @@ _itemInformation = [_itemClassName] call BIS_fnc_itemType;
 _itemCategory = _itemInformation select 0;
 _itemType = _itemInformation select 1;
 _added = false;
-switcH (_itemCategory) do 
+switch (_itemCategory) do 
 {
 	case "Weapon":
 	{

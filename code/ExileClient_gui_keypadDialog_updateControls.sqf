@@ -19,7 +19,7 @@ if (ExileClientPinCode isEqualTo "") then
 }
 else 
 {
-	if (isStreamFriendlyUIEnabled) then 
+	if (profileNameSpace getVariable ["ExileStreamFriendlyUI", false]) then
 	{
 		_text = "";
 		for "_i" from 1 to (count ExileClientPinCode) do 

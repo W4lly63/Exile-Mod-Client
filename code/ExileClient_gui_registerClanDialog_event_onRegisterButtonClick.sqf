@@ -19,33 +19,33 @@ _alphabet = getText (missionConfigFile >> "CfgClans" >> "clanNameAlphabet");
 try 
 {
 	_clanName = _clanName call ExileClient_util_string_trim;
-	_clanNameLength = count _clanName;
-	if (ExileClientPlayerMoney < _registrationFee) then 
+	if ((player getVariable ["ExileMoney", 0]) < _registrationFee) then 
 	{
-		throw "You are too poor";
+		throw "You do not have enough pop tabs to register a family.";
 	};
+	_clanNameLength = count _clanName;
 	if (_clanNameLength isEqualTo 0) then 
 	{
-		throw "Please enter a name";
+		throw "Please enter a name.";
 	};
 	if (_clanNameLength < 2) then 
 	{
-		throw "Name is too short";
+		throw "Name is too short.";
 	};
 	if (_clanNameLength > 20) then
 	{
-		throw "Name is longer than 20 letters";
+		throw "Name is longer than 20 letters.";
 	};
 	_forbiddenCharacter = [_clanName, _alphabet] call ExileClient_util_string_containsForbiddenCharacter;
 	if !(_forbiddenCharacter isEqualTo -1) then 
 	{
-		throw format ["Do not use '%1' in your clan name", _forbiddenCharacter];
+		throw format ["Do not use '%1' in your family name.", _forbiddenCharacter];
 	};
 	["registerClanRequest", [_clanName]] call ExileClient_system_network_send;
 	closeDialog 0;
 }
 catch 
 {
-	["Whoops", [_exception]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Failed to register family!", _exception]] call ExileClient_gui_toaster_addTemplateToast;
 };
 true

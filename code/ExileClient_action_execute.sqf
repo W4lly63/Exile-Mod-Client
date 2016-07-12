@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_actionName","_parameters","_progress","_actionConfig","_duration","_failChance","_animation","_conditionFunction","_startTime","_sleepDuration","_failAt","_errorMessage","_keyDownHandle","_mouseButtonDownHandle","_display","_label","_progressBarBackground","_progressBarMaxSize","_progressBar","_function","_progressBarColor"];
+private["_actionName","_parameters","_progress","_actionConfig","_duration","_durationFunction","_failChance","_animation","_animationType","_conditionFunction","_abortInCombatMode","_startTime","_sleepDuration","_failAt","_errorMessage","_keyDownHandle","_mouseButtonDownHandle","_display","_label","_progressBarBackground","_progressBarMaxSize","_progressBar","_function","_progressBarColor"];
 disableSerialization;
 if (ExileClientActionDelayShown) exitWith { false };
 ExileClientActionDelayShown = true;
@@ -19,21 +19,28 @@ _parameters = _this select 1;
 _progress = 0;
 _actionConfig = configFile >> "CfgExileDelayedActions" >> _actionName;
 _duration = getNumber (_actionConfig >> "duration");
+_durationFunction = getText (_actionConfig >> "durationFunction");
 _failChance = getNumber (_actionConfig >> "failChance");
 _animation = getText (_actionConfig >> "animation");
+_animationType = getText (_actionConfig >> "animationType");
 _conditionFunction = getText (_actionConfig >> "conditionFunction");
+_abortInCombatMode = (getText (_actionConfig >> "abortInCombatMode")) isEqualTo 1;
 _startTime = diag_tickTime;
 _sleepDuration = _duration / 100;
 _failAt = diag_tickTime + 99999;
 _errorMessage = "";
 if !(_conditionFunction isEqualTo "") then 
 {
-	_errorMessage = _parameters call (call (compile _conditionFunction));
+	_errorMessage = _parameters call (missionNameSpace getVariable [_conditionFunction,{}]);
 };
 if !(_errorMessage isEqualTo "") exitWith
 {
 	ExileClientActionDelayShown = false;
-	["Whoops", [_errorMessage]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Whoops!", _errorMessage]] call ExileClient_gui_toaster_addTemplateToast;
+};
+if !(_durationFunction isEqualTo "") then 
+{
+    _duration = _parameters call (missionNameSpace getVariable [_durationFunction,{}]);
 };
 if ((floor (random 100)) < _failChance) then 
 {
@@ -55,8 +62,15 @@ _progressBar ctrlSetPosition _progressBarMaxSize;
 _progressBar ctrlCommit _duration;
 if !(_animation isEqualTo "") then 
 {
-	player switchMove _animation;
-	["switchMoveRequest", [netId player, _animation]] call ExileClient_system_network_send;
+	if (_animationType isEqualTo "switchMove") then 
+	{
+		player switchMove _animation;
+		["switchMoveRequest", [netId player, _animation]] call ExileClient_system_network_send;
+	}
+	else 
+	{
+		player playMoveNow _animation;
+	};
 };
 try
 {
@@ -72,7 +86,10 @@ try
 		};
 		if (ExileClientPlayerIsInCombat) then 
 		{
-			throw 2;
+			if (_abortInCombatMode) then 
+			{
+				throw 2;
+			};
 		};
 		if !(alive player) then 
 		{
@@ -85,11 +102,11 @@ try
 	_errorMessage = "";
 	if !(_conditionFunction isEqualTo "") then 
 	{
-		_errorMessage = _parameters call (call (compile _conditionFunction));
+		_errorMessage = _parameters call (missionNameSpace getVariable [_conditionFunction,{}]);
 	};
 	if !(_errorMessage isEqualTo "") exitWith
 	{
-		["Whoops", [_errorMessage]] call ExileClient_gui_notification_event_addNotification;
+		["ErrorTitleAndText", ["Whoops!", _errorMessage]] call ExileClient_gui_toaster_addTemplateToast;
 		throw 2;
 	};
 	throw 0;
@@ -119,7 +136,7 @@ catch
 	_progressBar ctrlSetBackgroundColor _progressBarColor;
 	if !(_function isEqualTo "") then 
 	{
-		_parameters call (call (compile _function));
+		_parameters call (missionNameSpace getVariable [_function,{}]);
 	};
 	if !(_animation isEqualTo "") then 
 	{

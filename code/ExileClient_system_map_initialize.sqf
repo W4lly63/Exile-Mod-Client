@@ -13,6 +13,8 @@ ExileSpawnZoneMarkerPositions = [];
 ExileSpawnZoneMarkerPositionsAndSize = [];
 ExileTraderZoneMarkerPositions = [];
 ExileTraderZoneMarkerPositionsAndSize = [];
+ExileNonConstructionZones = getArray (missionConfigFile >> "CfgExileEnvironment" >> worldName >> "nonConstructionZones");
+ExileConcreteMixerZones = [];
 {
 	switch (getMarkerType _x) do 
 	{
@@ -25,6 +27,10 @@ ExileTraderZoneMarkerPositionsAndSize = [];
 		{
 			ExileTraderZoneMarkerPositions pushBack (getMarkerPos _x);
 			ExileTraderZoneMarkerPositionsAndSize pushBack [getMarkerPos _x, (getMarkerSize _x) select 0];
+		};
+		case "ExileConcreteMixerZone":
+		{
+			ExileConcreteMixerZones pushBack [getMarkerPos _x, (getMarkerSize _x) select 0];
 		};
 	};
 }

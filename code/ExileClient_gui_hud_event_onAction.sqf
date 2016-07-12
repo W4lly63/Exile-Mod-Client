@@ -11,7 +11,8 @@
  
 private["_type","_cancelAction"];
 if (isNil "_this") exitWith { false };
-if !((typeName "_this") isEqualTo "ARRAY") exitWith { false };
+if !(_this isEqualType []) exitWith { false };
+if ((count _this) < 4) exitWith { false };
 _type = _this select 3;
 _cancelAction = false;
 if (ExileClientIsHandcuffed) then 
@@ -20,6 +21,10 @@ if (ExileClientIsHandcuffed) then
 	{
 		_cancelAction = true;
 	};
+};
+if (ExileIsPlayingRussianRoulette) then 
+{
+	_cancelAction = true;
 };
 if (ExileClientActionDelayShown) then 
 {

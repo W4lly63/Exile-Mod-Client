@@ -13,7 +13,7 @@ private["_distance","_weapon","_putInCombat"];
 _distance = _this select 2;
 _weapon = _this select 3;
 _putInCombat = true;
-if (_weapon in ["Put", "Throw", "Exile_Melee_Axe"]) then
+if (_weapon in ["Put", "Throw", "Exile_Melee_Axe", "Exile_Melee_SledgeHammer", "Exile_Melee_Shovel"]) then
 {
 	_putInCombat = false;
 };

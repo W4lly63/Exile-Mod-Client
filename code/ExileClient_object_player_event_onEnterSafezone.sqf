@@ -11,12 +11,10 @@
  
 private["_vehicle","_attachedObjects","_position"];
 if (ExilePlayerInSafezone) exitWith { false };
+if !(alive player) exitWith { false };
 ExilePlayerInSafezone = true;
-if (alive player) then
-{
-	player allowDamage false;
-	player removeAllEventHandlers "HandleDamage";
-};
+player allowDamage false;
+player removeAllEventHandlers "HandleDamage";
 _vehicle = vehicle player;
 if !(_vehicle isEqualTo player) then 
 {
@@ -42,6 +40,6 @@ if !(_vehicle isEqualTo player) then
 	ExileClientSafeZoneVehicleFiredEventHandler = _vehicle addEventHandler ["Fired", {_this call ExileClient_object_player_event_onFiredSafeZoneVehicle}];
 };
 ExileClientSafeZoneESPEventHandler = addMissionEventHandler ["Draw3D", {20 call ExileClient_gui_safezone_safeESP}];
-["SafezoneEnter"] call ExileClient_gui_notification_event_addNotification;
+["InfoTitleAndText", ["Welcome!", "You have entered a trader city safe zone."]] call ExileClient_gui_toaster_addTemplateToast; 
 ExileClientSafeZoneUpdateThreadHandle = [1, ExileClient_object_player_thread_safeZone, [], true] call ExileClient_system_thread_addtask;
 true

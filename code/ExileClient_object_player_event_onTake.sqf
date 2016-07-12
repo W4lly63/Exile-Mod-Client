@@ -26,6 +26,14 @@ if (_itemClassName isEqualTo "Exile_Melee_Axe") then
 {
 	player addSecondaryWeaponItem "Exile_Magazine_Swing";
 };
+if (_itemClassName isEqualTo "Exile_Melee_SledgeHammer") then
+{
+	player addSecondaryWeaponItem "Exile_Magazine_Swoosh";
+};
+if (_itemClassName isEqualTo "Exile_Melee_Shovel") then
+{
+	player addSecondaryWeaponItem "Exile_Magazine_Boing";
+};
 if ((_container getVariable ["ExileIsLocked",1]) isEqualTo -1)then
 {
 	Exiled = format ["Me %1(%2) tried to open a locked storage (%3 at (%4)%5) by gltching. :( and i got cought :((",

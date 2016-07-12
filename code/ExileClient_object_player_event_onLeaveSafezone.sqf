@@ -44,6 +44,6 @@ if !(isNil "ExileClientSafeZoneESPEventHandler") then
 };
 if (alive player) then 
 {
-	["SafezoneLeave"] call ExileClient_gui_notification_event_addNotification;
+	["InfoTitleAndText", ["Goodbye!", "You have left the safe zone."]] call ExileClient_gui_toaster_addTemplateToast; 
 };
 true

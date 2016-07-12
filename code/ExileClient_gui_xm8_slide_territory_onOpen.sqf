@@ -39,4 +39,5 @@ _demoteButton = _display displayCtrl 4137;
 _demoteButton ctrlEnable false;
 _radiusButton = _display displayCtrl 4138;
 _radiusButton ctrlEnable false;
+_territoryDropDown lbSetCurSel 0;
 true

@@ -9,19 +9,17 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_responseCode","_vehicleID","_newPlayerMoney","_salesPrice"];
+private["_responseCode","_vehicleID","_salesPrice"];
 _responseCode = _this select 0;
 _vehicleID = _this select 1;
-_newPlayerMoney = _this select 2;
+_salesPrice = _this select 2;
 if (_responseCode isEqualTo "Rekey successful") then
 {
 	_vehicleID spawn ExileClient_object_vehicle_rekeyVehicle;
-	_salesPrice = ExileClientPlayerMoney - _newPlayerMoney;
-	ExileClientPlayerMoney = _newPlayerMoney;
-	["ItemPurchasedInformation", [_salesPrice * -1]] call ExileClient_gui_notification_event_addNotification;
+	["SuccessTitleAndText", ["Changed PIN!", format ["-%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _salesPrice]]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else 
 {
-	["Whoops", [format["Failed to reset code."]]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Failed to change PIN!", "Please try again or contact a server admin."]] call ExileClient_gui_toaster_addTemplateToast;
 };
 true

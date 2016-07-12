@@ -54,19 +54,29 @@ switch (_quality) do
 {
 	case 2: 		
 	{ 
-		_qualityColor = "#00c8ec";
+		_qualityColor = "#9EDD3A";
 		_qualityName = "Item Level 2";
 	};
 	case 3:		
 	{ 
-		_qualityColor = "#b2ec00";
+		_qualityColor = "#00c8ec";
 		_qualityName = "Item Level 3";
 	};
-	case 9000: 	
+	case 4:		
+	{ 
+		_qualityColor = "#9F4796";
+		_qualityName = "Item Level 4";
+	};
+	case 5:		
+	{ 
+		_qualityColor = "#ffb418";
+		_qualityName = "Item Level 5";
+	};
+	case 6:		
 	{ 
 		_qualityColor = "#ec007a";
-		_qualityName = "Item Level over 9000";
-	};							
+		_qualityName = "Item Level 6";
+	};						
 };
 (_dialog displayCtrl 5001) ctrlSetStructuredText parseText format["<t size='1.5' color='%1' font='PuristaMedium' align='left'>%2</t><br/>", _qualityColor, _itemDisplayName];
 (_dialog displayCtrl 5002) ctrlSetStructuredText parseText format["<t size='1.125' font='PuristaMedium' align='left'>%1</t><br/><br/>", _qualityName];

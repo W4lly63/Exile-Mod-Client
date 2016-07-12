@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_display","_8GCombo","_soundCombo","_colorCombo","_espAlphaSlider","_markerAlphaSlider"];
+private["_display","_8GCombo","_soundCombo","_colorCombo","_espAlphaSlider","_markerAlphaSlider","_streamModeCombo"];
 disableSerialization;
 _display = uiNameSpace getVariable ["RscExileXM8", displayNull];
 _8GCombo = _display displayCtrl 4072;
@@ -52,3 +52,15 @@ _espAlphaSlider sliderSetPosition (profileNamespace getVariable ["ExilePartyESPA
 _markerAlphaSlider = _display displayCtrl 4079;
 _markerAlphaSlider sliderSetRange [0, 1];
 _markerAlphaSlider sliderSetPosition (profileNamespace getVariable ["ExilePartyMarkerAlpha", 0.75]);
+_streamModeCombo = _display displayCtrl 4077;
+lbClear _streamModeCombo;
+_streamModeCombo lbAdd "Off";
+_streamModeCombo lbAdd "On";
+if (profileNameSpace getVariable ["ExileStreamFriendlyUI", false]) then
+{
+	_streamModeCombo lbSetCurSel 1;
+}
+else 
+{
+	_streamModeCombo lbSetCurSel 0;
+};

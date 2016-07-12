@@ -34,6 +34,6 @@ else
 	}
 	else
 	{
-		["Whoops",["Camera in use. No can do :("]] call ExileClient_gui_notification_event_addNotification;
+		["ErrorTitleAndText", ["Camera is already in use!", "A camera can only be used by one person at a time."]] call ExileClient_gui_toaster_addTemplateToast;
 	};
 };

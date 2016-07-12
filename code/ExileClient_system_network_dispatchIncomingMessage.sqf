@@ -27,16 +27,22 @@ try
 	};
 	_messageName = _payload select 0;
 	_messageParameters = _payload select 1;
-	_config = missionConfigFile;
-	if !(isClass (_config >> "CfgNetworkMessages" >> _messageName)) then 
+	if (isClass (missionConfigFile >> "CfgNetworkMessages" >> _messageName)) then 
 	{
-		_config = configFile;
-		if!(isClass (_config >> "CfgNetworkMessages" >> _messageName)) then
+		_config = missionConfigFile >> "CfgNetworkMessages" >> _messageName;
+	}
+	else 
+	{
+		if (isClass (configFile >> "CfgNetworkMessages" >> _messageName)) then 
+		{
+			_config = configFile >> "CfgNetworkMessages" >> _messageName;
+		}
+		else 
 		{
 			throw format ["Forbidden message name! Payload: %1", _payload]; 
 		};
 	};
-	_allowedParameters = getArray(_config >> "CfgNetworkMessages" >> _messageName >> "parameters");
+	_allowedParameters = getArray (_config >> "parameters");
 	if (count _messageParameters != count _allowedParameters) then 
 	{
 		throw format ["Parameter count mismatch! Payload: %1", _payload]; 
@@ -48,12 +54,12 @@ try
 		};
 	}
 	forEach _allowedParameters;
-	_moduleName = getText(_config >> "CfgNetworkMessages" >> _messageName >> "module");
+	_moduleName = getText(_config >> "module");
 	_functionName = format["ExileClient_%1_network_%2", _moduleName, _messageName];
 	_functionCode = missionNamespace getVariable [_functionName,""];
 	if (_functionCode isEqualTo "") then 
 	{
-		throw format ["Invalid function call! Called: %1",_functionName];
+		throw format ["Invalid function call! Called: %1", _functionName];
 	};
 	_messageParameters call _functionCode;
 }

@@ -19,20 +19,20 @@ try
 {
 	if((count _territoryName) isEqualTo 0) then 
 	{
-		throw "Enter Territory name ;)";
+		throw "Please enter a territory name.";
 	};
 	_territoryName = _territoryName call ExileClient_util_string_trim;
 	_alphabet = getText (missionConfigFile >> "CfgClans" >> "clanNameAlphabet");
 	_forbiddenCharacter = [_territoryName, _alphabet] call ExileClient_util_string_containsForbiddenCharacter;
 	if !(_forbiddenCharacter isEqualTo -1) then 
 	{
-		throw "Invalid Character in input!";
+		throw "Invalid character in input. Please try again.";
 	};
 	["Exile_Item_Flag",_selectedFlag,_territoryName] call ExileClient_construction_beginNewObject;
 }
 catch
 {
-	["Whoops", [_exception]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Failed to place flag!", _exception]] call ExileClient_gui_toaster_addTemplateToast;
 };
 closeDialog 0;
 true

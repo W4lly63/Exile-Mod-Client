@@ -23,12 +23,10 @@ if (ExileClientPartyID isEqualTo -1) then
 		{
 			[player] joinSilent ExileClientPendingPartyInvitionGroup;
 			setGroupIconsVisible [true, true];
+			3 enableChannel true;
 			ExileClientPartyID = netId ExileClientPendingPartyInvitionGroup;
 			uiSleep 0.2;
 			["party", 0] call ExileClient_gui_xm8_slide;
-		}
-		else 
-		{
 		};
 		ExileClientPendingPartyInvitionGroup = objNull;
 	};

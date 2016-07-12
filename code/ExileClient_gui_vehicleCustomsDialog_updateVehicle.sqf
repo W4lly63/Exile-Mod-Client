@@ -30,7 +30,7 @@ if (isClass (missionConfigFile >> "CfgVehicleCustoms" >> _parentClassName) ) the
 		_skinListBox lbSetData [_indexEntryIndex, _skinName];	
 		_skinListBox lbSetTextRight [_indexEntryIndex, format["%1", _skinPrice]];
 		_skinListBox lbSetPictureRight [_indexEntryIndex, "exile_assets\texture\ui\poptab_trader_ca.paa"];
-		if (_skinPrice > ExileClientPlayerMoney) then
+		if (_skinPrice > (player getVariable ["ExileMoney", 0])) then
 		{
 			_skinListBox lbSetColorRight [_indexEntryIndex, [0.91, 0, 0, 0.6]];
 		};

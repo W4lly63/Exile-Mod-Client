@@ -9,7 +9,6 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-ExileClientPlayerMoney = parseNumber (_this select 0);
-ExileClientPlayerScore = parseNumber (_this select 1);
-ExileClientPlayerKills = _this select 2;
-ExileClientPlayerDeaths = _this select 3;
+ExileClientPlayerScore = parseNumber (_this select 0);
+ExileClientPlayerKills = _this select 1;
+ExileClientPlayerDeaths = _this select 2;

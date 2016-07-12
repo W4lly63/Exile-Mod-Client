@@ -11,10 +11,10 @@
  
 private["_vehicleID","_pincode","_newPinCode"];
 _vehicleID = _this;
-["Success","Enter CURRENT lock code:"] call ExileClient_gui_notification_event_addNotification;
+["InfoTitleAndText", ["Step 1 of 2", "Please enter the current PIN."]] call ExileClient_gui_toaster_addTemplateToast;
 _pincode = 4 call ExileClient_gui_keypadDialog_show;
-["Success","Enter NEW lock code:"] call ExileClient_gui_notification_event_addNotification;
+["InfoTitleAndText", ["Step 2 of 2", "Please enter the new PIN."]] call ExileClient_gui_toaster_addTemplateToast;
 _newPinCode = 4 call ExileClient_gui_keypadDialog_show;
-if(_newPinCode isEqualTo "")exitWith {"Exiting with no new pin code." call ExileClient_util_log;};
+if(_newPinCode isEqualTo "")exitWith {"Exiting with no new pin." call ExileClient_util_log;};
 ["resetCodeRequest",[_vehicleID,_pincode,_newPinCode]] call ExileClient_system_network_send;
 true

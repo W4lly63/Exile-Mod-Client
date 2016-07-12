@@ -15,6 +15,10 @@ _maximumLoad = 0;
 if (_className != "") then
 {
 	_containerClassName = getText(configFile >> "CfgWeapons" >> _className >> "ItemInfo" >> "containerClass");
+	if(_containerClassName isEqualTo "")then
+	{
+		_containerClassName = _className;
+	};
 	_maximumLoad = getNumber(configFile >> "CfgVehicles" >> _containerClassName >> "maximumLoad");
 };
 _maximumLoad

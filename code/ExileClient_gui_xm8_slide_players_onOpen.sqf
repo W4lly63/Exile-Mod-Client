@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_display","_listBox","_index","_partyButton","_sendPopTabsButton","_popTabsInputBox","_territoryDropDown","_ourUID","_hasTerritories","_buildRights","_grantTerritoryBuildRightsButton"];
+private["_display","_listBox","_index","_partyButton","_clanButton","_territoryDropDown","_ourUID","_hasTerritories","_buildRights","_grantTerritoryBuildRightsButton"];
 disableSerialization;
 _display = uiNameSpace getVariable ["RscExileXM8", displayNull];
 _listBox = _display displayCtrl 4111;
@@ -38,11 +38,9 @@ if ((player getVariable ["ExileXM8IsOnline", false]) isEqualTo true) then
 };
 lbSort [_listBox, "ASC"];
 _partyButton = _display displayCtrl 4112;
-_partyButton ctrlEnable false; 
-_sendPopTabsButton = _display displayCtrl 4117;
-_sendPopTabsButton ctrlEnable false; 
-_popTabsInputBox = _display displayCtrl 4116;
-_popTabsInputBox ctrlSetText "0";
+_partyButton ctrlEnable false;
+_clanButton = _display displayCtrl 4116;
+_clanButton ctrlEnable false; 
 _territoryDropDown = _display displayCtrl 4114;
 _ourUID = getPlayerUID player;
 _hasTerritories = false;
@@ -65,3 +63,5 @@ if (_hasTerritories) then
 	_territoryDropDown lbSetCurSel 0;
 	_grantTerritoryBuildRightsButton ctrlShow true;
 };
+_partyButton = _display displayCtrl 4116;
+_partyButton ctrlEnable false;

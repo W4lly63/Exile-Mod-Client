@@ -23,7 +23,7 @@ switch (_tradeContainerType) do
 	case 1: 
 	{
 		_currentLoad = (loadAbs player);
-		_maximumLoad = 1200;
+		_maximumLoad = getNumber(configfile >> "CfgInventoryGlobalVariable" >> "maxSoldierLoad");
 		_items = [player, true] call ExileClient_util_playerEquipment_list;
 	};
 	case 2:
@@ -67,9 +67,11 @@ _inventoryLoadValue ctrlSetStructuredText (parseText format["<t size='1' font='p
 	_qualityColor = [1, 1, 1, 1];
 	switch (_quality) do
 	{
-		case 2: 		 { _qualityColor = [0, 0.78, 0.93, 1]; };
-		case 3:		 { _qualityColor = [0.7, 0.93, 0, 1]; };
-		case 9000: 	 { _qualityColor = [0.93, 0, 0.48, 1]; };							
+		case 2: 		 { _qualityColor = [0.62, 0.87 ,0.23, 1]; };
+		case 3:		 { _qualityColor = [0, 0.78, 0.92, 1]; };
+		case 4:		 { _qualityColor = [0.62, 0.27, 0.58, 1]; };
+		case 5:		 { _qualityColor = [1, 0.7, 0.09, 1]; };
+		case 6:		 { _qualityColor = [0.93, 0, 0.48, 1]; };						
 	};
 	_indexEntryIndex = _inventoryListBox lbAdd getText(configFile >> _configName >> _itemClassName >> "displayName");
 	_inventoryListBox lbSetData [_indexEntryIndex, _itemClassName];

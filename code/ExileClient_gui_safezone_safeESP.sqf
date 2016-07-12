@@ -18,7 +18,7 @@ if (!isNull cameraOn) then
 		{
 			if (isPlayer _x) then
 			{
-				if !(isHidden _x) then 
+				if !(isObjectHidden _x) then 
 				{
 					_distance = cameraOn distance _x;
 					_alpha = (1-(_distance/_espRenderRange));

@@ -18,6 +18,7 @@ if (ExilePlayerInSafezone) then
 	call ExileClient_object_player_event_onLeaveSafezone;
 };
 ExilePlayerInSafezone = false; 
+call ExileClient_gui_toaster_removeAllToasts;
 _respawnDelay = _this select 3;
 _respawnDelay call ExileClient_object_player_death_startBleedingOut;
 true

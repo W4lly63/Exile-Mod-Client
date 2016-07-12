@@ -11,6 +11,7 @@
  
 private["_itemClassName","_consumingConfig","_configEffects","_feedbackString","_effectAttributeId","_effectValue","_effectDuration","_effectUnit","_effect","_addPlusCharacter","_bloodAlcohol","_bloodAlcoholComment","_animations","_animationIndex","_stopBleeding","_configSounds","_numberOfConfigSounds","_returnItemClass"];
 _itemClassName = _this select 0;
+if !(_itemClassName in (magazines player)) exitWith {false};
 if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> "Consuming") ) then
 {
 	_consumingConfig = configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> "Consuming";
@@ -81,8 +82,11 @@ if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> 
 	_animations = getArray (_consumingConfig >> "animations");
 	if !(_animations isEqualTo []) then
 	{
-		_animationIndex = call ExileClient_util_animation_getMatrixIndex;
-		player playMove (_animations select _animationIndex);
+		if ((vehicle player) isEqualTo player) then 
+		{
+			_animationIndex = call ExileClient_util_animation_getMatrixIndex;
+			player playMove (_animations select _animationIndex);
+		};
 	};
 	_stopBleeding = getNumber (_consumingConfig >> "stopBleeding");
 	if (_stopBleeding isEqualTo 1) then
@@ -103,7 +107,7 @@ if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> 
 	};
 	if( _feedbackString != "") then
 	{
-		["ItemConsumedInformation", [_feedbackString]] call ExileClient_gui_notification_event_addNotification;
+		["SuccessTitleAndText", ["Consumed item!", _feedbackString]] call ExileClient_gui_toaster_addTemplateToast;
 	};
 };
 true

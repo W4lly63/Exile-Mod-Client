@@ -20,17 +20,21 @@ try
 	{
 		throw false;
 	};
-	{
-		player reveal _x;
-	}
-	forEach (player nearObjects  ["Exile_Construction_Abstract_Static", 13]);
 	_object = cursorTarget;
 	if (isNull _object) then 
 	{
-		throw false;
+		_object = cursorObject;
+		if (isNull _object) then 
+		{
+			throw false;
+		};
 	};
 	if (_object isEqualTo ExileClientInteractionObject) then 
 	{
+		if ((time - ExileClientInteractionLastHookTime) > 90) then 
+		{
+			throw false;
+		};
 	}
 	else 
 	{

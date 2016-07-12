@@ -12,7 +12,7 @@
 disableSerialization;
 if (alive player) then
 {
-	[["Exile", "BambiStateEnded"], 15, "", 35, "", true, false, true, true] call BIS_fnc_advHint;
+	["InfoTitleOnly", ["Your Bambi state expired!"]] call ExileClient_gui_toaster_addTemplateToast;
 	["endBambiStateRequest"] call ExileClient_system_network_send;	
 };
 [ExileClientEndBambiStateThread] call ExileClient_system_thread_removeTask;

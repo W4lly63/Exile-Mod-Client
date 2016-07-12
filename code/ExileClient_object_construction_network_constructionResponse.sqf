@@ -14,5 +14,5 @@ _objectNetID = _this select 0;
 _object = objectFromNetId _objectNetID;
 ExileClientConstructionObject = _object;
 ExileClientConstructionCanPlaceObject = false;
-[] spawn ExileClient_construction_modeBase_thread;
+[] spawn ExileClient_construction_thread;
 true

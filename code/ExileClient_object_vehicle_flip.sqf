@@ -11,6 +11,8 @@
  
 private["_vehicle","_pos"];
 _vehicle = _this select 0;
+if (isEngineOn _vehicle) exitWith {false};
+if ((locked _vehicle) isEqualTo 2) exitWith {false};
 if (local _vehicle) then
 {
 	_pos = getPosATL _vehicle;

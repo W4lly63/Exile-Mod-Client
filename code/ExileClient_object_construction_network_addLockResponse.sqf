@@ -12,12 +12,12 @@
 private["_pincode"];
 _pincode = _this select 0;
 [player, "Exile_Item_Codelock"] call ExileClient_util_playerCargo_remove;
-if (isStreamFriendlyUIEnabled) then 
+if (profileNameSpace getVariable ["ExileStreamFriendlyUI", false]) then
 {
-	["Success",[format ["Lock added, Pincode: ****"]]] call ExileClient_gui_notification_event_addNotification;
+	["SuccessTitleAndText", ["Lock has been added!", "We do not show you the PIN in streamer friendly mode."]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else 
 {
-	["Success",[format ["Lock added, Pincode: %1","1234"]]] call ExileClient_gui_notification_event_addNotification;
+	["SuccessTitleAndText", ["Lock has been added!", format ["Your PIN is %1.", _pincode]]] call ExileClient_gui_toaster_addTemplateToast;
 };
 true

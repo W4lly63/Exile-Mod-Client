@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_timeElapsed","_forcedBodyTemperatureChangePerMinute","_wetnessChangePerMinute","_altitude","_isSwimming","_bodyTemperature","_bodyWetness","_temperatureConfig","_fromDayTimeTemperature","_toDayTimeTemperature","_environmentTemperature","_isFireNearby","_startPosition","_endPosition","_intersections","_isBelowRoof","_clothingColdProtection","_movementInfluence","_regulation","_environmentInfluence"];
+private["_timeElapsed","_forcedBodyTemperatureChangePerMinute","_wetnessChangePerMinute","_altitude","_isSwimming","_bodyTemperature","_bodyWetness","_temperatureConfig","_fromDayTimeTemperature","_toDayTimeTemperature","_environmentTemperature","_playerIsInVehicle","_playerVehicle","_isFireNearby","_startPosition","_endPosition","_intersections","_isBelowRoof","_clothingColdProtection","_movementInfluence","_regulation","_environmentInfluence"];
 _timeElapsed = _this;
 _forcedBodyTemperatureChangePerMinute = 0;
 _wetnessChangePerMinute = -0.1;
@@ -30,9 +30,25 @@ if (_isSwimming) then
 	_environmentTemperature = _environmentTemperature + (getNumber (_temperatureConfig >> "water"));
 };
 ExileClientEnvironmentTemperature = _environmentTemperature;
-if !((vehicle player) isEqualTo player) then 
+_playerIsInVehicle = false;
+_playerVehicle = vehicle player;
+if !(_playerVehicle isEqualTo player) then 
 {
-	if (isEngineOn (vehicle player)) then 
+	try 
+	{
+		if (_playerVehicle isKindOf "Exile_Bike_QuadBike_Abstract") throw false;
+		if (_playerVehicle isKindOf "Exile_Bike_OldBike") throw false;
+		if (_playerVehicle isKindOf "Exile_Bike_MountainBike") throw false;
+		throw true;
+	}
+	catch
+	{
+		_playerVehicle = _exception;
+	};
+};
+if (_playerIsInVehicle) then 
+{
+	if (isEngineOn _playerVehicle) then 
 	{
 		_forcedBodyTemperatureChangePerMinute = 0.5; 
 		_wetnessChangePerMinute = -0.5; 

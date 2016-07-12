@@ -17,7 +17,7 @@ if(_canAdd)then
 }
 else
 {	
-	["InventoryFullWarning"] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Your inventory is full!", "You need more inventory space to carry a flag."]] call ExileClient_gui_toaster_addTemplateToast;
 };
 closeDialog 0;
 true

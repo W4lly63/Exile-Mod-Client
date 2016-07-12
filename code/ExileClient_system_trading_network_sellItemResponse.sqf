@@ -9,9 +9,9 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_responseCode","_newPlayerMoneyString","_itemClassName","_quantity","_containerType","_containerNetID","_newPlayerRespectString","_newPlayerMoney","_sellPrice","_newPlayerRespect","_respect","_containersBefore","_containersAfter","_vehicle","_dialog","_inventoryListBox","_selectedIndex"];
+private["_responseCode","_sellPrice","_itemClassName","_quantity","_containerType","_containerNetID","_newPlayerRespectString","_newPlayerRespect","_respect","_containersBefore","_containersAfter","_vehicle","_dialog","_inventoryListBox","_selectedIndex"];
 _responseCode = _this select 0;
-_newPlayerMoneyString = _this select 1;
+_sellPrice = _this select 1;
 _itemClassName = _this select 2;
 _quantity  = _this select 3;
 _containerType = _this select 4;
@@ -20,9 +20,6 @@ _newPlayerRespectString = _this select 6;
 ExileClientIsWaitingForServerTradeResponse = false;
 if (_responseCode isEqualTo 0) then
 {
-	_newPlayerMoney = parseNumber _newPlayerMoneyString;
-	_sellPrice = _newPlayerMoney - ExileClientPlayerMoney;
-	ExileClientPlayerMoney = _newPlayerMoney;
 	_newPlayerRespect = parseNumber _newPlayerRespectString;
 	_respect = _newPlayerRespect - ExileClientPlayerScore;
 	ExileClientPlayerScore = _newPlayerRespect;
@@ -58,11 +55,11 @@ if (_responseCode isEqualTo 0) then
 	};
 	if (_respect isEqualTo 0) then
 	{
-		["ItemSoldInformation", [_sellPrice]] call ExileClient_gui_notification_event_addNotification;
+		["SuccessTitleAndText", ["Item sold!", format ["+%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _sellPrice]]] call ExileClient_gui_toaster_addTemplateToast;
 	}
 	else 
 	{
-		["ItemSoldInformationWithRespect", [_sellPrice, _respect]] call ExileClient_gui_notification_event_addNotification;
+		["SuccessTitleAndText", ["Item sold!", format ["+%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/><br/>+%2 respect", _sellPrice, _respect]]] call ExileClient_gui_toaster_addTemplateToast;
 	};
 	_dialog = uiNameSpace getVariable ["RscExileTraderDialog", displayNull];
 	if !(_dialog isEqualTo displayNull) then
@@ -71,6 +68,7 @@ if (_responseCode isEqualTo 0) then
 		_selectedIndex = lbCurSel _inventoryListBox;
 		call ExileClient_gui_traderDialog_updateInventoryListBox;
 		call ExileClient_gui_traderDialog_updatePlayerControls;
+		call ExileClient_gui_traderDialog_updateStoreListBox;
 		_inventoryListBox lbSetCurSel (_selectedIndex min (lbSize _inventoryListBox));
 	};
 }

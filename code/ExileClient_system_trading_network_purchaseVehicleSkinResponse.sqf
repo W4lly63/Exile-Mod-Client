@@ -9,15 +9,12 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_responseCode","_newPlayerMoneyString","_newPlayerMoney","_salesPrice"];
+private["_responseCode","_salesPrice"];
 _responseCode = _this select 0;
-_newPlayerMoneyString = _this select 1;
+_salesPrice = _this select 1;
 if (_responseCode isEqualTo 0) then
 {
-	_newPlayerMoney = parseNumber _newPlayerMoneyString;
-	_salesPrice = ExileClientPlayerMoney - _newPlayerMoney;
-	ExileClientPlayerMoney = _newPlayerMoney;
-	["VehicleSkinPurchasedInformation", [_salesPrice * -1]] call ExileClient_gui_notification_event_addNotification;
+	["SuccessTitleAndText", ["Vehicle skin purchased!", format ["+%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _salesPrice]]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else 
 {

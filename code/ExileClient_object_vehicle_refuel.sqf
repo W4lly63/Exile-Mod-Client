@@ -18,7 +18,7 @@ _override = false;
 	_fuelDetails = _vehicle call ExileClient_util_fuel_getRealFuel;
 	if((_fuelDetails select 0) isEqualTo (_fuelDetails select 1))exitWith
 	{
-		["VehicleRefulingFailedFull"] call ExileClient_gui_notification_event_addNotification;
+		["ErrorTitleAndText", ["Failed to refuel!", "This vehicle is already full."]] call ExileClient_gui_toaster_addTemplateToast;
 		_override = true;
 	};
 	if((_x select 0) isEqualTo "Exile_Item_FuelCanisterFull")then
@@ -60,13 +60,13 @@ if(_removed)then
 	{
 		["setFuelRequest",[netId _vehicle,_amount]] call ExileClient_system_network_send;
 	};
-	["VehicleRefuled", [format ["Vehicle refuled for: %1L",_amount]]] call ExileClient_gui_notification_event_addNotification;
+	["SuccessTitleAndText", ["Vehicle refueled!", format ["You have added %1L more fuel.", _amount]]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else
 {
 	if!(_override)then
 	{
-		["VehicleRefulingFailed"] call ExileClient_gui_notification_event_addNotification;
+		["ErrorTitleAndText", ["Failed to refuel!", "You are missing a full fuel canister."]] call ExileClient_gui_toaster_addTemplateToast;
 	};
 };
 true

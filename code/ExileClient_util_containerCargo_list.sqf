@@ -30,7 +30,7 @@ if !(isNil "_weapons") then
 			_itemClassName = "";
 			if ((typeName _x) isEqualTo "STRING") then
 			{
-				_itemClassName = _x,
+				_itemClassName = _x;
 			}
 			else 
 			{

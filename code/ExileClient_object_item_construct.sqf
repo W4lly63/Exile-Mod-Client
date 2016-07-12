@@ -11,6 +11,7 @@
  
 private["_itemClassName","_minimumDistanceToTraderZones","_minimumDistanceToSpawnZones","_maximumNumberOfTerritoriesPerPlayer","_numberOfTerritories"];
 _itemClassName = _this select 0;
+if !(_itemClassName in (magazines player)) exitWith {false};
 if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> "Constructing") ) then
 {
 	if (findDisplay 602 != displayNull) then
@@ -21,17 +22,25 @@ if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> 
 	{
 		if !((vehicle player) isEqualTo player) then
 		{
-			throw "ConstructionVehicleWarning";  
+			throw "You cannot build while in a vehicle.";  
 		};
 		_minimumDistanceToTraderZones = getNumber (missionConfigFile >> "CfgTerritories" >> "minimumDistanceToTraderZones");
 		if ([player, _minimumDistanceToTraderZones] call ExileClient_util_world_isTraderZoneInRange) then
 		{
-			throw "ConstructionTraderZoneWarning";
+			throw "You are too close to a safe zone.";
+		};
+		if (player call ExileClient_util_world_isInNonConstructionZone) then 
+		{
+			throw "Building is disallowed here on this server.";
+		};
+		if (player call ExileClient_util_world_isInConcreteMixerZone) then 
+		{
+			throw "You are too close to a concrete mixer zone.";
 		};
 		_minimumDistanceToSpawnZones = getNumber (missionConfigFile >> "CfgTerritories" >> "minimumDistanceToSpawnZones");
 		if ([player, _minimumDistanceToSpawnZones] call ExileClient_util_world_isSpawnZoneInRange) then
 		{
-			throw "ConstructionSpawnZoneWarning";
+			throw "You are too close to a spawn zone.";
 		};
 		if(_itemClassName isEqualTo "Exile_Item_Flag") then 
 		{ 
@@ -39,7 +48,7 @@ if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> 
 			_numberOfTerritories = player call ExileClient_util_territory_getNumberOfTerritories;
 			if (_numberOfTerritories >= _maximumNumberOfTerritoriesPerPlayer) then
 			{
-				throw "MaximumNumberOfTerritoriesReached";
+				throw "You have reached the maximum number of territories you can own.";
 			};
 			call ExileClient_gui_setupTerritoryDialog_show;
 		}
@@ -50,7 +59,7 @@ if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> 
 	}
 	catch 
 	{
-		[_exception] call ExileClient_gui_notification_event_addNotification;
+		["ErrorTitleAndText", ["Construction aborted!", _exception]] call ExileClient_gui_toaster_addTemplateToast;
 	};
 };
 true

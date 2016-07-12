@@ -22,11 +22,11 @@ switch (ExileClientConstructionResult) do
 		[ExileClientConstructionObject, getText (ExileClientConstructionConfig >> "staticObject"), _simulatePhysics] spawn ExileClient_construction_simulationCountDown;
 		if (getText (ExileClientConstructionConfig >> "staticObject") isEqualTo "Exile_Container_Safe") then 
 		{
-			["SafePlacedInformation"] call ExileClient_gui_notification_event_addNotification;
+			["SuccessTitleAndText", ["Placed safe!", "The PIN has been set to 0000."]] call ExileClient_gui_toaster_addTemplateToast;
 		}
 		else
 		{
-			["ConstructionPlacedInformation", [ExileClientConstructionObjectDisplayName]] call ExileClient_gui_notification_event_addNotification;
+			["SuccessTitleAndText", ["Placed object!", format ["You have successfully placed a %1.", ExileClientConstructionObjectDisplayName]]] call ExileClient_gui_toaster_addTemplateToast;
 		};
 	};
 	case 3:
@@ -39,7 +39,7 @@ switch (ExileClientConstructionResult) do
 		{
 			deleteVehicle ExileClientConstructionObject;
 		};
-		["ConstructionMovedTooFarWarning", [ExileClientConstructionObjectDisplayName]] call ExileClient_gui_notification_event_addNotification;
+		["ErrorTitleAndText", ["Construction aborted!", "Do not move more than 20 meters."]] call ExileClient_gui_toaster_addTemplateToast;
 	};
 	case 2:
 	{
@@ -53,11 +53,11 @@ switch (ExileClientConstructionResult) do
 		};
 		if (ExileClientPlayerIsInCombat) then
 		{
-			["ConstructionAbortedCombat"] call ExileClient_gui_notification_event_addNotification;
+			["ErrorTitleAndText", ["Construction aborted!", "You cannot build during a combat."]] call ExileClient_gui_toaster_addTemplateToast;
 		}
 		else
 		{
-			["ConstructionAbortedInformation", [ExileClientConstructionObjectDisplayName]] call ExileClient_gui_notification_event_addNotification;
+			["ErrorTitleOnly", ["Construction aborted!"]] call ExileClient_gui_toaster_addTemplateToast;
 		};		
 	};
 };
@@ -66,5 +66,4 @@ ExileClientIsInConstructionMode = false;
 ExileClientConstructionResult = 0;
 ExileClientConstructionProcess = 0;
 ExileClientConstructionLock = false;
-hintSilent "";
 true

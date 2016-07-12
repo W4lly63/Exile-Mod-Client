@@ -15,9 +15,9 @@ _foundObject = objNull;
 _objects = lineIntersectsWith [eyePos player, ATLtoASL (player modelToWorld [0, 3, 0]), player, objNull, true];
 {
 	_object = _x;
-	_objectClassName = str(_object);
+	_objectClassName = toLower (str _object);
 	{
-		if ((_objectClassName find _x) != -1) exitWith
+		if ((_objectClassName find (toLower _x)) != -1) exitWith
 		{ 
 			_foundObject = _object;
 		};

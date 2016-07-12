@@ -35,7 +35,7 @@ if ((ExileClientXM8ConfirmResult) && !(_flag getVariable "ExileRadiusShown")) th
 }
 else
 {
-	_objects = _flag getVariable "ExileRadiusObjects";
+	_objects = _flag getVariable ["ExileRadiusObjects", []];
 	{
 		deleteVehicle _x;
 	}

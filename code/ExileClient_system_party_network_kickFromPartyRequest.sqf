@@ -9,6 +9,6 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-_group = createGroup independent;
-[player] joinSilent _group;
+["joinLoneWolfGroupRequest", []] call ExileClient_system_network_send;
 ExileClientPartyID = -1;
+3 enableChannel false;

@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_recipeClassName","_recipeConfig","_recipeName","_pictureItemClassName","_pictureItemConfig","_recipePicture","_canCraftItem","_possibleCraftQuantity","_equippedMagazines","_components","_returnedItems","_tools","_dialog","_description","_componentQuantity","_componentItemClassName","_componentItemName","_equippedComponentQuantity","_toolItemClassName","_toolItemName","_equippedToolQuantity","_interactionModelGroupClassName","_interactionModelGroupConfig","_interactionModelGroupName","_interactionModelGroupModels","_foundObject","_i","_listBoxIndex"];
+private["_recipeClassName","_recipeConfig","_recipeName","_pictureItemClassName","_pictureItemConfig","_recipePicture","_canCraftItem","_possibleCraftQuantity","_equippedMagazines","_components","_returnedItems","_tools","_dialog","_description","_componentQuantity","_componentItemClassName","_componentItemName","_equippedComponentQuantity","_toolItemClassName","_toolItemName","_equippedToolQuantity","_concreteMixer","_interactionModelGroupClassName","_interactionModelGroupConfig","_interactionModelGroupName","_interactionModelGroupModels","_foundObject","_i","_listBoxIndex"];
 _recipeClassName = _this;
 _recipeConfig = missionConfigFile >> "CfgCraftingRecipes" >> _recipeClassName;
 _recipeName = getText(_recipeConfig >> "name");
@@ -91,6 +91,21 @@ if ( getNumber(_recipeConfig >> "requiresFire") == 1 ) then
 	};
 	_description = _description + "<br/>";
 };
+if ( getNumber(_recipeConfig >> "requiresConcreteMixer") == 1 ) then
+{
+	_description = _description + format["<t size='1' font='puristaMedium' align='left'>%1</t>", "Concrete Mixer"];
+	_concreteMixer = (ASLtoAGL (getPosASL player)) call ExileClient_util_world_getNearestConcreteMixer;
+	if (isNull _concreteMixer) then 
+	{
+		_description = _description + format["<t size='1' font='puristaMedium' align='right' color='%1'>%2</t>", "#ea0000", "NOT FOUND"];
+		_canCraftItem = false;
+	}
+	else 
+	{
+		_description = _description + format["<t size='1' font='puristaMedium' align='right' color='%1'>%2</t>", "#b2ec00", "FOUND"];
+	};
+	_description = _description + "<br/>";
+};
 _interactionModelGroupClassName = getText(_recipeConfig >> "requiredInteractionModelGroup");
 if( _interactionModelGroupClassName != "" ) then
 {
@@ -128,6 +143,10 @@ if !([_components, _returnedItems] call ExileClient_util_inventory_canExchangeIt
 };
 if( _canCraftItem ) then 
 {
+	if ( getNumber(_recipeConfig >> "requiresConcreteMixer") isEqualTo 1 ) then
+	{
+		_possibleCraftQuantity = 1;
+	};
 	switch (_possibleCraftQuantity) do
 	{
 		case 1:

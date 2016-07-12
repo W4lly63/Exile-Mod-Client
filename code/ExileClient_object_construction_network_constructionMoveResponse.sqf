@@ -15,10 +15,9 @@ _objectClass = _this select 1;
 if(_response)then
 {
 	_objectClass call ExileClient_construction_beginExistingObject;
-	["Success",["Object Owned by you! Moving ALLOWED!"]] call ExileClient_gui_notification_event_addNotification;
 }
 else
 {
-	["Whoops",["Object Owned by NOT you! Moving DISALOWED!"]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Construction aborted!", "Please try again."]] call ExileClient_gui_toaster_addTemplateToast;
 };
 true

@@ -30,5 +30,5 @@ try
 }
 catch 
 {
-	hint _exception;
+	["ErrorTitleOnly", [_exception]] call ExileClient_gui_toaster_addTemplateToast;
 };

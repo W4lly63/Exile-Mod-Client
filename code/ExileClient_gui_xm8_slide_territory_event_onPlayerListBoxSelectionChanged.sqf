@@ -23,23 +23,32 @@ _demoteButton = _display displayCtrl 4137;
 _flag = objectFromNetId (_territoryDropDown lbData (lbCurSel _territoryDropDown));
 _myRights = [_flag,getPlayerUID player] call ExileClient_util_territory_getAccessLevel;
 _dudesRights = [_flag,_playerUID] call ExileClient_util_territory_getAccessLevel;
-switch (_myRights select 0) do { 
-	case 3 : 
-	{  
-		if((_dudesRights select 0) isEqualTo 2)then
+if (_playerUID isEqualTo (getPlayerUID player)) then 
+{
+	_promoteButton ctrlEnable false;
+	_demoteButton ctrlEnable false;
+}
+else 
+{
+	switch (_myRights select 0) do 
+	{ 
+		case 3: 
+		{  
+			if((_dudesRights select 0) isEqualTo 2)then
+			{
+				_promoteButton ctrlEnable false;
+				_demoteButton ctrlEnable true;
+			}
+			else
+			{
+				_promoteButton ctrlEnable true;
+				_demoteButton ctrlEnable false;
+			};
+		}; 
+		default 
 		{
 			_promoteButton ctrlEnable false;
-			_demoteButton ctrlEnable true;
-		}
-		else
-		{
-			_promoteButton ctrlEnable true;
 			_demoteButton ctrlEnable false;
 		};
-	}; 
-	default 
-	{
-		_promoteButton ctrlEnable false;
-		_demoteButton ctrlEnable false;
 	};
 };

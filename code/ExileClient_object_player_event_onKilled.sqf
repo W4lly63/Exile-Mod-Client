@@ -41,6 +41,10 @@ if !(ExileClientBreakFreeActionHandle isEqualTo -1) then
 };
 ExileClientIsHandcuffed = false;
 ExileClientHostageTaker = objNull;
+ExileClientNotificationQueue = [];
+ExileIsPlayingRussianRoulette = false;
+ExileRussianRouletteChair = false;
+[] call ExileClient_gui_russianRoulette_hide;
 [] call ExileClient_system_breathing_event_onPlayerDied;
 [] call ExileClient_system_snow_event_onPlayerDied;
 [] call ExileClient_system_radiation_event_onPlayerDied;

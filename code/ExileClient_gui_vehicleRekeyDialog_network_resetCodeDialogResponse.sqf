@@ -18,6 +18,6 @@ if (_responseCode isEqualTo "Reset Code") then
 }
 else 
 {
-	["Whoops", [format["Failed to reset code."]]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Failed to change PIN!", "Please try again or contact a server admin."]] call ExileClient_gui_toaster_addTemplateToast;
 };
 true

@@ -26,14 +26,23 @@ if (ExilePlayerInSafezone) then
 }
 else 
 {
-	if (_ammo isKindOf "Exile_Ammo_Swing") then
+	switch (_weapon) do 
 	{
-		player playActionNow "GestureAxeSwing01";
-		[] call ExileClient_object_tree_chop;
-	}
-	else 
-	{
-		if (_weapon isEqualTo "Put") then
+		case "Exile_Melee_Axe":
+		{
+			player playActionNow "GestureExileAxeSwing01";
+			[] call ExileClient_object_tree_chop;
+		};
+		case "Exile_Melee_Shovel":
+		{
+			player playActionNow "GestureExileSledgeHammerSwing01";
+		};
+		case "Exile_Melee_SledgeHammer":
+		{
+			player playActionNow "GestureExileSledgeHammerSwing01";
+			[] call ExileClient_object_shippingContainer_smash;
+		};
+		case "Put":
 		{
 			if (_magazine in ["DemoCharge_Remote_Mag", "SatchelCharge_Remote_Mag"]) then
 			{
@@ -71,15 +80,15 @@ else
 					};
 				};
 			};
-		}
-		else 
+		};
+		case "Throw":
 		{
-			if !(_weapon isEqualTo "Throw") then
-			{
-				ExileClientPlayerIsInCombat = true;
-				ExileClientPlayerLastCombatAt = diag_tickTime;
-				true call ExileClient_gui_hud_toggleCombatIcon;
-			};
+		};
+		default 
+		{
+			ExileClientPlayerIsInCombat = true;
+			ExileClientPlayerLastCombatAt = diag_tickTime;
+			true call ExileClient_gui_hud_toggleCombatIcon;
 		};
 	};
 };

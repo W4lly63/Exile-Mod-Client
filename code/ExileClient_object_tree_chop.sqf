@@ -18,8 +18,5 @@ if (!isNull _tree) then
 	{
 		["chopTreeRequest", [(netId _tree)]] call ExileClient_system_network_send;
 	};
-}
-else 
-{
 };
 true

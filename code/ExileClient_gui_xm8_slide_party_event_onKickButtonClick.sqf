@@ -18,7 +18,7 @@ _playerNetID = _listBox lbData _index;
 _playerName = _listBox lbText _index;
 [format ["Kick %1?", _playerName], "Kick", "Don't kick"] call ExileClient_gui_xm8_showConfirm;
 waitUntil { !(isNil "ExileClientXM8ConfirmResult") };
-if (ExileClientXM8ConfirmResult isEqualTo true) then
+if (ExileClientXM8ConfirmResult) then
 {
 	["kickFromPartyRequest", [_playerNetID]] call ExileClient_system_network_send;
 	_listBox lbDelete _index;

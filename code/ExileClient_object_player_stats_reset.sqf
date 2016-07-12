@@ -36,7 +36,6 @@ ExileClientPlayerIsSpawned = false;
 ExileClientPlayerIsInfantry = true;			
 ExileClientPlayerVelocity = 0;
 ExileClientPlayerScore = 0;
-ExileClientPlayerMoney = 0;
 ExileClientPlayerKills = 0;
 ExileClientPlayerDeaths = 0;
 ExileClientPlayerIsInCombat = false;			
@@ -57,4 +56,7 @@ ExileClientPlayerIsBambi = false;
 ExileClientPlayerBambiStateExpiresAt = 0;
 ExileClientEarplugsInserted = false;
 ExileClientIsHandcuffed = false;
+ExileIsPlayingRussianRoulette = false;
+ExileRussianRouletteHudVisible = false;
+ExileRussianRouletteChair = objNull;
 true

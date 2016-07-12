@@ -11,8 +11,8 @@
  
 private["_vehicleID","_newPinCode"];
 _vehicleID = _this;
-["Success","Enter NEW lock code:"] call ExileClient_gui_notification_event_addNotification;
+["InfoTitleOnly", ["Please enter the new PIN!"]] call ExileClient_gui_toaster_addTemplateToast;
 _newPinCode = 4 call ExileClient_gui_keypadDialog_show;
-if(_newPinCode isEqualTo "")exitWith {"Exiting with no new pin code." call ExileClient_util_log;};
+if(_newPinCode isEqualTo "")exitWith {"Exiting with no new PIN." call ExileClient_util_log;};
 ["rekeyVehicleRequest",[_vehicleID,_newPinCode]] call ExileClient_system_network_send;
 true

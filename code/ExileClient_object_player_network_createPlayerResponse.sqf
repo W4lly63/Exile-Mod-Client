@@ -9,10 +9,10 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_player","_chuteNetID","_spawnType","_chute","_corpseGroup"];
+private["_player","_chuteNetID","_spawnType","_chute"];
 _player = _this select 0;
 _chuteNetID = _this select 1;
-_spawnType = _this select 11;
+_spawnType = _this select 10;
 if !(_chuteNetID isEqualTo "") then
 {
 	_chute = objectFromNetId _chuteNetID;
@@ -45,13 +45,16 @@ switch (_spawnType) do
 	case 1:
 	{
 		player action ["GetinDriver", _chute];
-		[["Exile", "ParachuteLandingSpeed"], 15, "", 35, "", true, false, true, true] call BIS_fnc_advHint;
+		["InfoTitleAndText", ["Watch your landing speed!", "Going faster than 20km/h might kill you."]] call ExileClient_gui_toaster_addTemplateToast;
 		ExileJobParachuteFix = [0.25, ExileClient_object_player_parachuteFix, [], true] call ExileClient_system_thread_addtask;
 	};
 	case 2:
 	{
-		player switchmove "";
-		player switchmove "HaloFreeFall_non"; 
+		["InfoTitleAndText", ["Watch your landing speed!", "Going faster than 20km/h might kill you."]] call ExileClient_gui_toaster_addTemplateToast;
+		player switchMove "";
+		player playMoveNow "HaloFreeFall_non"; 
+		player playMoveNow "HaloFreeFall_non";
+		player playMoveNow "HaloFreeFall_non";
 		player setVelocity [(sin (getDir player)) * 50, (cos (getDir player)) * 50, -5];
 		ExileJobParachuteFix = [0.25, ExileClient_object_player_parachuteFix, [], true] call ExileClient_system_thread_addtask;
 	};
@@ -59,19 +62,29 @@ switch (_spawnType) do
 call ExileClient_object_player_initStamina;
 false call ExileClient_gui_hud_showSurvivalInfo;
 call ExileClient_system_rating_balance;
-ExileClientPlayerMoney = parseNumber (_this select 2);
-ExileClientPlayerScore = parseNumber (_this select 3);
-ExileClientPlayerKills = _this select 4;
-ExileClientPlayerDeaths = _this select 5;
-ExileClientClanName = _this select 10;
+ExileClientPlayerScore = parseNumber (_this select 2);
+ExileClientPlayerKills = _this select 3;
+ExileClientPlayerDeaths = _this select 4;
+(_this select 9) call ExileClient_system_clan_network_updateClanInfoFull;
+if!((_this select 9) isEqualTo [])then
+{
+	if!(isNull ((_this select 9) select 5))then
+	{
+		ExileClientPartyID = netid ((_this select 9) select 5);
+	};
+};
 if !(ExileClientPartyID isEqualTo -1) then
 {
-	if !(isNull ExileClientLastDiedPlayerObject) then
-	{	
-		_corpseGroup = createGroup independent;
-		[ExileClientLastDiedPlayerObject] joinSilent _corpseGroup;
-	};
 	[player] joinSilent (groupFromNetId ExileClientPartyID);
+	3 enableChannel true;
+}
+else 
+{
+	3 enableChannel false;
 };
-(_this select 9) call ExileClient_object_player_bambiStateBegin;
+if !(isNull ExileClientLastDiedPlayerObject) then
+{	
+	[ExileClientLastDiedPlayerObject] joinSilent (createGroup independent);
+};
+(_this select 8) call ExileClient_object_player_bambiStateBegin;
 true

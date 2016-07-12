@@ -33,22 +33,23 @@ _buildRights = _flag getVariable ["ExileTerritoryBuildRights", []];
 	_playerListBox lbAdd _text;
 	_playerListBox lbSetTooltip [_forEachIndex, (_playerTerritoryAccess select 1)];
 	_playerListBox lbSetData [_forEachIndex, _playerUID];
+	if (_playerUID isEqualTo (getPlayerUID player)) then
+	{
+		_playerListBox lbSetColor [_forEachIndex, [0/255, 178/255, 205/255, 1]];
+	};
 	switch (_playerTerritoryAccess select 0) do
 	{
 		case 3:		
 		{
 			_playerListBox lbSetPicture [_forEachIndex, "\a3\ui_f\data\gui\cfg\Ranks\sergeant_gs.paa"];
-			_playerListBox lbSetPictureColor [_forEachIndex, [0.91, 0, 0, 0.6]];
 		};
 		case 2:
 		{
 			_playerListBox lbSetPicture [_forEachIndex, "\a3\ui_f\data\gui\cfg\Ranks\corporal_gs.paa"];
-			_playerListBox lbSetPictureColor [_forEachIndex, [0, 0.78, 0.93, 0.6]];
 		};
 		default
 		{
 			_playerListBox lbSetPicture [_forEachIndex, "\a3\ui_f\data\gui\cfg\Ranks\private_gs.paa"];
-			_playerListBox lbSetPictureColor [_forEachIndex, [0.7, 0.93, 0, 0.6]];
 		};
 	};
 } 
@@ -80,5 +81,14 @@ _dateTimeString = format
 	_nextProtectionMoneyDueDate select 4
 ];
 _territoryPayDayInfo = _display displayCtrl 4133;
-_territoryPayDayInfo ctrlSetText (format ["Protection Money Due Date: %1", _dateTimeString]);
+if ((_flag getVariable ["ExileFlagStolen", 0]) isEqualTo 1) then 
+{
+	_territoryPayDayInfo ctrlSetTextColor [0.91, 0, 0, 1];
+	_territoryPayDayInfo ctrlSetText "FLAG HAS BEEN STOLEN!!!";
+}
+else 
+{
+	_territoryPayDayInfo ctrlSetTextColor [1, 1, 1, 1];
+	_territoryPayDayInfo ctrlSetText (format ["Protection Money Due Date: %1", _dateTimeString]);
+};
 true

@@ -11,7 +11,10 @@
  
 private["_hasChanges"];
 ExileHudIsVisible = false;
-ExileHudEventHandle = -1;
+if (isNil "ExileHudEventHandle") then 
+{
+	ExileHudEventHandle = -1;
+};
 ExileHudLastSpeedRenderedAt = diag_tickTime;
 ExileHudLastGroupRenderedAt = diag_tickTime;
 ExileHudStatsRenderedAt = diag_tickTime;
@@ -23,6 +26,7 @@ ExileHudLastRenderedVehicleFuelTankSize = 0;
 ExileHudMode = 0;
 ExileLayerGasMask = ("RscExileGaskMaskLayer" call BIS_fnc_rscLayer);
 ExileLayerHUD = ("RscExileHUDLayer" call BIS_fnc_rscLayer);
+ExileLayerRussianRoulette = ("RscExileRussianRouletteLayer" call BIS_fnc_rscLayer);
 inGameUISetEventHandler ["Action", "_this call ExileClient_gui_hud_event_onAction"];
 _hasChanges = false;
 {

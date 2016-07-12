@@ -17,7 +17,7 @@ if (_result) then
 {
 	if (ExileClientPlayerIsInCombat) then
 	{
-		["ConstructionAbortedCombat"] call ExileClient_gui_notification_event_addNotification;
+		["ErrorTitleAndText", ["Construction aborted!", "You cannot build during a combat."]] call ExileClient_gui_toaster_addTemplateToast;
 	}
 	else
 	{

@@ -9,8 +9,8 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-isNumber(configFile >> "CfgVehicles" >> (typeOf ExileClientInteractionObject) >> "ExileIsDoor")
+isNumber(configFile >> "CfgVehicles" >> (typeOf ExileClientInteractionObject) >> "exileIsDoor")
 &&
 ((ExileClientInteractionObject getVariable ["ExileIsLocked",""]) isEqualTo "")
 &&
-("Exile_Item_Codelock" in (player call ExileClient_util_playerCargo_list))
+("Exile_Item_Codelock" in (magazines player))

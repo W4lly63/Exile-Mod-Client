@@ -15,7 +15,7 @@ _interactionModelGroupName = _this select 1;
 _result = false;
 _modelNames = getArray(missionConfigFile >> "CfgInteractionModels" >> _interactionModelGroupName >> "models");
 {
-	if ((str(_model) find _x) != -1) exitWith
+	if (((toLower (str _model)) find (toLower _x)) != -1) exitWith
 	{
 		_result = true;
 	};

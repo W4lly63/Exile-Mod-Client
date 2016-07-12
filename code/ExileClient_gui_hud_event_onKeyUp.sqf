@@ -81,7 +81,7 @@ switch (_keyCode) do
 	case 0x0E: 	{ _stopPropagation = true; };
 	case 0x02: 	
 	{ 
-		if !(ExileClientIsHandcuffed) then 
+		if !(ExileClientIsHandcuffed || ExileIsPlayingRussianRoulette) then 
 		{
 			if (ExileClientIsInConstructionMode) then
 			{
@@ -107,7 +107,7 @@ switch (_keyCode) do
 	};
 	case 0x03: 	
 	{ 
-		if !(ExileClientIsHandcuffed) then 
+		if !(ExileClientIsHandcuffed || ExileIsPlayingRussianRoulette) then 
 		{
 			if (ExileClientIsInConstructionMode) then
 			{
@@ -133,7 +133,7 @@ switch (_keyCode) do
 	};
 	case 0x04: 	
 	{ 
-		if !(ExileClientIsHandcuffed) then 
+		if !(ExileClientIsHandcuffed || ExileIsPlayingRussianRoulette) then 
 		{
 			if (ExileClientIsInConstructionMode) then
 			{
@@ -143,7 +143,7 @@ switch (_keyCode) do
 					{
 						ExileClientConstructionCurrentSnapToObject = objNull; 
 						ExileClientConstructionPossibleSnapPositions = [];
-						hintSilent "Look at the object you want to snap to, press SPACE to lock on it and then move your object next to a snap point. Press SPACE again to place object.";
+						["InfoTitleAndText", ["Snap Mode", "Look at the object you want to snap to, press SPACE to lock on it and then move your object next to a snap point. Press SPACE again to place the object."]] call ExileClient_gui_toaster_addTemplateToast;
 					};
 					ExileClientConstructionMode = 3; 
 					ExileClientConstructionIsInSelectSnapObjectMode = true;
@@ -165,12 +165,15 @@ switch (_keyCode) do
 	};
 	case 0x05: 	
 	{ 
-		if !(ExileClientIsHandcuffed) then 
+		if !(ExileClientIsHandcuffed || ExileIsPlayingRussianRoulette) then 
 		{
 			if (ExileClientIsInConstructionMode) then
 			{
-				ExileClientConstructionModePhysx = !ExileClientConstructionModePhysx;
-				[] call ExileClient_gui_constructionMode_update;
+				if !(ExileClientConstructionKitClassName isEqualTo "Exile_Item_Flag") then 
+				{
+					ExileClientConstructionModePhysx = !ExileClientConstructionModePhysx;
+					[] call ExileClient_gui_constructionMode_update;
+				};
 			}
 			else
 			{
@@ -236,16 +239,33 @@ switch (_keyCode) do
 	};
 	case 0x39:
 	{
-		if (ExileClientIsInConstructionMode) then
+		if (ExileIsPlayingRussianRoulette) then
 		{
-			if (ExileClientConstructionMode == 3) then 
+			if (ExileRussianRouletteCanFire) then 
 			{
-				if (ExileClientConstructionIsInSelectSnapObjectMode) then 
+				[] spawn ExileClient_system_russianRoulette_fire;
+			};
+		}
+		else 
+		{
+			if (ExileClientIsInConstructionMode) then
+			{
+				if (ExileClientConstructionMode == 3) then 
 				{
-					if !(isNull ExileClientConstructionCurrentSnapToObject) then
+					if (ExileClientConstructionIsInSelectSnapObjectMode) then 
 					{
-						ExileClientConstructionIsInSelectSnapObjectMode = false;
-						[] call ExileClient_gui_constructionMode_update;
+						if !(isNull ExileClientConstructionCurrentSnapToObject) then
+						{
+							ExileClientConstructionIsInSelectSnapObjectMode = false;
+							[] call ExileClient_gui_constructionMode_update;
+						};
+					}
+					else 
+					{
+						if (ExileClientConstructionCanPlaceObject) then
+						{
+							ExileClientConstructionResult = 1;
+						};
 					};
 				}
 				else 
@@ -255,22 +275,22 @@ switch (_keyCode) do
 						ExileClientConstructionResult = 1;
 					};
 				};
-			}
-			else 
-			{
-				if (ExileClientConstructionCanPlaceObject) then
-				{
-					ExileClientConstructionResult = 1;
-				};
+				_stopPropagation = true;
 			};
-			_stopPropagation = true;
 		};
 	};
 	case 0x01:
 	{
-		if (ExileClientIsInConstructionMode) then
+		if (ExileIsPlayingRussianRoulette) then 
 		{
 			_stopPropagation = true;
+		}
+		else 
+		{
+			if (ExileClientIsInConstructionMode) then
+			{
+				_stopPropagation = true;
+			};
 		};
 	};
 	case 0x10:
