@@ -1,111 +1,97 @@
 /*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, login.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start",0,250,775.000000,-350.000000,875.000000,-300.000000,0.000000,"Start"};
-item1[] = {"Skip_Devblog_",4,218,875.000000,1150.000000,975.000000,1200.000000,1.000000,"Skip" \n "Devblog?"};
-item2[] = {"Disable_user_inp",2,250,775.000000,-250.000000,875.000000,-200.000000,0.000000,"Disable" \n "user" \n "input"};
-item3[] = {"Continue",8,218,675.000000,-200.000000,775.000000,-150.000000,0.000000,"Continue"};
-item4[] = {"Skip_briefing",2,250,775.000000,-150.000000,875.000000,-100.000000,0.000000,"Skip" \n "briefing"};
-item5[] = {"Already_read",4,218,775.000000,-75.000000,875.000000,-25.000000,0.000000,"Already" \n "read"};
-item6[] = {"Briefing_visible",4,218,900.000000,-150.000000,1000.000000,-100.000000,0.000000,"Briefing" \n "visible"};
-item7[] = {"Close_briefing",2,250,900.000000,-75.000000,1000.000000,-25.000000,0.000000,"Close" \n "briefing"};
-item8[] = {"Continue",8,218,900.000000,0.000000,1000.000000,50.000000,0.000000,"Continue"};
-item9[] = {"____Show_loading",2,250,775.000000,150.000000,875.000000,200.000000,0.000000,"2% Show" \n "loading" \n "screen"};
-item10[] = {"Wait_1s",4,218,675.000000,200.000000,775.000000,250.000000,0.000000,"Wait 1s"};
-item11[] = {"____Check_ARMA_v",2,250,775.000000,250.000000,875.000000,300.000000,0.000000,"5% Check" \n "ARMA" \n "version"};
-item12[] = {"Bad_version",4,218,900.000000,250.000000,1000.000000,300.000000,0.000000,"Bad" \n "version"};
-item13[] = {"Good_version",4,218,775.000000,325.000000,875.000000,375.000000,10.000000,"Good" \n "version"};
-item14[] = {"__0__Create_player",2,250,775.000000,475.000000,875.000000,525.000000,0.000000,"10% Create" \n "player UID"};
-item15[] = {"UID_exists",4,218,775.000000,550.000000,875.000000,600.000000,10.000000,"UID" \n "exists"};
-item16[] = {"UID_missing",4,218,900.000000,475.000000,1000.000000,525.000000,0.000000,"UID" \n "missing"};
-item17[] = {"Retry_5_times",2,250,1025.000000,475.000000,1125.000000,525.000000,0.000000,"Retry" \n "5 times"};
-item18[] = {"Failed_5_times",4,218,1150.000000,475.000000,1250.000000,525.000000,10.000000,"Failed" \n "5 times"};
-item19[] = {"Wait_2s",4,218,1025.000000,400.000000,1125.000000,450.000000,0.000000,"Wait 2s"};
-item20[] = {"",7,210,821.000000,421.000031,829.000000,429.000000,0.000000,""};
-item21[] = {"Show_error_messa",2,250,1375.000000,2575.000000,1475.000000,2625.000000,0.000000,"Show" \n "error" \n "message"};
-item22[] = {"__5__Request_server",2,250,775.000000,625.000000,875.000000,675.000000,0.000000,"15% Request" \n "server" \n "version"};
-item23[] = {"Version_received",4,218,775.000000,700.000000,875.000000,750.000000,10.000000,"Version" \n "received"};
-item24[] = {"__0s_timeout",4,218,900.000000,625.000000,1000.000000,675.000000,0.000000,"30s timeout"};
-item25[] = {"__0__Check_server",2,250,775.000000,775.000000,875.000000,825.000000,0.000000,"20% Check" \n "server" \n "version"};
-item26[] = {"Good_version",4,218,775.000000,850.000000,875.000000,900.000000,10.000000,"Good" \n "version"};
-item27[] = {"Wrong_version",4,218,900.000000,775.000000,1000.000000,825.000000,0.000000,"Wrong" \n "version"};
-item28[] = {"__0__Request_character",2,250,775.000000,1525.000000,875.000000,1575.000000,0.000000,"40% Request" \n "character" \n "information"};
-item29[] = {"Information_rece",4,218,775.000000,1600.000000,875.000000,1650.000000,10.000000,"Information" \n "received"};
-item30[] = {"__0s_timeout",4,218,900.000000,1525.000000,1000.000000,1575.000000,0.000000,"30s timeout"};
-item31[] = {"__5__Wait_for__server",2,250,775.000000,925.000000,875.000000,975.000000,0.000000,"25% Wait for " \n "server to load"};
-item32[] = {"Server_up_and_ru",4,218,775.000000,1000.000000,875.000000,1050.000000,10.000000,"Server up" \n "and running"};
-item33[] = {"__20s_timeout",4,218,900.000000,925.000000,1000.000000,975.000000,0.000000,"120s timeout"};
-item34[] = {"__5__Process_character",2,250,775.000000,1675.000000,875.000000,1725.000000,0.000000,"45% Process" \n "character" \n "information"};
-item35[] = {"Bambi",4,218,775.000000,1750.000000,875.000000,1800.000000,10.000000,"Bambi"};
-item36[] = {"Existing_charact",4,218,900.000000,1675.000000,1000.000000,1725.000000,0.000000,"Existing" \n "character"};
-item37[] = {"Show_spawn_location",2,250,775.000000,2225.000000,875.000000,2275.000000,0.000000,"Show" \n "spawn location" \n "dialog"};
-item38[] = {"Location_selecte",4,218,775.000000,2300.000000,875.000000,2350.000000,0.000000,"Location" \n "selected"};
-item39[] = {"__0__Request_bambi",2,250,775.000000,2575.000000,875.000000,2625.000000,0.000000,"80% Request" \n "bambi" \n "character"};
-item40[] = {"Bambi_character",4,218,775.000000,2650.000000,875.000000,2700.000000,10.000000,"Bambi" \n "character" \n "spawned"};
-item41[] = {"__00__Hide_loading",2,250,775.000000,2725.000000,875.000000,2775.000000,0.000000,"100% Hide" \n "loading" \n "screen"};
-item42[] = {"Timeout_30s",4,218,1125.000000,2575.000000,1225.000000,2625.000000,0.000000,"Timeout 30s"};
-item43[] = {"Continue",8,218,675.000000,2775.000000,775.000000,2825.000000,0.000000,"Continue"};
-item44[] = {"Enable_user_inpu",2,250,775.000000,2825.000000,875.000000,2875.000000,0.000000,"Enable" \n "user" \n "input"};
-item45[] = {"Continue",8,218,675.000000,2875.000000,775.000000,2925.000000,0.000000,"Continue"};
-item46[] = {"Play",1,4346,775.000000,2925.000000,875.000000,2975.000000,0.000000,"Play"};
-item47[] = {"Wait_10s",4,218,1375.000000,2650.000000,1475.000000,2700.000000,0.000000,"Wait 10s"};
-item48[] = {"Hide_loading_scr",2,250,1375.000000,2725.000000,1475.000000,2775.000000,0.000000,"Hide" \n "loading" \n "screen"};
-item49[] = {"Continue",8,218,1275.000000,2775.000000,1375.000000,2825.000000,0.000000,"Continue"};
-item50[] = {"Enable_user_inpu_1",2,250,1375.000000,2825.000000,1475.000000,2875.000000,0.000000,"Enable" \n "user" \n "input"};
-item51[] = {"Continue",8,218,1275.000000,2875.000000,1375.000000,2925.000000,0.000000,"Continue"};
-item52[] = {"Disconnect",1,250,1375.000000,2925.000000,1475.000000,2975.000000,0.000000,"Disconnect"};
-item53[] = {"Enable_user_inpu_2",2,250,775.000000,1975.000000,875.000000,2025.000000,0.000000,"Enable" \n "user" \n "input"};
-item54[] = {"Continue",8,218,675.000000,2025.000000,775.000000,2075.000000,0.000000,"Continue"};
-item55[] = {"Hide_loading_scr_1",2,250,775.000000,2075.000000,875.000000,2125.000000,0.000000,"Hide" \n "loading" \n "screen"};
-item56[] = {"Disable_user_inp_1",2,250,775.000000,2475.000000,875.000000,2525.000000,0.000000,"Disable" \n "user" \n "input"};
-item57[] = {"Continue",8,218,675.000000,2425.000000,775.000000,2475.000000,0.000000,"Continue"};
-item58[] = {"__0__Show_loading",2,250,775.000000,2375.000000,875.000000,2425.000000,0.000000,"60% Show" \n "loading" \n "screen"};
-item59[] = {"Continue",8,218,675.000000,2525.000000,775.000000,2575.000000,0.000000,"Continue"};
-item60[] = {"",7,210,1421.000000,1546.000000,1429.000000,1554.000000,0.000000,""};
-item61[] = {"",7,210,1421.000000,946.000000,1429.000000,954.000000,0.000000,""};
-item62[] = {"",7,210,1421.000000,796.000000,1429.000000,804.000000,0.000000,""};
-item63[] = {"",7,210,1421.000000,946.000000,1429.000000,954.000000,0.000000,""};
-item64[] = {"",7,210,1421.000000,646.000000,1429.000000,654.000000,0.000000,""};
-item65[] = {"",7,210,1421.000000,496.000031,1429.000000,504.000000,0.000000,""};
-item66[] = {"",7,210,1421.000000,271.000031,1429.000000,279.000000,0.000000,""};
-item67[] = {"",7,210,1421.000000,646.000000,1429.000000,654.000000,0.000000,""};
-item68[] = {"Skip_post_briefing",2,250,775.000000,0.000000,875.000000,50.000000,0.000000,"Skip" \n "post-briefing" \n "load"};
-item69[] = {"Waiting",4,218,775.000000,75.000000,875.000000,125.000000,0.000000,"Waiting"};
-item70[] = {"__0__Loading_cha",2,250,900.000000,1750.000000,1000.000000,1800.000000,0.000000,"80%" \n "Loading" \n "character"};
-item71[] = {"__0s_timeout",4,218,1025.000000,1750.000000,1125.000000,1800.000000,0.000000,"30s timeout"};
-item72[] = {"",7,210,1421.000000,1770.999878,1429.000000,1779.000122,0.000000,""};
-item73[] = {"",7,210,946.000000,2745.999756,953.999939,2754.000244,0.000000,""};
-item74[] = {"Character_spawne",4,218,900.000000,1825.000000,1000.000000,1875.000000,0.000000,"Character" \n "spawned"};
-item75[] = {"__0__Starting_se",2,250,775.000000,1375.000000,875.000000,1425.000000,0.000000,"30%" \n "Starting" \n "session"};
-item76[] = {"__0s_timeout",4,218,900.000000,1375.000000,1000.000000,1425.000000,0.000000,"30s timeout"};
-item77[] = {"",7,210,1421.000000,1396.000000,1429.000000,1404.000000,0.000000,""};
-item78[] = {"Information_rece",4,218,775.000000,1450.000000,875.000000,1500.000000,10.000000,"Information" \n "received"};
-item79[] = {"",7,210,1421.000000,1396.000000,1429.000000,1404.000000,0.000000,""};
-item80[] = {"Play_Intro",2,250,775.000000,1825.000000,875.000000,1875.000000,0.000000,"Play" \n "Intro"};
-item81[] = {"Intro_done_",4,218,775.000000,1900.000000,875.000000,1950.000000,0.000000,"Intro" \n "done?"};
-item82[] = {"Spawn_zones",4,218,775.000000,2150.000000,875.000000,2200.000000,0.000000,"Spawn" \n "zones"};
-item83[] = {"Random_spawn",4,218,625.000000,2225.000000,725.000000,2275.000000,0.000000,"Random" \n "spawn"};
-item84[] = {"Read_Devblog_",4,218,675.000000,1150.000000,775.000000,1200.000000,0.000000,"Read" \n "Devblog?"};
-item85[] = {"Show_Devblog",2,250,675.000000,1225.000000,775.000000,1275.000000,0.000000,"Show" \n "Devblog"};
-item86[] = {"Read_",4,218,675.000000,1300.000000,775.000000,1350.000000,0.000000,"Read?"};
-item87[] = {"Continue",8,218,675.000000,-300.000000,775.000000,-250.000000,0.000000,"Continue"};
-item88[] = {"Check_Devblog",2,250,775.000000,1075.000000,875.000000,1125.000000,0.000000,"Check Devblog"};
-item89[] = {"____FAKE____",9,3560,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
-link0[] = {0,87};
-link1[] = {1,75};
+item0[] = {"Start",0,250,775.000000,-1025.000000,875.000000,-975.000000,0.000000,"Start"};
+item1[] = {"Skip_Devblog_",4,218,900.000000,-425.000000,1000.000000,-375.000000,1.000000,"Skip" \n "Devblog?"};
+item2[] = {"Disable_user_inp",2,250,775.000000,-875.000000,875.000000,-825.000000,0.000000,"Disable" \n "user" \n "input"};
+item3[] = {"Continue",8,218,775.000000,-800.000000,875.000000,-750.000000,0.000000,"Continue"};
+item4[] = {"Skip_briefing",2,250,775.000000,-725.000000,875.000000,-675.000000,0.000000,"Skip" \n "briefing"};
+item5[] = {"Already_read",4,218,775.000000,-650.000000,875.000000,-600.000000,0.000000,"Already" \n "read"};
+item6[] = {"Briefing_visible",4,218,900.000000,-725.000000,1000.000000,-675.000000,0.000000,"Briefing" \n "visible"};
+item7[] = {"Close_briefing",2,250,900.000000,-650.000000,1000.000000,-600.000000,0.000000,"Close" \n "briefing"};
+item8[] = {"Continue",8,218,900.000000,-575.000000,1000.000000,-525.000000,0.000000,"Continue"};
+item9[] = {"____Show_loading",2,250,775.000000,-50.000000,875.000000,0.000000,0.000000,"2% Show" \n "loading" \n "screen"};
+item10[] = {"Wait_1s",4,218,775.000000,25.000000,875.000000,75.000000,0.000000,"Wait 1s"};
+item11[] = {"____Check_ARMA_v",2,250,775.000000,100.000000,875.000000,150.000000,0.000000,"5% Check" \n "ARMA" \n "version"};
+item12[] = {"Bad_version",4,218,900.000000,100.000000,1000.000000,150.000000,0.000000,"Bad" \n "version"};
+item13[] = {"Good_version",4,218,775.000000,175.000000,875.000000,225.000000,10.000000,"Good" \n "version"};
+item14[] = {"__0__Create_player",2,250,775.000000,300.000000,875.000000,350.000000,0.000000,"10% Create" \n "player UID"};
+item15[] = {"UID_exists",4,218,775.000000,375.000000,875.000000,425.000000,10.000000,"UID" \n "exists"};
+item16[] = {"UID_missing",4,218,900.000000,300.000000,1000.000000,350.000000,0.000000,"UID" \n "missing"};
+item17[] = {"Retry_5_times",2,250,1025.000000,300.000000,1125.000000,350.000000,0.000000,"Retry" \n "5 times"};
+item18[] = {"Failed_5_times",4,218,1150.000000,300.000000,1250.000000,350.000000,10.000000,"Failed" \n "5 times"};
+item19[] = {"Wait_2s",4,218,1025.000000,225.000000,1125.000000,275.000000,0.000000,"Wait 2s"};
+item20[] = {"",7,210,821.000000,245.999985,829.000000,254.000015,0.000000,""};
+item21[] = {"Show_error_messa",2,250,1225.000000,1650.000000,1325.000000,1700.000000,0.000000,"Show" \n "error" \n "message"};
+item22[] = {"__5__Request_server",2,250,775.000000,450.000000,875.000000,500.000000,0.000000,"15% Request" \n "server" \n "version"};
+item23[] = {"Version_received",4,218,775.000000,525.000000,875.000000,575.000000,10.000000,"Version" \n "received"};
+item24[] = {"__0s_timeout",4,218,900.000000,450.000000,1000.000000,500.000000,0.000000,"30s timeout"};
+item25[] = {"__0__Check_server",2,250,775.000000,600.000000,875.000000,650.000000,0.000000,"20% Check" \n "server" \n "version"};
+item26[] = {"Good_version",4,218,775.000000,675.000000,875.000000,725.000000,10.000000,"Good" \n "version"};
+item27[] = {"Wrong_version",4,218,900.000000,600.000000,1000.000000,650.000000,0.000000,"Wrong" \n "version"};
+item28[] = {"__0__Request_character",2,250,775.000000,1050.000000,875.000000,1100.000000,0.000000,"40% Request" \n "character" \n "information"};
+item29[] = {"Information_rece",4,218,775.000000,1125.000000,875.000000,1175.000000,10.000000,"Information" \n "received"};
+item30[] = {"__0s_timeout",4,218,900.000000,1050.000000,1000.000000,1100.000000,0.000000,"30s timeout"};
+item31[] = {"__5__Wait_for__server",2,250,775.000000,750.000000,875.000000,800.000000,0.000000,"25% Wait for " \n "server to load"};
+item32[] = {"Server_up_and_ru",4,218,775.000000,825.000000,875.000000,875.000000,10.000000,"Server up" \n "and running"};
+item33[] = {"__20s_timeout",4,218,900.000000,750.000000,1000.000000,800.000000,0.000000,"120s timeout"};
+item34[] = {"__5__Process_character",2,250,775.000000,1200.000000,875.000000,1250.000000,0.000000,"45% Process" \n "character" \n "information"};
+item35[] = {"Bambi",4,218,775.000000,1275.000000,875.000000,1325.000000,10.000000,"Bambi"};
+item36[] = {"Existing_charact",4,218,900.000000,1200.000000,1000.000000,1250.000000,0.000000,"Existing" \n "character"};
+item37[] = {"Show_spawn_location",2,250,775.000000,1500.000000,875.000000,1550.000000,0.000000,"Show" \n "spawn location" \n "dialog"};
+item38[] = {"Location_selecte",4,218,775.000000,1575.000000,875.000000,1625.000000,0.000000,"Location" \n "selected"};
+item39[] = {"__0__Request_bambi",2,250,775.000000,1650.000000,875.000000,1700.000000,0.000000,"80% Request" \n "bambi" \n "character"};
+item40[] = {"Bambi_spawned",4,218,775.000000,1725.000000,875.000000,1775.000000,10.000000,"Bambi" \n "spawned"};
+item41[] = {"Continue",2,250,775.000000,1350.000000,875.000000,1400.000000,0.000000,"Continue"};
+item42[] = {"Timeout_30s",4,218,1025.000000,1650.000000,1125.000000,1700.000000,0.000000,"Timeout 30s"};
+item43[] = {"Play",1,250,775.000000,1800.000000,875.000000,1850.000000,0.000000,"Play"};
+item44[] = {"Wait_10s",4,218,1225.000000,1725.000000,1325.000000,1775.000000,0.000000,"Wait 10s"};
+item45[] = {"Disconnect",1,250,1225.000000,1800.000000,1325.000000,1850.000000,0.000000,"Disconnect"};
+item46[] = {"",7,210,1271.000000,1071.000000,1279.000000,1079.000000,0.000000,""};
+item47[] = {"",7,210,696.000000,1671.000000,704.000000,1679.000000,0.000000,""};
+item48[] = {"",7,210,1271.000000,621.000000,1279.000000,629.000000,0.000000,""};
+item49[] = {"",7,210,1271.000000,771.000000,1279.000000,779.000000,0.000000,""};
+item50[] = {"",7,210,1271.000000,321.000031,1279.000000,329.000000,0.000000,""};
+item51[] = {"",7,210,1271.000000,121.000023,1279.000000,128.999985,0.000000,""};
+item52[] = {"",7,210,1271.000000,471.000061,1279.000000,478.999939,0.000000,""};
+item53[] = {"Skip_post_briefing",2,250,775.000000,-575.000000,875.000000,-525.000000,0.000000,"Skip" \n "post-briefing" \n "load"};
+item54[] = {"Waiting",4,218,775.000000,-500.000000,875.000000,-450.000000,0.000000,"Waiting"};
+item55[] = {"__0__Loading_cha",2,250,900.000000,1275.000000,1000.000000,1325.000000,0.000000,"80%" \n "Loading" \n "character"};
+item56[] = {"__0s_timeout",4,218,1025.000000,1275.000000,1125.000000,1325.000000,0.000000,"30s timeout"};
+item57[] = {"",7,210,1271.000000,1295.999878,1279.000000,1304.000122,0.000000,""};
+item58[] = {"",7,210,946.000061,1820.999756,954.000000,1829.000244,0.000000,""};
+item59[] = {"Character_spawne",4,218,900.000000,1725.000000,1000.000000,1775.000000,0.000000,"Character" \n "spawned"};
+item60[] = {"__0__Starting_se",2,250,775.000000,900.000000,875.000000,950.000000,0.000000,"30%" \n "Starting" \n "session"};
+item61[] = {"__0s_timeout",4,218,900.000000,900.000000,1000.000000,950.000000,0.000000,"30s timeout"};
+item62[] = {"Information_rece",4,218,775.000000,975.000000,875.000000,1025.000000,10.000000,"Information" \n "received"};
+item63[] = {"",7,210,1271.000000,921.000000,1279.000000,928.999939,0.000000,""};
+item64[] = {"Spawn_zones",4,218,775.000000,1425.000000,875.000000,1475.000000,10.000000,"Spawn" \n "zones"};
+item65[] = {"Random_spawn",4,218,650.000000,1350.000000,750.000000,1400.000000,0.000000,"Random" \n "spawn"};
+item66[] = {"Read_Devblog_",4,218,650.000000,-425.000000,750.000000,-375.000000,0.000000,"Read" \n "Devblog?"};
+item67[] = {"Show_Devblog",2,250,650.000000,-200.000000,750.000000,-150.000000,0.000000,"Show" \n "Devblog"};
+item68[] = {"Read_",4,218,650.000000,-125.000000,750.000000,-75.000000,0.000000,"Read?"};
+item69[] = {"Continue",8,218,775.000000,-950.000000,875.000000,-900.000000,0.000000,"Continue"};
+item70[] = {"Check_Devblog",2,250,775.000000,-425.000000,875.000000,-375.000000,0.000000,"Check Devblog"};
+item71[] = {"Knows_UID_",2,250,650.000000,-350.000000,750.000000,-300.000000,0.000000,"Knows UID?"};
+item72[] = {"Unknown__read_la",4,218,775.000000,-350.000000,875.000000,-300.000000,0.000000,"Unknown," \n "read later"};
+item73[] = {"Known",4,218,650.000000,-275.000000,750.000000,-225.000000,10.000000,"Known"};
+item74[] = {"",7,210,946.000000,-104.000000,954.000000,-96.000008,0.000000,""};
+item75[] = {"",7,210,821.000000,-104.000000,829.000000,-96.000000,0.000000,""};
+link0[] = {0,69};
+link1[] = {1,74};
 link2[] = {2,3};
 link3[] = {3,4};
 link4[] = {4,5};
 link5[] = {4,6};
-link6[] = {5,68};
+link6[] = {5,53};
 link7[] = {6,7};
 link8[] = {7,8};
-link9[] = {8,68};
+link9[] = {8,53};
 link10[] = {9,10};
 link11[] = {10,11};
 link12[] = {11,12};
 link13[] = {11,13};
-link14[] = {12,66};
+link14[] = {12,51};
 link15[] = {13,20};
 link16[] = {14,15};
 link17[] = {14,16};
@@ -113,87 +99,75 @@ link18[] = {15,22};
 link19[] = {16,17};
 link20[] = {17,18};
 link21[] = {17,19};
-link22[] = {18,65};
+link22[] = {18,50};
 link23[] = {19,20};
 link24[] = {20,14};
-link25[] = {21,47};
+link25[] = {21,44};
 link26[] = {22,23};
 link27[] = {22,24};
 link28[] = {23,25};
-link29[] = {24,64};
+link29[] = {24,52};
 link30[] = {25,26};
 link31[] = {25,27};
 link32[] = {26,31};
-link33[] = {27,62};
+link33[] = {27,48};
 link34[] = {28,29};
 link35[] = {28,30};
 link36[] = {29,34};
-link37[] = {30,60};
+link37[] = {30,46};
 link38[] = {31,32};
 link39[] = {31,33};
-link40[] = {32,88};
-link41[] = {33,61};
+link40[] = {32,60};
+link41[] = {33,49};
 link42[] = {34,35};
 link43[] = {34,36};
-link44[] = {35,80};
-link45[] = {36,70};
+link44[] = {35,41};
+link45[] = {36,55};
 link46[] = {37,38};
-link47[] = {38,58};
+link47[] = {38,39};
 link48[] = {39,40};
 link49[] = {39,42};
-link50[] = {40,41};
-link51[] = {41,43};
-link52[] = {42,21};
-link53[] = {43,44};
+link50[] = {40,43};
+link51[] = {41,64};
+link52[] = {41,65};
+link53[] = {42,21};
 link54[] = {44,45};
-link55[] = {45,46};
-link56[] = {47,48};
+link55[] = {46,57};
+link56[] = {47,39};
 link57[] = {48,49};
-link58[] = {49,50};
-link59[] = {50,51};
-link60[] = {51,52};
-link61[] = {53,54};
-link62[] = {54,55};
-link63[] = {55,82};
-link64[] = {55,83};
-link65[] = {56,59};
-link66[] = {57,56};
-link67[] = {58,57};
-link68[] = {59,39};
-link69[] = {60,72};
-link70[] = {62,63};
-link71[] = {63,79};
-link72[] = {65,67};
-link73[] = {66,65};
-link74[] = {67,62};
-link75[] = {68,69};
-link76[] = {69,9};
-link77[] = {70,71};
-link78[] = {70,74};
-link79[] = {71,72};
-link80[] = {72,21};
-link81[] = {73,41};
-link82[] = {74,73};
-link83[] = {75,76};
-link84[] = {75,78};
-link85[] = {76,77};
-link86[] = {78,28};
-link87[] = {79,60};
-link88[] = {80,81};
-link89[] = {81,53};
-link90[] = {82,37};
-link91[] = {83,58};
-link92[] = {84,85};
-link93[] = {85,86};
-link94[] = {86,75};
-link95[] = {87,2};
-link96[] = {88,1};
-link97[] = {88,84};
-link98[] = {24,89};
-link99[] = {33,89};
-link100[] = {76,89};
-globals[] = {25.000000,1,0,0,0,640,480,1,431,6316128,1,403.390076,1323.646362,3348.936035,2677.377686,1247,910,1};
-window[] = {2,-1,-1,-1,-1,942,208,1502,208,3,1265};
+link58[] = {49,63};
+link59[] = {50,52};
+link60[] = {51,50};
+link61[] = {52,48};
+link62[] = {53,54};
+link63[] = {54,70};
+link64[] = {55,56};
+link65[] = {55,59};
+link66[] = {56,57};
+link67[] = {57,21};
+link68[] = {58,43};
+link69[] = {59,58};
+link70[] = {60,61};
+link71[] = {60,62};
+link72[] = {61,63};
+link73[] = {62,28};
+link74[] = {63,46};
+link75[] = {64,37};
+link76[] = {65,47};
+link77[] = {66,71};
+link78[] = {67,68};
+link79[] = {68,75};
+link80[] = {69,2};
+link81[] = {70,1};
+link82[] = {70,66};
+link83[] = {71,72};
+link84[] = {71,73};
+link85[] = {72,75};
+link86[] = {73,67};
+link87[] = {74,75};
+link88[] = {75,9};
+globals[] = {25.000000,1,0,0,0,640,480,1,445,6316128,1,445.679626,1518.709106,1968.940430,1186.523071,1248,910,1};
+window[] = {2,-1,-1,-1,-1,760,26,1320,26,3,1266};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -204,11 +178,7 @@ class FSM
     class Start
     {
       name = "Start";
-      init = /*%FSM<STATEINIT""">*/"// 69 =  If a 'speed' is not given, the 'curtain' and the displayed element disappears instantly " \n
-       "// after 5-10 seconds. Otherwise it will stay black with the element still visible. " \n
-       "cutText ["""", ""BLACK FADED"", 69]; " \n
-       "" \n
-       "_playerUIDAttempts = 0;" \n
+      init = /*%FSM<STATEINIT""">*/"_playerUIDAttempts = 0;" \n
        "" \n
        "if !(ExileClientBleedOutThread isEqualTo -1) then" \n
        "{" \n
@@ -236,9 +206,7 @@ class FSM
     class Disable_user_inp
     {
       name = "Disable_user_inp";
-      init = /*%FSM<STATEINIT""">*/"cutText ["""", ""BLACK"", 0];" \n
-       "" \n
-       "0 fadeSound 0;" \n
+      init = /*%FSM<STATEINIT""">*/"0 fadeSound 0;" \n
        "" \n
        "player enableSimulation false;" \n
        "" \n
@@ -322,7 +290,7 @@ class FSM
        "" \n
        "_message = ""Loading..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "_timeoutStartTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -347,7 +315,7 @@ class FSM
       name = "____Check_ARMA_v";
       init = /*%FSM<STATEINIT""">*/"_message = ""Checking ARMA version..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "progressLoadingScreen 0.05;" \n
        "" \n
@@ -387,12 +355,12 @@ class FSM
       name = "__0__Create_player";
       init = /*%FSM<STATEINIT""">*/"_message = ""Checking player UID..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "progressLoadingScreen 0.1;" \n
        "" \n
        "_myPlayerUID = getPlayerUID player;" \n
-       "_playerUIDAttempts =_playerUIDAttempts + 1; // there is no ++ or += 1 ??? Oo"/*%FSM</STATEINIT""">*/;
+       "_playerUIDAttempts =_playerUIDAttempts + 1;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -455,7 +423,7 @@ class FSM
     {
       name = "Show_error_messa";
       init = /*%FSM<STATEINIT""">*/"_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "_timeoutStartTime = diag_tickTime;" \n
        ""/*%FSM</STATEINIT""">*/;
@@ -466,7 +434,7 @@ class FSM
         class Wait_10s
         {
           priority = 0.000000;
-          to="Hide_loading_scr";
+          to="Disconnect";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _timeoutStartTime) > 10"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -481,7 +449,7 @@ class FSM
       name = "__5__Request_server";
       init = /*%FSM<STATEINIT""">*/"_message = ""Receiving server version..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "profileNamespace setVariable [""ExilePlayerUID"", _myPlayerUID];" \n
        "saveProfileNamespace;" \n
@@ -508,7 +476,7 @@ class FSM
         class __0s_timeout
         {
           priority = 0.000000;
-          to="____FAKE____";
+          to="Show_error_messa";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _timeoutStartTime) > 30"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_message = ""Error: Server version request timed out"";"/*%FSM</ACTION""">*/;
@@ -523,7 +491,7 @@ class FSM
       name = "__0__Check_server";
       init = /*%FSM<STATEINIT""">*/"_message = ""Checking server version..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "progressLoadingScreen 0.2;" \n
        "" \n
@@ -562,7 +530,7 @@ class FSM
       name = "__0__Request_character";
       init = /*%FSM<STATEINIT""">*/"_message = ""Requesting character..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "progressLoadingScreen 0.40;" \n
        "" \n
@@ -604,7 +572,7 @@ class FSM
       name = "__5__Wait_for__server";
       init = /*%FSM<STATEINIT""">*/"_message = ""Waiting for server to load..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "progressLoadingScreen 0.25;" \n
        "" \n
@@ -616,7 +584,7 @@ class FSM
         class Server_up_and_ru
         {
           priority = 10.000000;
-          to="Check_Devblog";
+          to="__0__Starting_se";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!(isNil ""PublicServerIsLoaded"") && !_waitForServer"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -626,7 +594,7 @@ class FSM
         class __20s_timeout
         {
           priority = 0.000000;
-          to="____FAKE____";
+          to="Show_error_messa";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _timeoutStartTime) > 120"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_message = ""Error: Server not loaded yet"";" \n
@@ -642,7 +610,7 @@ class FSM
       name = "__5__Process_character";
       init = /*%FSM<STATEINIT""">*/"_message = ""Processing character..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "progressLoadingScreen 0.45;" \n
        "" \n
@@ -654,7 +622,7 @@ class FSM
         class Bambi
         {
           priority = 10.000000;
-          to="Play_Intro";
+          to="Continue";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!ExileClientLoginHasPlayerResponse"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -677,11 +645,15 @@ class FSM
     class Show_spawn_location
     {
       name = "Show_spawn_location";
-      init = /*%FSM<STATEINIT""">*/"diag_log ""Selecting spawn area..."";" \n
+      init = /*%FSM<STATEINIT""">*/"""Selecting spawn area..."" call ExileClient_util_log;" \n
+       "" \n
+       "endLoadingScreen;" \n
+       "" \n
+       "disableUserInput false;" \n
        "" \n
        "[] call ExileClient_gui_selectSpawnLocation_show;" \n
        "" \n
-       "diag_log ""Waiting for dialog to open..."";"/*%FSM</STATEINIT""">*/;
+       """Waiting for dialog to open..."" call ExileClient_util_log;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -689,10 +661,13 @@ class FSM
         class Location_selecte
         {
           priority = 0.000000;
-          to="__0__Show_loading";
+          to="__0__Request_bambi";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"ExileClientSpawnLocationSelectionDone"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"cutText ["""", ""BLACK FADED"", 69]; "/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"disableUserInput true;" \n
+           "" \n
+           "startLoadingScreen ["""", ""RscExileLoadingScreen""];" \n
+           ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -704,7 +679,7 @@ class FSM
       name = "__0__Request_bambi";
       init = /*%FSM<STATEINIT""">*/"_message = ""Requesting bambi character..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "progressLoadingScreen 0.8;" \n
        "" \n
@@ -716,11 +691,11 @@ class FSM
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "Bambi_character">*/
-        class Bambi_character
+        /*%FSM<LINK "Bambi_spawned">*/
+        class Bambi_spawned
         {
           priority = 10.000000;
-          to="__00__Hide_loading";
+          to="Play";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"ExileClientPlayerIsSpawned"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -740,61 +715,35 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "__00__Hide_loading">*/
-    class __00__Hide_loading
+    /*%FSM<STATE "Continue">*/
+    class Continue
     {
-      name = "__00__Hide_loading";
-      init = /*%FSM<STATEINIT""">*/"// Rebuild territory locations" \n
-       "call ExileClient_system_territory_rebuildTerritoryLocations;" \n
-       "" \n
-       "progressLoadingScreen 1;" \n
-       "" \n
-       "endLoadingScreen;" \n
-       "" \n
-       "// Fade in smoothly" \n
-       "cutText ["""", ""BLACK IN"", 5];" \n
-       "titleText ["""", ""BLACK IN"", 5];" \n
-       ""/*%FSM</STATEINIT""">*/;
+      name = "Continue";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "Continue">*/
-        class Continue
+        /*%FSM<LINK "Spawn_zones">*/
+        class Spawn_zones
         {
-          priority = 0.000000;
-          to="Enable_user_inpu";
+          priority = 10.000000;
+          to="Show_spawn_location";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"({(getMarkerType _x) isEqualTo ""ExileSpawnZone""} count allMapMarkers) > 0"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Enable_user_inpu">*/
-    class Enable_user_inpu
-    {
-      name = "Enable_user_inpu";
-      init = /*%FSM<STATEINIT""">*/"disableUserInput false;" \n
-       "" \n
-       "3 fadeSound 1;" \n
-       "" \n
-       "player enableSimulation true;" \n
-       "" \n
-       "" \n
-       "" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Continue">*/
-        class Continue
+        /*%FSM<LINK "Random_spawn">*/
+        class Random_spawn
         {
           priority = 0.000000;
-          to="Play";
+          to="__0__Request_bambi";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+          condition=/*%FSM<CONDITION""">*/"({(getMarkerType _x) isEqualTo ""ExileSpawnZone""} count allMapMarkers) isEqualTo 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log ""Selecting somewhere randomly..."";" \n
+           "" \n
+           "ExileClientSpawnLocationSelectionDone = true;" \n
+           "ExileClientSelectedSpawnLocationMarkerName = """";"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -804,72 +753,49 @@ class FSM
     class Play
     {
       name = "Play";
-      init = /*%FSM<STATEINIT""">*/"diag_log ""Playing..."";" \n
+      init = /*%FSM<STATEINIT""">*/"""Playing..."" call ExileClient_util_log;" \n
        "" \n
-       "// HudInit" \n
+       "// Rebuild territory locations" \n
+       "call ExileClient_system_territory_rebuildTerritoryLocations;" \n
+       "" \n
+       "// End the loading screen" \n
+       "progressLoadingScreen 1;" \n
+       "endLoadingScreen;" \n
+       "" \n
+       "// Reset loading screen" \n
+       "call (uiNameSpace getVariable [""ExileClient_gui_loadingScreen_reset"", nil]);" \n
+       "" \n
+       "// Initialize the HUD" \n
        "true call ExileClient_gui_hud_toggle;" \n
        "" \n
+       "// Show bambi icon if required" \n
        "ExileClientPlayerIsBambi call ExileClient_gui_hud_toggleBambiIcon;" \n
        "" \n
        "//Loaded" \n
        "ExileClientLoadedIn = true;" \n
        "" \n
-       "// Reset loading screen" \n
-       "call (uiNameSpace getVariable [""ExileClient_gui_loadingScreen_reset"", nil]);" \n
+       "// Enable user input" \n
+       "disableUserInput false;" \n
        "" \n
+       "// Allow player control" \n
+       "player enableSimulation true;" \n
+       "" \n
+       "// Fade in smoothly" \n
+       "cutText ["""", ""BLACK IN"", 5];" \n
+       "titleText ["""", ""BLACK IN"", 5];" \n
+       "5 fadeSound 1;" \n
+       "" \n
+       "// Force showing the chat. Sometimes Arma resets this" \n
        "showChat true;" \n
-       "setGroupIconsVisible [true, true];"/*%FSM</STATEINIT""">*/;
+       "setGroupIconsVisible [true, true];" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Hide_loading_scr">*/
-    class Hide_loading_scr
-    {
-      name = "Hide_loading_scr";
-      init = /*%FSM<STATEINIT""">*/"cutText ["""", ""BLACK IN"", 0.1];" \n
-       "" \n
-       "endLoadingScreen;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Continue">*/
-        class Continue
-        {
-          priority = 0.000000;
-          to="Enable_user_inpu_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Enable_user_inpu_1">*/
-    class Enable_user_inpu_1
-    {
-      name = "Enable_user_inpu_1";
-      init = /*%FSM<STATEINIT""">*/"disableUserInput false;" \n
-       "" \n
-       "3 fadeSound 1;" \n
-       "" \n
-       "player enableSimulation false;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Continue">*/
-        class Continue
-        {
-          priority = 0.000000;
-          to="Disconnect";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
       };
     };
     /*%FSM</STATE>*/
@@ -877,114 +803,23 @@ class FSM
     class Disconnect
     {
       name = "Disconnect";
-      init = /*%FSM<STATEINIT""">*/"endMission ""END6"";"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Enable_user_inpu_2">*/
-    class Enable_user_inpu_2
-    {
-      name = "Enable_user_inpu_2";
-      init = /*%FSM<STATEINIT""">*/"disableUserInput false;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Continue">*/
-        class Continue
-        {
-          priority = 0.000000;
-          to="Hide_loading_scr_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Hide_loading_scr_1">*/
-    class Hide_loading_scr_1
-    {
-      name = "Hide_loading_scr_1";
-      init = /*%FSM<STATEINIT""">*/"cutText ["""", ""BLACK FADED"", 69]; "/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Random_spawn">*/
-        class Random_spawn
-        {
-          priority = 0.000000;
-          to="__0__Show_loading";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"({(getMarkerType _x) isEqualTo ""ExileSpawnZone""} count allMapMarkers) isEqualTo 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"diag_log ""Selecting somewhere randomly..."";" \n
-           "" \n
-           "ExileClientSpawnLocationSelectionDone = true;" \n
-           "ExileClientSelectedSpawnLocationMarkerName = """";"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Spawn_zones">*/
-        class Spawn_zones
-        {
-          priority = 0.000000;
-          to="Show_spawn_location";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"({(getMarkerType _x) isEqualTo ""ExileSpawnZone""} count allMapMarkers) > 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Disable_user_inp_1">*/
-    class Disable_user_inp_1
-    {
-      name = "Disable_user_inp_1";
-      init = /*%FSM<STATEINIT""">*/"disableUserInput true;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Continue">*/
-        class Continue
-        {
-          priority = 0.000000;
-          to="__0__Request_bambi";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "__0__Show_loading">*/
-    class __0__Show_loading
-    {
-      name = "__0__Show_loading";
-      init = /*%FSM<STATEINIT""">*/"startLoadingScreen ["""", ""RscExileLoadingScreen""];" \n
+      init = /*%FSM<STATEINIT""">*/"// Allow user input" \n
+       "disableUserInput false;" \n
        "" \n
-       "progressLoadingScreen 0.6;" \n
+       "0 fadeSound 1;" \n
        "" \n
-       "_message = ""Loading..."";" \n
-       "_message call ExileClient_gui_loadingScreen_updateText;" \n
+       "player enableSimulation false;" \n
        "" \n
-       "diag_log _message;"/*%FSM</STATEINIT""">*/;
+       "cutText ["""", ""BLACK IN"", 0.1];" \n
+       "" \n
+       "// End loading screen" \n
+       "endLoadingScreen;" \n
+       "" \n
+       "// End the mission" \n
+       "endMission ""END6"";"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "Continue">*/
-        class Continue
-        {
-          priority = 0.000000;
-          to="Disable_user_inp_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
       };
     };
     /*%FSM</STATE>*/
@@ -1000,10 +835,10 @@ class FSM
         class Waiting
         {
           priority = 0.000000;
-          to="____Show_loading";
+          to="Check_Devblog";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"{!isnull _x} count ((uinamespace getvariable ""loading_displays"") - [finddisplay 18]) == 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"cutText ["""", ""BLACK FADED"", 69]; "/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -1015,7 +850,7 @@ class FSM
       name = "__0__Loading_cha";
       init = /*%FSM<STATEINIT""">*/"_message = ""Downloading character..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "progressLoadingScreen 0.80;" \n
        "" \n
@@ -1031,7 +866,7 @@ class FSM
         class Character_spawne
         {
           priority = 0.000000;
-          to="__00__Hide_loading";
+          to="Play";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"ExileClientPlayerIsSpawned"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1057,7 +892,7 @@ class FSM
       name = "__0__Starting_se";
       init = /*%FSM<STATEINIT""">*/"_message = ""Starting session..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
-       "diag_log _message;" \n
+       "_message call ExileClient_util_log;" \n
        "" \n
        "progressLoadingScreen 0.3;" \n
        "" \n
@@ -1084,34 +919,11 @@ class FSM
         class __0s_timeout
         {
           priority = 0.000000;
-          to="____FAKE____";
+          to="Show_error_messa";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _timeoutStartTime) > 30"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_message = ""Error: Session request timed out"";" \n
            ""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Play_Intro">*/
-    class Play_Intro
-    {
-      name = "Play_Intro";
-      init = /*%FSM<STATEINIT""">*/"ExileClientIntroIsPlaying = true;" \n
-       "" \n
-       "[] spawn compileFinal preprocessFileLineNumbers ""intro.sqf"";"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Intro_done_">*/
-        class Intro_done_
-        {
-          priority = 0.000000;
-          to="Enable_user_inpu_2";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!ExileClientIntroIsPlaying "/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -1122,7 +934,6 @@ class FSM
     {
       name = "Show_Devblog";
       init = /*%FSM<STATEINIT""">*/"uiNameSpace setVariable [""ExileClientDevBlogOkayClicked"", false];" \n
-       "" \n
        "" \n
        "endLoadingScreen;" \n
        "" \n
@@ -1137,16 +948,14 @@ class FSM
         class Read_
         {
           priority = 0.000000;
-          to="__0__Starting_se";
+          to="____Show_loading";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(uiNameSpace getVariable [""ExileClientDevBlogOkayClicked"", false]) isEqualTo true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"diag_log ""Devblog has been read!"";" \n
+          action=/*%FSM<ACTION""">*/"""Devblog has been read!"" call ExileClient_util_log;" \n
            "" \n
            "closeDialog 1;" \n
            "" \n
            "disableUserInput true;" \n
-           "" \n
-           "startLoadingScreen ["""", ""RscExileLoadingScreen""];" \n
            "" \n
            "uiNameSpace setVariable [""ExileClientHasSeenDevblog"", true];"/*%FSM</ACTION""">*/;
         };
@@ -1166,33 +975,71 @@ class FSM
         class Skip_Devblog_
         {
           priority = 1.000000;
-          to="__0__Starting_se";
+          to="____Show_loading";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(uiNameSpace getVariable [""ExileClientHasSeenDevblog"", false]) isEqualTo true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"diag_log ""Skipping Devblog..."";"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"""Skipping Devblog..."" call ExileClient_util_log;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "Read_Devblog_">*/
         class Read_Devblog_
         {
           priority = 0.000000;
-          to="Show_Devblog";
+          to="Knows_UID_";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(uiNameSpace getVariable [""ExileClientHasSeenDevblog"", false]) isEqualTo false"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"diag_log ""Showing Devblog..."";"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"""Checking Devblog..."" call ExileClient_util_log;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "____FAKE____">*/
-    class ____FAKE____
+    /*%FSM<STATE "Knows_UID_">*/
+    class Knows_UID_
     {
-      name = "____FAKE____";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      name = "Knows_UID_";
+      init = /*%FSM<STATEINIT""">*/"_knowsUID = false;" \n
+       "" \n
+       "if !(isNull player) then" \n
+       "{" \n
+       "	if !((getPlayerUID player) isEqualTo """") then " \n
+       "	{" \n
+       "		_knowsUID = true;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "if !(_knowsUID) then" \n
+       "{" \n
+       "	_profileUID = profileNamespace getVariable [""ExilePlayerUID"", -1];" \n
+       "" \n
+       "	if !(_knowsUID isEqualTo -1) then" \n
+       "	{" \n
+       "		_knowsUID = true;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
+        /*%FSM<LINK "Known">*/
+        class Known
+        {
+          priority = 10.000000;
+          to="Show_Devblog";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_knowsUID"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"""Showing Devblog..."" call ExileClient_util_log;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Unknown__read_la">*/
+        class Unknown__read_la
+        {
+          priority = 0.000000;
+          to="____Show_loading";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_knowsUID"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"""UID is unknown, read later..."" call ExileClient_util_log;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
       };
     };
     /*%FSM</STATE>*/

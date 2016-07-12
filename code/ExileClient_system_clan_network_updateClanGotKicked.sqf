@@ -11,4 +11,4 @@
  
 ExileClientClanInfo = [];
 ExileClientInClan = 0;
-[_this select 0, [_this select 1]] call ExileClient_gui_toaster_addTemplateToast;
+_this call ExileClient_gui_toaster_addTemplateToast;

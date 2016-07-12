@@ -28,6 +28,10 @@ try
 	{
 		throw "No can do: FuS ro Dah DISSALOWED!";
 	};
+	if (_vehicle isKindOf "Ship") then 
+	{
+		_magnitude = 2;
+	};
 	_vehicle setVelocity 
 	[
 		(sin _direction * _magnitude),

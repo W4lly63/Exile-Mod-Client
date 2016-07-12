@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_dialog","_backButton","_gameText1","_gameText2","_gameText3","_winningsLabel","_popTabsLabel","_playerMoney","_startButton","_spinCost","_textureOn"];
+private["_dialog","_backButton","_gameText1","_gameText2","_gameText3","_winningsLabel","_popTabsLabel","_playerMoney","_playerMoneyString","_startButton","_spinCost","_textureOn"];
 disableSerialization;
 _dialog = uiNameSpace getVariable ["RscExileXM8", displayNull];
 _backButton = _dialog displayCtrl 4148;
@@ -33,7 +33,8 @@ _winningsLabel = _dialog displayCtrl 4144;
 _winningsLabel ctrlSetStructuredText (parseText format ["<t  align='center' color='#e14141'>0<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='1' shadow='true' /></t>"]);
 _popTabsLabel = _dialog displayCtrl 4142;
 _playerMoney = player getVariable ["ExileMoney",0];
-_popTabsLabel ctrlSetStructuredText (parseText format ["<t  align='center' color='#e14141'>%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='1' shadow='true' /></t>",_playerMoney]);
+_playerMoneyString = _playerMoney call ExileClient_util_string_exponentToString;
+_popTabsLabel ctrlSetStructuredText (parseText format ["<t  align='center' color='#e14141'>%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='1' shadow='true' /></t>",_playerMoneyString]);
 _startButton = _dialog displayCtrl 4141;
 _spinCost = getNumber (missionConfigFile >> "CfgSlothMachine" >> "spinCost");
 if (_playerMoney > _spinCost) then 

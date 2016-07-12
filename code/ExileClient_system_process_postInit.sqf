@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_spawnInterval"];
+private["_shift","_spawnInterval"];
 if (missionName isEqualTo "ExileIntro") then
 {
 	"Intro PostInit..." call ExileClient_util_log;
@@ -18,6 +18,7 @@ else
 {
 	if (hasInterface) then
 	{
+		onMapSingleClick {_shift};
 		[] call ExileClient_system_moon_initialize;
 		[] call ExileClient_gui_hud_initialize;
 		[15, ExileClient_gui_hud_thread_survivalInfo, [], true] call ExileClient_system_thread_addtask;

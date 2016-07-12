@@ -14,7 +14,7 @@ _position = _this;
 _result = false;
 {
 	_distance = (_x select 0) distance _position;
-	if (_distance < (_x select 2)) exitWith
+	if (_distance < (_x select 1)) exitWith
 	{
 		_result = true;
 	};

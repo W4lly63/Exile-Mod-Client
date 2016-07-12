@@ -10,12 +10,15 @@
  */
  
 disableSerialization;
-if (alive player) then
+if (ExileClientPlayerIsBambi) then 
 {
-	["InfoTitleOnly", ["Your Bambi state expired!"]] call ExileClient_gui_toaster_addTemplateToast;
-	["endBambiStateRequest"] call ExileClient_system_network_send;	
+	if (alive player) then
+	{
+		["InfoTitleOnly", ["Your Bambi state expired!"]] call ExileClient_gui_toaster_addTemplateToast;
+		["endBambiStateRequest"] call ExileClient_system_network_send;	
+	};
+	[ExileClientEndBambiStateThread] call ExileClient_system_thread_removeTask;
+	ExileClientPlayerIsBambi = false;
+	false call ExileClient_gui_hud_toggleBambiIcon;
 };
-[ExileClientEndBambiStateThread] call ExileClient_system_thread_removeTask;
-ExileClientPlayerIsBambi = false;
-false call ExileClient_gui_hud_toggleBambiIcon;
 true

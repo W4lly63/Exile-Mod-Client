@@ -75,6 +75,7 @@ if (_target isKindOf "Man") then
 		};
 	}
 	forEach (assigneditems _target);
+	["takeMoneyRequest", [netId _target, 0]] call ExileClient_system_network_send;
 }
 else 
 {
@@ -176,5 +177,6 @@ else
 	}
 	forEach (_serializedCargo select 0);
 	_serializedCargo set [0, _magazinesToStayInContainer];
+	["takeMoneyRequest", [netId _target, 0]] call ExileClient_system_network_send;
 	[_target, _serializedCargo] call ExileClient_util_containerCargo_deserialize;
 };

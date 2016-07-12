@@ -105,6 +105,7 @@ forEach
 	['ExileClient_gui_hud_renderPartyESP', 'exile_client\code\ExileClient_gui_hud_renderPartyESP.sqf'],
 	['ExileClient_gui_hud_renderStatsPanel', 'exile_client\code\ExileClient_gui_hud_renderStatsPanel.sqf'],
 	['ExileClient_gui_hud_renderVehiclePanel', 'exile_client\code\ExileClient_gui_hud_renderVehiclePanel.sqf'],
+	['ExileClient_gui_hud_renderWaypoints', 'exile_client\code\ExileClient_gui_hud_renderWaypoints.sqf'],
 	['ExileClient_gui_hud_renderWeaponPanel', 'exile_client\code\ExileClient_gui_hud_renderWeaponPanel.sqf'],
 	['ExileClient_gui_hud_showKillDetails', 'exile_client\code\ExileClient_gui_hud_showKillDetails.sqf'],
 	['ExileClient_gui_hud_showSurvivalInfo', 'exile_client\code\ExileClient_gui_hud_showSurvivalInfo.sqf'],

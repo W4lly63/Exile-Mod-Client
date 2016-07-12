@@ -9,9 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-ExileContaminatedZones = [];
 if !((getNumber (missionConfigFile >> "CfgExileEnvironment" >> worldName >> "Radiation" >> "enable")) isEqualTo 1) exitWith {false}; 
-ExileContaminatedZones = getArray (missionConfigFile >> "CfgExileEnvironment" >> worldName >> "Radiation" >> "contaminatedZones");
 ExilePlayerRadiation = 0;
 ExilePlayerRadiationLastCheck = 0;
 ExilePostProcessing_RadiationChroma = ppEffectCreate ["ChromAberration",205];

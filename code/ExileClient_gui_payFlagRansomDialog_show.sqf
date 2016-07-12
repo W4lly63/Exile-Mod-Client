@@ -27,7 +27,7 @@ _playerUID = getPlayerUID player;
 forEach (allMissionObjects "Exile_Construction_Flag_Static");
 if (_territories isEqualTo []) then 
 {
-	["ErrorTitleAndText", ["Nothing to pay!", "None of your territories is missing a flag."]] call ExileClient_gui_toaster_addTemplateToast;
+	["ErrorTitleAndText", ["Nothing to pay!", "None of your territories are missing a flag."]] call ExileClient_gui_toaster_addTemplateToast;
 }
 else 
 {

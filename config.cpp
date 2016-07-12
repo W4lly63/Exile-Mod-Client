@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////
 //DeRap: Produced from mikero's Dos Tools Dll version 5.53
-//'now' is Wed Jun 29 16:37:54 2016 : 'file' last modified on Wed Jun 29 16:37:54 2016
+//'now' is Mon Jul 11 20:14:29 2016 : 'file' last modified on Mon Jul 11 20:14:29 2016
 //http://dev-heaven.net/projects/list_files/mikero-pbodll
 ////////////////////////////////////////////////////////////////////
 
@@ -1038,7 +1038,7 @@ class CfgDifficultyPresets
 			enemyTags = 0;
 			detectedMines = 0;
 			commands = 0;
-			waypoints = 2;
+			waypoints = 0;
 			weaponInfo = 0;
 			stanceIndicator = 0;
 			staminaBar = 0;
@@ -1067,7 +1067,7 @@ class CfgDifficultyPresets
 			enemyTags = 0;
 			detectedMines = 0;
 			commands = 0;
-			waypoints = 2;
+			waypoints = 0;
 			weaponInfo = 0;
 			stanceIndicator = 0;
 			staminaBar = 0;
@@ -7614,6 +7614,33 @@ class CfgGesturesMale
 		upperTorsoSelfShoot[] = {"head",1,"neck1",1,"neck",1,"weapon",0,"LeftShoulder",1,"LeftArm",1,"LeftArmRoll",1,"LeftForeArm",1,"LeftForeArmRoll",1,"LeftHand",1,"LeftHandRing",1,"LeftHandPinky1",1,"LeftHandPinky2",1,"LeftHandPinky3",1,"LeftHandRing1",1,"LeftHandRing2",1,"LeftHandRing3",1,"LeftHandMiddle1",1,"LeftHandMiddle2",1,"LeftHandMiddle3",1,"LeftHandIndex1",1,"LeftHandIndex2",1,"LeftHandIndex3",1,"LeftHandThumb1",1,"LeftHandThumb2",1,"LeftHandThumb3",1,"RightShoulder",1,"RightArm",1,"RightArmRoll",1,"RightForeArm",1,"RightForeArmRoll",1,"RightHand",1,"RightHandRing",1,"RightHandPinky1",1,"RightHandPinky2",1,"RightHandPinky3",1,"RightHandRing1",1,"RightHandRing2",1,"RightHandRing3",1,"RightHandMiddle1",1,"RightHandMiddle2",1,"RightHandMiddle3",1,"RightHandIndex1",1,"RightHandIndex2",1,"RightHandIndex3",1,"RightHandThumb1",1,"RightHandThumb2",1,"RightHandThumb3",0,"Spine",1,"Spine1",1,"Spine2",1,"Spine3",1,"pelvis",1};
 	};
 };
+class CfgGlasses
+{
+	class G_I_Diving;
+	class G_O_Diving;
+	class G_B_Diving;
+	class Exile_Glasses_Diving_AAF: G_I_Diving
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Diving Goggles (AAF, Forced)";
+		mode = 0;
+	};
+	class Exile_Glasses_Diving_CSAT: G_O_Diving
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Diving Goggles (CSAT, Forced)";
+		mode = 0;
+	};
+	class Exile_Glasses_Diving_NATO: G_B_Diving
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Diving Goggles (NATO, Forced)";
+		mode = 0;
+	};
+};
 class CfgInGameUI
 {
 	class Actions
@@ -7663,7 +7690,7 @@ class CfgInGameUI
 };
 class CfgInventoryGlobalVariable
 {
-	maxSoldierLoad = 1500;
+	maxSoldierLoad = 1700;
 };
 class CfgLocationTypes
 {
@@ -9687,6 +9714,14 @@ class CfgMagazines
 };
 class CfgMarkerClasses
 {
+	class ExileEvents
+	{
+		displayName = "Exile Events";
+	};
+	class ExileNonConstructionZone
+	{
+		displayName = "Exile Non-Construction Zone";
+	};
 	class ExileSpawnZone
 	{
 		displayName = "Exile Spawn Zone";
@@ -9735,9 +9770,106 @@ class CfgMarkerClasses
 	{
 		displayName = "Exile Sea Vehicle Spawn";
 	};
+	class ExileRussianRouletteIcon
+	{
+		displayName = "Exile Russian Roulette Icon";
+	};
+	class ExileSpecOpsTraderIcon
+	{
+		displayName = "Exile Spec Ops Trader Icon";
+	};
+	class ExileAircraftTraderIcon
+	{
+		displayName = "Exile Aircraft Trader Icon";
+	};
+	class ExileBoatTraderIcon
+	{
+		displayName = "Exile Boat Trader Icon";
+	};
+	class ExileDiversTraderIcon
+	{
+		displayName = "Exile Divers Trader Icon";
+	};
 };
 class CfgMarkers
 {
+	class ExileMissionHardcoreIcon
+	{
+		scope = 0;
+		name = "Exile Mission Icon (Hardcore)";
+		icon = "exile_assets\texture\marker\mission_hardcore_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileEvents";
+		showEditorMarkerColor = 0;
+	};
+	class ExileMissionModerateIcon
+	{
+		scope = 0;
+		name = "Exile Mission Icon (Moderate)";
+		icon = "exile_assets\texture\marker\mission_moderate_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileEvents";
+		showEditorMarkerColor = 0;
+	};
+	class ExileMissionDifficultIcon
+	{
+		scope = 0;
+		name = "Exile Mission Icon (Difficult)";
+		icon = "exile_assets\texture\marker\mission_difficult_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileEvents";
+		showEditorMarkerColor = 0;
+	};
+	class ExileMissionEasyIcon
+	{
+		scope = 0;
+		name = "Exile Mission Icon (Easy)";
+		icon = "exile_assets\texture\marker\mission_easy_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileEvents";
+		showEditorMarkerColor = 0;
+	};
+	class ExileMissionCapturePointIcon
+	{
+		scope = 0;
+		name = "Exile Capture Point Icon";
+		icon = "exile_assets\texture\marker\capture_point_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileEvents";
+		showEditorMarkerColor = 0;
+	};
+	class ExileMissionStrongholdIcon
+	{
+		scope = 0;
+		name = "Exile Stronghold Icon";
+		icon = "exile_assets\texture\marker\stronghold_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileEvents";
+		showEditorMarkerColor = 0;
+	};
+	class ExileNonConstructionZone
+	{
+		scope = 0;
+		name = "Exile Non-Construction Zone";
+		icon = "exile_assets\texture\marker\spawn_zone_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileNonConstructionZone";
+		showEditorMarkerColor = 0;
+	};
 	class ExileSpawnZone
 	{
 		scope = 0;
@@ -9747,6 +9879,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileSpawnZone";
+		showEditorMarkerColor = 0;
 	};
 	class ExileSpawnZoneIcon
 	{
@@ -9757,6 +9890,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileSpawnZoneIcon";
+		showEditorMarkerColor = 0;
 	};
 	class ExileTraderZone
 	{
@@ -9767,6 +9901,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileTraderZone";
+		showEditorMarkerColor = 0;
 	};
 	class ExileTraderZoneIcon
 	{
@@ -9777,6 +9912,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileTraderZoneIcon";
+		showEditorMarkerColor = 0;
 	};
 	class ExilePlayer
 	{
@@ -9787,6 +9923,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExilePlayer";
+		showEditorMarkerColor = 0;
 	};
 	class ExileSafe
 	{
@@ -9797,6 +9934,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileSafe";
+		showEditorMarkerColor = 0;
 	};
 	class ExileHeart
 	{
@@ -9807,6 +9945,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileHeart";
+		showEditorMarkerColor = 0;
 	};
 	class ExileContaminatedZone
 	{
@@ -9817,6 +9956,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileContaminatedZone";
+		showEditorMarkerColor = 0;
 	};
 	class ExileContaminatedZoneIcon
 	{
@@ -9827,6 +9967,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileContaminatedZoneIcon";
+		showEditorMarkerColor = 0;
 	};
 	class ExileConcreteMixerZone
 	{
@@ -9837,6 +9978,7 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileConcreteMixerZone";
+		showEditorMarkerColor = 0;
 	};
 	class ExileConcreteMixerZoneIcon
 	{
@@ -9847,6 +9989,62 @@ class CfgMarkers
 		size = 32;
 		shadow = 0;
 		markerClass = "ExileConcreteMixerZoneIcon";
+		showEditorMarkerColor = 0;
+	};
+	class ExileDiversTraderIcon
+	{
+		scope = 0;
+		name = "Exile Divers Trader Icon";
+		icon = "exile_assets\texture\marker\divers_trader_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileDiversTraderIcon";
+		showEditorMarkerColor = 0;
+	};
+	class ExileBoatTraderIcon
+	{
+		scope = 0;
+		name = "Exile Boat Trader Icon";
+		icon = "exile_assets\texture\marker\boat_trader_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileBoatTraderIcon";
+		showEditorMarkerColor = 0;
+	};
+	class ExileAircraftTraderIcon
+	{
+		scope = 0;
+		name = "Exile Aircraft Trader Icon";
+		icon = "exile_assets\texture\marker\aircraft_trader_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileAircraftTraderIcon";
+		showEditorMarkerColor = 0;
+	};
+	class ExileSpecOpsTraderIcon
+	{
+		scope = 0;
+		name = "Exile Spec Ops Trader Icon";
+		icon = "exile_assets\texture\marker\spec_ops_trader_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileSpecOpsTraderIcon";
+		showEditorMarkerColor = 0;
+	};
+	class ExileRussianRouletteIcon
+	{
+		scope = 0;
+		name = "Exile Russian Roulette Icon";
+		icon = "exile_assets\texture\marker\russian_roulette_ca.paa";
+		color[] = {1,1,1,1};
+		size = 32;
+		shadow = 0;
+		markerClass = "ExileRussianRouletteIcon";
+		showEditorMarkerColor = 0;
 	};
 };
 class CfgMissions
@@ -9870,13 +10068,13 @@ class CfgMods
 		dir = "@Exile";
 		logo = "exile_assets\texture\mod\logo.paa";
 		logoOver = "exile_assets\texture\mod\logo.paa";
-		logoSmall = "exile_assets\texture\mod\logo.paa";
-		picture = "exile_assets\texture\mod\icon.paa";
+		logoSmall = "exile_assets\texture\mod\icon.paa";
+		picture = "exile_assets\texture\mod\logo.paa";
 		hidePicture = 0;
 		hideName = 0;
 		dlcColor[] = {0.94,0.29,0.98,1};
-		version = "0.9.8";
-		armaVersion = "160";
+		version = "1.0.0";
+		armaVersion = "162";
 		overview = "";
 		itemPrevNotifText = "";
 	};
@@ -11212,6 +11410,14 @@ class CfgUnitInsignia
 		textureVehicle = "";
 		scopeArsenal = 2;
 	};
+	class Exile
+	{
+		author = "Exile Mod Team";
+		displayName = "Exile";
+		texture = "\exile_assets\texture\insignia\exile_co.paa";
+		textureVehicle = "";
+		scopeArsenal = 2;
+	};
 };
 class CfgVehicleClasses
 {
@@ -11962,6 +12168,14 @@ class CfgVehicles
 			init = "";
 		};
 	};
+	class Land_ChairWood_F;
+	class Exile_RussianRouletteChair: Land_ChairWood_F
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		destrType = "DestructNo";
+		displayName = "Exile Russian Roulette Chair";
+	};
 	class Exile_Sound_Flies: Sound
 	{
 		scope = 2;
@@ -12024,6 +12238,13 @@ class CfgVehicles
 		uniformClass = "U_Rangemaster";
 		linkedItems[] = {"V_Rangemaster_belt","H_Cap_headphones","G_Shades_Black"};
 		weapons[] = {"srifle_DMR_06_olive_F"};
+	};
+	class Exile_Trader_Diving: Exile_Trader_Abstract
+	{
+		displayName = "Exile Dive Trader";
+		linkedItems[] = {"V_RebreatherIA","G_I_Diving"};
+		uniformClass = "U_I_Wetsuit";
+		weapons[] = {"arifle_SDAR_F"};
 	};
 	class Exile_Trader_SpecialOperations: Exile_Trader_Abstract
 	{
@@ -14028,6 +14249,12 @@ class CfgVehicles
 		displayName = "Exile Sign (Boat)";
 		hiddenSelectionsTextures[] = {"exile_assets\model\Exile_Sign_Boat_co.paa"};
 	};
+	class Exile_Sign_BoatAndDiving_Small: SignAd_SponsorS_F
+	{
+		author = "Exile Mod Team";
+		displayName = "Exile Sign (Boat and Diving, small)";
+		hiddenSelectionsTextures[] = {"exile_assets\model\Exile_Sign_Boat_Diving_co.paa"};
+	};
 	class Exile_Sign_BoatCustoms: SignAd_Sponsor_F
 	{
 		author = "Exile Mod Team";
@@ -14045,6 +14272,12 @@ class CfgVehicles
 		author = "Exile Mod Team";
 		displayName = "Exile Sign (Boat, small)";
 		hiddenSelectionsTextures[] = {"exile_assets\model\Exile_Sign_Boat_Small_co.paa"};
+	};
+	class Exile_Sign_Diving_Small: SignAd_SponsorS_F
+	{
+		author = "Exile Mod Team";
+		displayName = "Exile Sign (Diving, small)";
+		hiddenSelectionsTextures[] = {"exile_assets\model\Exile_Sign_Diving_co.paa"};
 	};
 	class Exile_Sign_Equipment: SignAd_Sponsor_F
 	{
@@ -14245,6 +14478,32 @@ class CfgVehicles
 		model = "\A3\characters_F\common\coveralls";
 		uniformClass = "Exile_Uniform_BambiOverall";
 		hiddenSelectionsTextures[] = {"\exile_assets\model\Exile_Uniform_BambiOverall_co.paa"};
+	};
+	class Exile_Unit_Wetsuit_NATO: B_diver_F
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Exile Diver (NATO, Forced)";
+		hiddenUnderwaterSelections[] = {};
+	};
+	class Exile_Unit_Wetsuit_AAF: I_diver_F
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Exile Diver (AAF, Forced)";
+		hiddenSelections[] = {"Camo1","Camo2","insignia","hide"};
+		hiddenSelectionsMaterials[] = {};
+		hiddenSelectionsTextures[] = {"\A3\Characters_F\Common\Data\diver_suit_rus_co.paa","\A3\Characters_F\Common\Data\diver_equip_rus_co.paa"};
+		hiddenUnderwaterSelections[] = {};
+		hiddenUnderwaterSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
+		shownUnderwaterSelections[] = {};
+	};
+	class Exile_Unit_Wetsuit_CSAT: O_diver_F
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Exile Diver (CSAT, Forced)";
+		hiddenUnderwaterSelections[] = {};
 	};
 	class Exile_Unit_Woodland: Exile_Unit_Abstract
 	{
@@ -15039,6 +15298,48 @@ class CfgVehicles
 		skinName = "Sand";
 		hiddenSelectionsTextures[] = {"Exile_psycho_LRC\data\lr_acr_sand_base_co.paa","Exile_psycho_LRC\data\lr_amb_ext_co.paa","Exile_psycho_LRC\data\lr_special_acr_co.paa"};
 	};
+	class C_Offroad_02_unarmed_orange_F;
+	class Exile_Car_MB4WD: C_Offroad_02_unarmed_orange_F
+	{
+		author = "Exile Mod Team";
+		scope = 2;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExileCars";
+		skinName = "Orange";
+		displayName = "MB 4WD";
+		fuelConsumptionRate = "0.03f";
+		exileLockSound = "exile_assets\sound\lock01.wss";
+		exileUnlockSound = "a3\sounds_f\vehicles\soft\Hatchback_01\Hatchback_01_door.wss";
+		maximumLoad = 3000;
+		class EventHandlers: DefaultEventHandlers
+		{
+			init = "";
+		};
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
+	};
+	class I_C_Offroad_02_unarmed_F;
+	class Exile_Car_MB4WDOpen: I_C_Offroad_02_unarmed_F
+	{
+		author = "Exile Mod Team";
+		scope = 2;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExileCars";
+		skinName = "Orange";
+		displayName = "MB 4WD (Open)";
+		fuelConsumptionRate = "0.03f";
+		exileLockSound = "exile_assets\sound\lock01.wss";
+		exileUnlockSound = "a3\sounds_f\vehicles\soft\Hatchback_01\Hatchback_01_door.wss";
+		maximumLoad = 3000;
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
+	};
 	class Octavia_Civ_01;
 	class Exile_Car_Octavius_Abstract: Octavia_Civ_01
 	{
@@ -15486,6 +15787,64 @@ class CfgVehicles
 	{
 		scope = 2;
 		skinName = "Red";
+	};
+	class B_CTRG_LSV_01_light_F;
+	class Exile_Car_ProwlerLight: B_CTRG_LSV_01_light_F
+	{
+		author = "Exile Mod Team";
+		scope = 2;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExileCars";
+		skinName = "Olive";
+		displayName = "Prowler (Light)";
+		fuelConsumptionRate = "0.03f";
+		exileLockSound = "exile_assets\sound\lock01.wss";
+		exileUnlockSound = "a3\sounds_f\vehicles\soft\Hatchback_01\Hatchback_01_door.wss";
+		maximumLoad = 3800;
+		hiddenSelectionsTextures[] = {"\A3\Soft_F_Exp\LSV_01\Data\NATO_LSV_01_olive_CO.paa","\A3\Soft_F_Exp\LSV_01\Data\NATO_LSV_02_olive_CO.paa","\A3\Soft_F_Exp\LSV_01\Data\NATO_LSV_03_olive_CO.paa","\A3\Soft_F_Exp\LSV_01\Data\NATO_LSV_Adds_olive_CO.paa"};
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
+	};
+	class B_T_LSV_01_unarmed_black_F;
+	class Exile_Car_ProwlerUnarmed: B_T_LSV_01_unarmed_black_F
+	{
+		author = "Exile Mod Team";
+		scope = 2;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExileCars";
+		skinName = "Black";
+		displayName = "Prowler (Unarmed)";
+		fuelConsumptionRate = "0.03f";
+		exileLockSound = "exile_assets\sound\lock01.wss";
+		exileUnlockSound = "a3\sounds_f\vehicles\soft\Hatchback_01\Hatchback_01_door.wss";
+		maximumLoad = 3800;
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
+	};
+	class O_T_LSV_02_unarmed_black_F;
+	class Exile_Car_QilinUnarmed: O_T_LSV_02_unarmed_black_F
+	{
+		author = "Exile Mod Team";
+		scope = 2;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExileCars";
+		skinName = "Black";
+		displayName = "Qilin (Unarmed)";
+		fuelConsumptionRate = "0.03f";
+		exileLockSound = "exile_assets\sound\lock01.wss";
+		exileUnlockSound = "a3\sounds_f\vehicles\soft\Hatchback_01\Hatchback_01_door.wss";
+		maximumLoad = 3800;
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
 	};
 	class I_MRAP_03_F;
 	class Exile_Car_Strider_Abstract: I_MRAP_03_F
@@ -16945,6 +17304,34 @@ class CfgVehicles
 		displayName = "Motor Boat (White)";
 		textures[] = {"\a3\boat_f_gamma\Boat_Civil_01\data\Boat_Civil_01_ext_co.paa","\a3\boat_f_gamma\Boat_Civil_01\data\Boat_Civil_01_int_co.paa"};
 	};
+	class B_G_Boat_Transport_02_F;
+	class Exile_Boat_RHIB_Abstract: B_G_Boat_Transport_02_F
+	{
+		author = "Exile Mod Team";
+		scope = 0;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExileBoats";
+		crew = "";
+		typicalCargo[] = {};
+		skinName = "";
+		displayName = "RHIB";
+		fuelConsumptionRate = "0.03f";
+		class EventHandlers: DefaultEventHandlers
+		{
+			init = "";
+		};
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
+	};
+	class Exile_Boat_RHIB: Exile_Boat_RHIB_Abstract
+	{
+		scope = 2;
+		skinName = "Gray";
+		displayName = "RHIB";
+	};
 	class C_Rubberboat;
 	class Exile_Boat_RubberDuck_Abstract: C_Rubberboat
 	{
@@ -17045,6 +17432,35 @@ class CfgVehicles
 		displayName = "SDV (Grey)";
 		hiddenSelectionsTextures[] = {"\A3\boat_f_beta\SDV_01\data\SDV_ext_CO.paa"};
 	};
+	class C_Scooter_Transport_01_F;
+	class Exile_Boat_WaterScooter_Abstract: C_Scooter_Transport_01_F
+	{
+		author = "Exile Mod Team";
+		scope = 0;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExileBoats";
+		crew = "";
+		typicalCargo[] = {};
+		skinName = "";
+		displayName = "Water Scooter";
+		fuelConsumptionRate = "0.03f";
+		class EventHandlers: DefaultEventHandlers
+		{
+			init = "";
+		};
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
+	};
+	class Exile_Boat_WaterScooter: Exile_Boat_WaterScooter_Abstract
+	{
+		scope = 2;
+		skinName = "Black";
+		displayName = "Water Scooter";
+		hiddenSelectionsTextures[] = {"\A3\Boat_F_Exp\Scooter_Transport_01\Data\Scooter_Transport_01_Black_CO.paa","\A3\Boat_F_Exp\Scooter_Transport_01\Data\Scooter_Transport_01_VP_Black_CO.paa"};
+	};
 	class an2_base;
 	class Exile_Plane_AN2_Abstract: an2_base
 	{
@@ -17113,6 +17529,75 @@ class CfgVehicles
 		scope = 2;
 		skinName = "Green Stripe";
 		hiddenSelectionsTextures[] = {"Exile_psycho_An2\data\an2_1_b_co.paa","Exile_psycho_An2\data\an2_2_b_co.paa","Exile_psycho_An2\data\an2_wings_b_co.paa"};
+	};
+	class B_T_VTOL_01_infantry_F;
+	class Exile_Plane_BlackfishInfantry: B_T_VTOL_01_infantry_F
+	{
+		author = "Exile Mod Team";
+		scope = 2;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExilePlanes";
+		crew = "";
+		typicalCargo[] = {};
+		skinName = "Olive";
+		displayName = "V-44 X Blackfish (Infantry Transport)";
+		fuelConsumptionRate = "0.406";
+		maximumLoad = 7000;
+		class EventHandlers: DefaultEventHandlers
+		{
+			init = "";
+		};
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
+	};
+	class B_T_VTOL_01_vehicle_F;
+	class Exile_Plane_BlackfishVehicle: B_T_VTOL_01_vehicle_F
+	{
+		author = "Exile Mod Team";
+		scope = 2;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExilePlanes";
+		crew = "";
+		typicalCargo[] = {};
+		skinName = "Olive";
+		displayName = "V-44 X Blackfish (Vehicle Transport)";
+		fuelConsumptionRate = "0.406";
+		maximumLoad = 7000;
+		class EventHandlers: DefaultEventHandlers
+		{
+			init = "";
+		};
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
+	};
+	class C_Plane_Civil_01_F;
+	class Exile_Plane_Ceasar: C_Plane_Civil_01_F
+	{
+		author = "Exile Mod Team";
+		scope = 2;
+		side = 3;
+		faction = "CIV_F";
+		vehicleclass = "ExilePlanes";
+		crew = "";
+		typicalCargo[] = {};
+		skinName = "Redline";
+		displayName = "Ceasar BTT";
+		fuelConsumptionRate = "0.03f";
+		maximumLoad = 1300;
+		class EventHandlers: DefaultEventHandlers
+		{
+			init = "";
+		};
+		class TransportItems{};
+		class TransportBackpacks{};
+		class TransportMagazines{};
+		class TransportWeapons{};
 	};
 	class GNT_C185;
 	class Exile_Plane_Cessna: GNT_C185
@@ -17527,7 +18012,6 @@ class CfgWeapons
 	class Item_Base_F;
 	class InventoryItem_Base_F;
 	class SlotInfo;
-	class GunParticles;
 	class Rifle;
 	class Pistol;
 	class TruckHorn;
@@ -17557,6 +18041,7 @@ class CfgWeapons
 	class arifle_MX_Base_F;
 	class MMG_01_base_F;
 	class MMG_02_base_F;
+	class arifle_SPAR_02_base_F;
 	class arifle_MX_SW_F: arifle_MX_Base_F
 	{
 		class LinkedItems
@@ -17624,6 +18109,39 @@ class CfgWeapons
 		};
 	};
 	class MMG_02_sand_F: MMG_02_camo_F
+	{
+		class LinkedItems
+		{
+			class LinkedItemsUnder
+			{
+				item = "";
+				slot = "";
+			};
+		};
+	};
+	class arifle_SPAR_02_blk_F: arifle_SPAR_02_base_F
+	{
+		class LinkedItems
+		{
+			class LinkedItemsUnder
+			{
+				item = "";
+				slot = "";
+			};
+		};
+	};
+	class arifle_SPAR_02_khk_F: arifle_SPAR_02_base_F
+	{
+		class LinkedItems
+		{
+			class LinkedItemsUnder
+			{
+				item = "";
+				slot = "";
+			};
+		};
+	};
+	class arifle_SPAR_02_snd_F: arifle_SPAR_02_base_F
 	{
 		class LinkedItems
 		{
@@ -18001,6 +18519,48 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
+	class U_O_Wetsuit;
+	class U_I_Wetsuit;
+	class U_B_Wetsuit;
+	class Exile_Uniform_Wetsuit_NATO: U_B_Wetsuit
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Wetsuit (NATO, Forced)";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "-";
+			uniformClass = "Exile_Unit_Wetsuit_NATO";
+			containerClass = "Supply40";
+			mass = 40;
+		};
+	};
+	class Exile_Uniform_Wetsuit_CSAT: U_O_Wetsuit
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Wetsuit (CSAT, Forced)";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "-";
+			uniformClass = "Exile_Unit_Wetsuit_CSAT";
+			containerClass = "Supply40";
+			mass = 40;
+		};
+	};
+	class Exile_Uniform_Wetsuit_AAF: U_I_Wetsuit
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Wetsuit (AAF, Forced)";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "-";
+			uniformClass = "Exile_Unit_Wetsuit_AAF";
+			containerClass = "Supply40";
+			mass = 40;
+		};
+	};
 	class Exile_Uniform_Woodland: Uniform_Base
 	{
 		scope = 2;
@@ -18016,6 +18576,84 @@ class CfgWeapons
 			uniformClass = "Exile_Unit_Woodland";
 			containerClass = "Supply80";
 			mass = 40;
+		};
+	};
+	class V_RebreatherB;
+	class V_RebreatherIA;
+	class V_RebreatherIR;
+	class Exile_Vest_Rebreather_NATO: V_RebreatherB
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Rebreather (NATO, Forced)";
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa"};
+		hiddenUnderwaterSelections[] = {"hide"};
+		hiddenUnderwaterSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
+		class ItemInfo: VestItem
+		{
+			hiddenSelections[] = {"camo"};
+			hiddenUnderwaterSelections[] = {"hide"};
+			hiddenUnderwaterSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
+			containerClass = "Supply0";
+			mass = 80;
+			overlaySelectionsInfo[] = {"Ghillie_hide"};
+			scope = 0;
+			showHolsteredPistol = 0;
+			type = 701;
+			uniformModel = "\A3\Characters_F\Common\equip_rebreather";
+			uniformType = "Default";
+			vestType = "Rebreather";
+		};
+	};
+	class Exile_Vest_Rebreather_AAF: V_RebreatherIA
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Rebreather (AAF, Forced)";
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_rus_co.paa"};
+		hiddenUnderwaterSelections[] = {"hide"};
+		hiddenUnderwaterSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_rus_co.paa","\A3\characters_f\common\data\diver_equip_rus_co.paa","\A3\characters_f\data\visors_ca.paa"};
+		class ItemInfo: VestItem
+		{
+			hiddenSelections[] = {"camo"};
+			hiddenUnderwaterSelections[] = {"hide"};
+			hiddenUnderwaterSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
+			containerClass = "Supply0";
+			mass = 80;
+			overlaySelectionsInfo[] = {"Ghillie_hide"};
+			scope = 0;
+			showHolsteredPistol = 0;
+			type = 701;
+			uniformModel = "\A3\Characters_F\Common\equip_rebreather";
+			uniformType = "Default";
+			vestType = "Rebreather";
+		};
+	};
+	class Exile_Vest_Rebreather_CSAT: V_RebreatherIR
+	{
+		scope = 2;
+		author = "Exile Mod Team";
+		displayName = "Rebreather (CSAT, Forced)";
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_iran_co.paa"};
+		hiddenUnderwaterSelections[] = {"hide"};
+		hiddenUnderwaterSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_iran_co.paa","\A3\characters_f\common\data\diver_equip_iran_co.paa","\A3\characters_f\data\visors_ca.paa"};
+		class ItemInfo: VestItem
+		{
+			hiddenSelections[] = {"camo"};
+			hiddenUnderwaterSelections[] = {"hide"};
+			hiddenUnderwaterSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
+			containerClass = "Supply0";
+			mass = 80;
+			overlaySelectionsInfo[] = {"Ghillie_hide"};
+			scope = 0;
+			showHolsteredPistol = 0;
+			type = 701;
+			uniformModel = "\A3\Characters_F\Common\equip_rebreather";
+			uniformType = "Default";
+			vestType = "Rebreather";
 		};
 	};
 	class Exile_Vest_Snow: Vest_Camo_Base
@@ -23769,23 +24407,9 @@ class RscExileLockerDialog
 class RscExileMapContextMenu: ctrlMenu
 {
 	colorBackground[] = {0.1,0.1,0.1,1};
-	sizeEx = "3 * (1 / (getResolution select 3)) * pixelGrid * 0.25";
 	class Items
 	{
-		items[] = {"CMClan"};
-		class CMClan
-		{
-			items[] = {"CMarkerMenu"};
-			value = 0;
-			text = "Family";
-			picture = "\exile_assets\texture\ui\xm8_app_slothMachine_ca.paa";
-		};
-		class CMarkerMenu
-		{
-			items[] = {"CMInsert","CMRemove"};
-			text = "Markers";
-			picture = "\a3\3den\Data\Displays\Display3DEN\PanelLeft\entityList_location_ca.paa";
-		};
+		items[] = {"CMInsert","CMRemove"};
 		class CMRemove
 		{
 			action = "_this call ExileClient_gui_clan_context_event_onRemoveButtonClick;";

@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_marker","_partyUnits","_clanMembers"];
+private["_marker","_partyUnits","_clanMembers","_control"];
 {
 	deleteMarkerLocal _x;
 }
@@ -67,4 +67,24 @@ if!(ExileClientClanInfo isEqualTo [])then
 		};
 	}
 	forEach _clanMembers;
+};
+if!(ExileClientWaypoints isEqualTo [])then
+{
+	_control = _this select 0;
+	{
+		_control drawIcon 
+		[
+			"\a3\ui_f\data\Map\MapControl\custommark_CA.paa",
+			[1, 1, 1, 1],
+			ExileClientWaypoints select _forEachIndex,
+			16,
+			16,
+			0,
+			"",
+			0,
+			0,
+			"PuristaMedium"
+		];
+	}
+	forEach ExileClientWaypoints;
 };

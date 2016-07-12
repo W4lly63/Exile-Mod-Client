@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_prizeName","_winnings","_moneyChange","_symbols","_dialog","_startButton","_backButton","_winningsLabel","_gameText1","_gameText2","_gameText3","_displays","_control","_image","_position"];
+private["_prizeName","_winnings","_moneyChange","_symbols","_winningsString","_moneyChangeString","_dialog","_startButton","_backButton","_winningsLabel","_gameText1","_gameText2","_gameText3","_displays","_control","_image","_position"];
 _prizeName = _this select 0;
 _winnings = _this select 1;
 _moneyChange = _this select 2;
@@ -21,6 +21,8 @@ _symbols = _this select 3;
 	_winnings = _this select 1;
 	_moneyChange = _this select 2;
 	_symbols = _this select 3;
+	_winningsString = _winnings call ExileClient_util_string_exponentToString;
+	_moneyChangeString = _moneyChange call ExileClient_util_string_exponentToString;
 	_dialog = uiNameSpace getVariable ["RscExileXM8", displayNull];
 	_startButton = _dialog displayCtrl 4141;
 	_startButton ctrlEnable false;
@@ -53,22 +55,22 @@ _symbols = _this select 3;
 	if (_prizeName isEqualTo "") then 
 	{
 		playSound "SndExileTwinkleTwisterFail";
-		_winningsLabel ctrlSetStructuredText (parseText format ["<t  align='center' color='#e14141'>%1</t>",_winnings]);
-		["ErrorTitleAndText", ["Failed!", format ["%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _moneyChange]]] call ExileClient_gui_toaster_addTemplateToast;
+		_winningsLabel ctrlSetStructuredText (parseText format ["<t  align='center' color='#e14141'>%1</t>",_winningsString]);
+		["ErrorTitleAndText", ["You lose!", format ["%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _moneyChangeString]]] call ExileClient_gui_toaster_addTemplateToast;
 	}
 	else 
 	{
 		if (_prizeName isEqualTo "Jackpot") then
 		{
 			playSound "SndExileTwinkleTwisterSuccess";
-			_winningsLabel ctrlSetStructuredText (parseText format ["<t  align='center' color='#e14141'>%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='1' shadow='true' /></t>",_winnings]);
-			["SuccessTitleAndText", ["Jackpot!", format ["+%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _moneyChange]]] call ExileClient_gui_toaster_addTemplateToast;
+			_winningsLabel ctrlSetStructuredText (parseText format ["<t  align='center' color='#e14141'>%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='1' shadow='true' /></t>",_winningsString]);
+			["SuccessTitleAndText", ["Jackpot!", format ["+%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _moneyChangeString]]] call ExileClient_gui_toaster_addTemplateToast;
 		}
 		else
 		{
 			playSound "SndExileTwinkleTwisterSuccess";
-			_winningsLabel ctrlSetStructuredText (parseText format ["<t  align='center' color='#e14141'>%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='1' shadow='true' /></t>",_winnings]);
-			["SuccessTitleAndText", ["Small prize!", format ["+%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _moneyChange]]] call ExileClient_gui_toaster_addTemplateToast;
+			_winningsLabel ctrlSetStructuredText (parseText format ["<t  align='center' color='#e14141'>%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='1' shadow='true' /></t>",_winningsString]);
+			["SuccessTitleAndText", ["Small prize!", format ["+%1<img image='\exile_assets\texture\ui\poptab_inline_ca.paa' size='24'/>", _moneyChangeString]]] call ExileClient_gui_toaster_addTemplateToast;
 		};
 	};
 	uiSleep 5;

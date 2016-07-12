@@ -79,7 +79,26 @@ uiNameSpace setVariable ["ExileClient_gui_loadingScreen_load",
 
 			if !(ctrlHTMLLoaded _newsControl) then 
 			{
-				_newsControl htmlLoad format["http://lobby.exilemod.com/index.html?p=%1", getPlayerUID player];
+				private _playerUID = "";
+
+				if !(isNull player) then
+				{
+					_playerUID = getPlayerUID player;
+				};
+
+				if (_playerUID isEqualTo "") then
+				{
+					_playerUID = profileNamespace getVariable ["ExilePlayerUID", ""];
+				};
+
+				if (_playerUID isEqualTo "") then 
+				{
+					_newsControl htmlLoad "http://lobby.exilemod.com/index.html";
+				}
+				else 
+				{
+					_newsControl htmlLoad format["http://lobby.exilemod.com/index.html?p=%1", _playerUID];
+				};
 			};
 		};
 

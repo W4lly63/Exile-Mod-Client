@@ -19,6 +19,7 @@ if (ExileHudIsVisible) then
 	call ExileClient_gui_hud_renderVehiclePanel;
 	call ExileClient_gui_hud_renderGrenadePanel;
 	call ExileClient_gui_toaster_thread;
+	call ExileClient_gui_hud_renderWaypoints;
 	if (ExileClientIsInConstructionMode) then
 	{
 		if (ExileClientConstructionMode == 3) then

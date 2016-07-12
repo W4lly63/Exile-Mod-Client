@@ -9,11 +9,15 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_mapControl","_mouseButton","_position","_maxLines","_control","_buttonControl","_statusControl","_colorDropdown","_render","_color","_renderPosition","_lines","_count","_text","_linesLabel","_linesStatus","_display","_contextControl"];
+private["_mapControl","_mouseButton","_position","_shift","_ctrl","_alt","_stopPropagation","_maxLines","_control","_buttonControl","_statusControl","_colorDropdown","_render","_color","_renderPosition","_lines","_count","_text","_linesLabel","_linesStatus","_clickPosition","_display","_contextControl"];
 _mapControl = _this select 0;
 _mouseButton = _this select 1;
 _position = [_this select 2,_this select 3];
-if(ExileClientMapPolyMode)then
+_shift = _this select 4;
+_ctrl = _this select 5;
+_alt = _this select 6;
+_stopPropagation = false;
+if (ExileClientMapPolyMode) then
 {
 	_maxLines = getNumber(missionConfigFile >> "CfgClans" >> "maximumPolyNode");
 	_control = uiNamespace getVariable ["RscExileMapCreatePoly",controlNull];
@@ -100,20 +104,41 @@ if(ExileClientMapPolyMode)then
 }
 else
 {
-	if(ExileClientLastMapDown + 0.1 > diag_tickTime)then
+	switch (_mouseButton) do 
 	{
-		if(_mouseButton isEqualTo 1)then
+		case 0:
 		{
-			_display = ctrlParent _mapControl;
-			if!(ExileClientClanInfo isEqualTo [])then
+			if (_shift) then
 			{
-				_contextControl = _display ctrlCreate ["RscExileMapContextMenu",24032];
-				_contextControl ctrlSetPosition _position;
-				_contextControl ctrlCommit 0;
+				_clickPosition = _mapControl ctrlMapScreenToWorld _position;
+				_clickPosition pushBack 0;
+				ExileClientWaypoints pushBack _clickPosition;
+				if ((count ExileClientWaypoints) > 5) then 
+				{
+					ExileClientWaypoints deleteAt 0;
+				};
+				_stopPropagation = true;
 			};
-			ExileClientMapPositionClick = _mapControl ctrlMapScreenToWorld _position;
-			ExileClientMapScreenPos = _position;
+		};
+		case 1:
+		{
+			if !(_shift || _alt || _ctrl) then				
+			{
+				if(ExileClientLastMapDown + 0.1 > diag_tickTime)then
+				{
+					_display = ctrlParent _mapControl;
+					if!(ExileClientClanInfo isEqualTo [])then
+					{
+						_contextControl = _display ctrlCreate ["RscExileMapContextMenu",24032];
+						_contextControl ctrlSetPosition _position;
+						_contextControl ctrlCommit 0;
+					};
+					ExileClientMapPositionClick = _mapControl ctrlMapScreenToWorld _position;
+					ExileClientMapScreenPos = _position;
+				};
+			};
+			_stopPropagation = true;
 		};
 	};
 };
-false
+_stopPropagation

@@ -11,18 +11,24 @@
  
 private["_responseCode"];
 _responseCode = _this select 0;
-if(_responseCode isEqualTo 0)then
+switch (_responseCode) do
 {
-	[player, "Exile_Item_Flag", 1] call ExileClient_util_playerCargo_add;
-	["SuccessTitleAndText", ["Purchased flag!", "A new territory flag has been added to your inventory."]] call ExileClient_gui_toaster_addTemplateToast;
-}
-else
-{
-		switch (_responseCode) do
-		{
-			case (1) : {systemChat "PurchaseFlagResponse - PlayerNULL!";};
-			case (2) : {systemChat "PurchaseFlagResponse - PlayerDEAD!";};
-			case (3) : {systemChat "PurchaseFlagResponse - PlayerBROKE!";};
-		};	
-};
+	case 1: 
+	{
+		["ErrorTitleAndText", ["Failed to purchase!", "You do not exist."]] call ExileClient_gui_toaster_addTemplateToast;
+	};
+	case 2:
+	{
+		["ErrorTitleAndText", ["Failed to purchase!", "You are too dead for this."]] call ExileClient_gui_toaster_addTemplateToast;
+	};
+	case 3: 
+	{
+		["ErrorTitleAndText", ["Failed to purchase!", "You do not have enough pop tabs."]] call ExileClient_gui_toaster_addTemplateToast;
+	};
+	case 0:
+	{
+		[player, "Exile_Item_Flag", 1] call ExileClient_util_playerCargo_add;
+		["SuccessTitleAndText", ["Purchased flag!", "A new territory flag has been added to your inventory."]] call ExileClient_gui_toaster_addTemplateToast;
+	};
+};	
 true
